@@ -23,6 +23,14 @@ Route::get('/login',function () {
     return view('Pengguna.login');
 })->name('login');
 
+Route::get('/login', function () {
+    if (Auth::user()) {
+        return redirect('/beranda');
+    }
+    return view('Pengguna.login');
+});
+
+
 Route::post('/postlogin','LoginController@postlogin')->name('postlogin');
 Route::get('/logout','LoginController@logout')->name('logout');
 

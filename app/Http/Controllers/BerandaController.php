@@ -8,7 +8,6 @@ class BerandaController extends Controller
 {
     public function index(Request $request)
     {
-        $var_nama = "desug";
         return view('HalamanDepan.beranda');
     } 
     public function halamansatu()
