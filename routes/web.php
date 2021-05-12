@@ -19,32 +19,31 @@ Route::get('/', function () {
 
 
 
-Route::get('/login',function () {
+Route::get('/login', function () {
     return view('Pengguna.login');
 })->name('login');
 
 Route::get('/login', function () {
     if (Auth::user()) {
-        return redirect('/beranda');
+        return redirect('/dashboard');
     }
     return view('Pengguna.login');
 });
 
 
-Route::post('/postlogin','LoginController@postlogin')->name('postlogin');
-Route::get('/logout','LoginController@logout')->name('logout');
+Route::post('/postlogin', 'LoginController@postlogin')->name('postlogin');
+Route::get('/logout', 'LoginController@logout')->name('logout');
 
-Route::group(['middleware' => ['auth', 'CekLevel:admin']], function (){
-    Route::get('/beranda','BerandaController@index');
-    Route::get('/halaman-satu','BerandaController@halamansatu')->name('halaman-satu');
-    Route::get('/halaman-dua','BerandaController@halamandua')->name('halaman-dua');
+
+Route::group(['middleware' => ['auth', 'CekLevel:admin']], function () {
+    Route::get('/beranda', 'BerandaController@index');
+    Route::get('/biodata', 'BerandaController@halamansatu')->name('biodata');
+    Route::get('/penimbangan', 'BerandaController@halamandua')->name('penimbangan');
+    Route::get('/dashboard', 'BerandaController@dashboard')->name('dashboard');
 });
 
 
-Route::group(['middleware' => ['auth', 'CekLevel:admin,user']], function (){
-    Route::get('/beranda','BerandaController@index');
-    Route::get('/halaman-dua','BerandaController@halamandua')->name('halaman-dua');
-   
+Route::group(['middleware' => ['auth', 'CekLevel:admin,user']], function () {
+    Route::get('/beranda', 'BerandaController@index');
+    Route::get('/penimbangan', 'BerandaController@halamandua')->name('penimbangan');
 });
-
-
