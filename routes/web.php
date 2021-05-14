@@ -35,15 +35,19 @@ Route::post('/postlogin', 'LoginController@postlogin')->name('postlogin');
 Route::get('/logout', 'LoginController@logout')->name('logout');
 
 
+
 Route::group(['middleware' => ['auth', 'CekLevel:admin']], function () {
     Route::get('/beranda', 'BerandaController@index');
-    Route::get('/biodata', 'BerandaController@halamansatu')->name('biodata');
-    Route::get('/penimbangan', 'BerandaController@halamandua')->name('penimbangan');
+    Route::get('/register', 'BerandaController@register')->name('register');
+    Route::get('/penimbangan', 'PenimbanganController@penimbangan')->name('penimbangan');
+    Route::get('/addpenimbangan', 'PenimbanganController@addpenimbangan')->name('addpenimbangan');
     Route::get('/dashboard', 'BerandaController@dashboard')->name('dashboard');
+    Route::post('/simpan-penimbangan','PenimbanganController@store')->name('simpan-penimbangan');
+    
 });
 
 
 Route::group(['middleware' => ['auth', 'CekLevel:admin,user']], function () {
     Route::get('/beranda', 'BerandaController@index');
-    Route::get('/penimbangan', 'BerandaController@halamandua')->name('penimbangan');
+    Route::get('/penimbangan', 'PenimbanganController@penimbangan')->name('penimbangan');
 });

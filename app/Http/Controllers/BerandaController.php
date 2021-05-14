@@ -10,14 +10,14 @@ class BerandaController extends Controller
     {
         return view('HalamanDepan.beranda');
     } 
-    public function halamansatu()
+    public function register()
     {
-        return view('HalamanAdmin.biodata');
+        return view('HalamanAdmin.register');
     }
-    public function halamandua()
-    {
-        return view('HalamanUser.penimbangan');
-    }  
+    // public function penimbangan()
+    // {
+    //     return view('HalamanUser.penimbangan');
+    // }  
     public function dashboard()
     {
         return view('HalamanDepan.dashboard');

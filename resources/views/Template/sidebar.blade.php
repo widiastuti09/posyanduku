@@ -43,9 +43,9 @@
             @if(auth()->user()->level=="admin")
 
             <li class="nav-item">
-              <a href="{{route('biodata')}}" class="nav-link ">
+              <a href="{{route('register')}}" class="nav-link ">
                 <i class="far fa-circle nav-icon "></i>
-                <p>Biodata</p>
+                <p>Register</p>
               </a>
             </li>
             @endif
