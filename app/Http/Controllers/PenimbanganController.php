@@ -15,7 +15,7 @@ class PenimbanganController extends Controller
     public function penimbangan()
     {
         $penimbangans =  Penimbangan::all();
-        
+
         return view('HalamanUser.penimbangan',compact('penimbangans'));
     }
 
@@ -38,7 +38,7 @@ class PenimbanganController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        Penimbangan::created([
+        Penimbangan::create([
             'nama' => $request->nama,
             'tanggal' => $request->tanggal,
             'beratbadan' => $request->beratbadan,

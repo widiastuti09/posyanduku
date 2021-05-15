@@ -23,7 +23,7 @@
       </div><!-- /.container-fluid -->  
     </div>
     <div class="ml-2 mb-2">
-        <a href="{{route('addpenimbangan')}}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+        <a href="{{route('addpenimbangan')}}" class="btn btn-success"><i class="fas fa-plus-square"></i></a>
     </div>
     <div class="container">
         <table class="table table-hover">
@@ -36,7 +36,7 @@
             <th>IMP</th>
             <th>KIA</th>
             <th>Vit</th>
-            <th>Aksi</th>
+            <th class="bg-light">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -47,12 +47,15 @@
             <tr>
             <th scope="row">{{$nomor++}}</th>
             <td>{{$penimbangan -> nama}}</td>
-            <td>{{$penimbangan -> tanggal}}</td>
+            <td>{{date('d-m-y', strtotime($penimbangan->tanggal)) }}</td>
             <td>{{ $penimbangan->beratbadan}}</td>
             <td>{{ $penimbangan->imp }}</td>
             <td>{{ $penimbangan->kia }}</td>
             <td>{{ $penimbangan->vitamin }}</td>
-            <td></td>
+            <td> 
+            <a href="{{route('addpenimbangan')}}" class="btn btn-success"><i class="fas fa-plus-square"></i></a>
+            <a href="{{route('addpenimbangan')}}" class="btn btn-success"><i class="fas fa-plus-square"></i></a> 
+            </td>
             </tr>
           @endforeach
         
