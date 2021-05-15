@@ -35,8 +35,8 @@
             <th>BB(Kg)</th>
             <th>IMP</th>
             <th>KIA</th>
-            <th>Vit</th>
-            <th class="bg-light">Action</th>
+            <th>Vitamin</th>
+            <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -53,15 +53,23 @@
             <td>{{ $penimbangan->kia }}</td>
             <td>{{ $penimbangan->vitamin }}</td>
             <td> 
-            <a href="{{route('addpenimbangan')}}" class="btn btn-success"><i class="fas fa-plus-square"></i></a>
-            <a href="{{route('addpenimbangan')}}" class="btn btn-success"><i class="fas fa-plus-square"></i></a> 
+            <a href="{{route('editpenimbangan',$penimbangan->id) }}" class="btn btn-warning"><i class="fas fa-pen-alt"></i></a>
+
+            <a href="{{route('deletepenimbangan', $penimbangan->id) }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a> 
             </td>
             </tr>
           @endforeach
         
         </tbody>
         </table>
+        
     </div>
+    <div class="container">
+      <div class="card-footer">
+          {{ $penimbangans->Links()}}
+        </div>
+    </div>
+    
 
 </div>
 
@@ -69,6 +77,8 @@
 
 @include('Template.footer')
 @include('Template.script')
+@include('sweetalert::alert')
+
     
 </body>
 </html>

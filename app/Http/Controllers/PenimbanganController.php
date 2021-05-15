@@ -14,7 +14,8 @@ class PenimbanganController extends Controller
      */
     public function penimbangan()
     {
-        $penimbangans =  Penimbangan::all();
+        // $penimbangans =  Penimbangan::all();
+        $penimbangans =  Penimbangan::paginate(5);
 
         return view('HalamanUser.penimbangan',compact('penimbangans'));
     }
@@ -47,7 +48,8 @@ class PenimbanganController extends Controller
             'vitamin' => $request->vitamin,
         ]);
 
-        return redirect('penimbangan');
+        return redirect('penimbangan')->with('toast_success', 'Data berhasil disimpan!');
+        ;
     }
 
     /**
@@ -67,9 +69,11 @@ class PenimbanganController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editpenimbangan($id)
     {
-        //
+        $pen = Penimbangan::findOrFail($id);
+        
+        return view('Penimbangan.editpenimbangan', compact('pen'));
     }
 
     /**
@@ -81,7 +85,10 @@ class PenimbanganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pen = Penimbangan::findOrFail($id);
+        $pen->update($request->all());
+        return redirect('penimbangan')->with('toast_success', 'Data berhasil diedit!');
+
     }
 
     /**
@@ -92,6 +99,9 @@ class PenimbanganController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pen = Penimbangan::findOrFail($id);
+        $pen->delete();
+        return back()->with('toast_success', 'Data berhasil dihapus!');
+
     }
 }

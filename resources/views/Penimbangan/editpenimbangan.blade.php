@@ -41,22 +41,22 @@
             </div>
           </div>
           <!-- /.card-header -->
-          <form action="{{ route('simpan-penimbangan') }}" method="post">
+          <form action="{{ route('updatepenimbangan', $pen->id) }}" method="post">
           {{ csrf_field() }}
           <div class="card-body">
             <div class="row">
               <div class="col-md-6">
               <div class="form-group">
                     <label>Nama Anak</label>
-                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama">
+                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" value="{{$pen->nama}}">
                 </div>
                 <div class="form-group">
                     <label>Tanggal</label>
-                    <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Nama">
+                    <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Nama" value="{{$pen->tanggal}}">
                 </div>
                 <div class="form-group">
                     <label>Berat Badan</label>
-                    <input type="text" class="form-control" id="beratbadan" name="beratbadan" placeholder="Masukkan BB (Kg)">
+                    <input type="text" class="form-control" id="beratbadan" name="beratbadan" placeholder="Masukkan BB (Kg)" value="{{$pen->beratbadan}}">
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -65,19 +65,31 @@
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>IMP</label>
-                  <select class="form-control select2" name="imp" style="width: 100%;" >
-                    <option selected="selected">Tidak</option>
-                    <option>Ya</option>
+                  <select class="form-control select2" name="imp" style="width: 100%;">
+                    @if($pen->imp)
+                      <option value="{{$pen->imp}}" >{{$pen->imp}}</option>
+                      <option value="" disabled="disabled">--Pilih Opsi--</option>
+                      <option >Tidak</option>
+                      <option >Ya</option>
+                    @endif
                   </select>
                   <label class="mt-3">KIA</label>
                   <select class="form-control select2" name="kia" style="width: 100%;" >
-                    <option selected="selected">Tidak</option>
-                    <option>Ya</option>
+                    @if($pen->imp)
+                      <option value="{{$pen->kia}}" >{{$pen->kia}}</option>  
+                      <option value="" disabled="disabled">--Pilih Opsi--</option>
+                      <option>Tidak</option>
+                      <option>Ya</option>
+                    @endif
                   </select>
                   <label class="mt-3">Vitamin</label>
-                  <select class="form-control select2" name="vitamin" style="width: 100%;" >
-                    <option selected="selected">Vit A</option>
+                  <select class="form-control select2" name="vitamin" style="width: 100%;" value="{{$pen->vitamin}}">
+                  @if($pen->vitamin)
+                    <option value="{{$pen->vitamin}}" >{{$pen->vitamin}}</option>
+                    <option value="" disabled="disabled">--Pilih Opsi--</option>
+                    <option>Vit A</option>
                     <option>Vit B</option>
+                  @endif
                   </select>
                 </div>
                 <!-- /.form-group -->
@@ -91,8 +103,8 @@
           
               <!-- /.col -->
               <div class="col-12 col-sm-6">
-              <button type="submit" class="btn btn-success"><i class="fas fa-plus-square"> Tambah Data</i></button>
-              <a href="#" class="btn btn-danger"><i class="fas fa-plus-square"> Cancel</i></a>
+              <button type="submit" class="btn btn-warning"><i class="fas fa-pen-alt"> Edit Data</i></button>
+              <a href="#" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
