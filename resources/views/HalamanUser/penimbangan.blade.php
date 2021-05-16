@@ -43,11 +43,11 @@
           @php
             $nomor=1;
           @endphp
-          @foreach ($penimbangans as $penimbangan)
+          @foreach ($penimbangans as  $index =>$penimbangan  )
             <tr>
-            <th scope="row">{{$nomor++}}</th>
+            <th scope="row">{{ $index + $penimbangans->firstItem() }}</th>
             <td>{{$penimbangan -> nama}}</td>
-            <td>{{date('d-m-y', strtotime($penimbangan->tanggal)) }}</td>
+            <td>{{date('d F Y', strtotime($penimbangan->tanggal)) }}</td>
             <td>{{ $penimbangan->beratbadan}}</td>
             <td>{{ $penimbangan->imp }}</td>
             <td>{{ $penimbangan->kia }}</td>
