@@ -14,8 +14,9 @@ class PenimbanganController extends Controller
      */
     public function penimbangan()
     {
-        // $penimbangans =  Penimbangan::all();
-        $penimbangans =  Penimbangan::paginate(5);
+        $penimbangans =  Penimbangan::all();
+        // dd($penimbangans);
+        // $penimbangans =  Penimbangan::paginate(5);
 
         return view('HalamanUser.penimbangan',compact('penimbangans'));
     }
@@ -51,6 +52,14 @@ class PenimbanganController extends Controller
         return redirect('penimbangan')->with('toast_success', 'Data berhasil disimpan!');
         ;
     }
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $penimbangans = \DB::table('penimbangans')->where('nama', 'LIKE', "%$search%")->paginate(5);
+        return view('HalamanUser.penimbangan', ['penimbangans' => $penimbangans]);    
+    }
+
+
 
     /**
      * Display the specified resource.

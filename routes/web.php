@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth', 'CekLevel:admin']], function () {
     Route::get('/editpenimbangan/{id}','PenimbanganController@editpenimbangan')->name('editpenimbangan');
     Route::post('/updatepenimbangan/{id}','PenimbanganController@update')->name('updatepenimbangan');
     Route::get('/deletepenimbangan/{id}','PenimbanganController@destroy')->name('deletepenimbangan');
+    Route::get('/search', 'PenimbanganController@search')->name('search');
 
 
     
