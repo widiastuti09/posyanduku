@@ -10,10 +10,7 @@ class BerandaController extends Controller
     {
         return view('HalamanDepan.beranda');
     } 
-    public function register()
-    {
-        return view('HalamanAdmin.register');
-    }
+ 
     // public function penimbangan()
     // {
     //     return view('HalamanUser.penimbangan');

@@ -33,13 +33,14 @@
                     <thead class="bg-dark">
                         <tr>
                             <th>No</th>
-                            <th>Nama Anak</th>
+                            <th>Nama Balita</th>
                             <th>Tanggal</th>
                             <th>BB(Kg)</th>
                             <th>IMP</th>
                             <th>KIA</th>
                             <th>Vitamin</th>
                             <th>Action</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -49,7 +50,8 @@
                         @foreach ($penimbangans as $index =>$penimbangan )
                         <tr>
                             <th scope="row">{{ $index + 1 }}</th>
-                            <td>{{$penimbangan -> nama}}</td>
+                            <td>{{ $penimbangan->registrasibalitas->namabalita }}</td>
+                         
                             <td>{{date('d F Y', strtotime($penimbangan->tanggal)) }}</td>
                             <td>{{ $penimbangan->beratbadan}}</td>
                             <td>{{ $penimbangan->imp }}</td>
@@ -63,6 +65,7 @@
                                 <a href="{{route('deletepenimbangan', $penimbangan->id) }}" class="btn btn-danger"><i
                                         class="fas fa-trash-alt"></i></a>
                             </td>
+                            
                         </tr>
                         @endforeach
 

@@ -11,8 +11,7 @@
   @include('Template.navbar')
 
   @include('Template.sidebar')
-
-  <div class="content-wrapper">
+    <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -31,7 +30,7 @@
         <!-- SELECT2 EXAMPLE -->
         <div class="card card-default">
           <div class="card-header bg-primary">
-            <h3 class="card-title">Form Edit Data</h3>
+            <h3 class="card-title">Add Data</h3>
 
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -47,12 +46,19 @@
             <div class="row">
               <div class="col-md-6">
               <div class="form-group">
-                    <label>Nama Anak</label>
-                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama">
+                  <label>Nama Balita</label>
+                  <select name="namabalita"  id="namabalita_id" class="form-control select2bs4" style="width: 100%;">
+                    <option selected="selected" disabled="disabled">Pilih Nama</option>
+                    @foreach($regbal as $penimbangan)
+
+                    <option value="{{$penimbangan->id}}">{{$penimbangan->namabalita}}</option>
+                    @endforeach
+                  </select>
                 </div>
+              
                 <div class="form-group">
                     <label>Tanggal</label>
-                    <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Nama">
+                    <input type="date" class="form-control"  id="tanggal" name="tanggal" placeholder="Masukkan Nama">
                 </div>
                 <div class="form-group">
                     <label>Berat Badan</label>
@@ -65,18 +71,21 @@
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>IMP</label>
-                  <select class="form-control select2" name="imp" style="width: 100%;" >
-                    <option selected="selected">Tidak</option>
+                  <select class="form-control select2bs4" name="imp" style="width: 100%;" >
+                    <option selected="selected" disabled="disabled">Pilih IMP</option>
+                    <option>Tidak</option>
                     <option>Ya</option>
                   </select>
                   <label class="mt-3">KIA</label>
-                  <select class="form-control select2" name="kia" style="width: 100%;" >
-                    <option selected="selected">Tidak</option>
+                  <select class="form-control select2bs4" name="kia" style="width: 100%;" >
+                  <option selected="selected" disabled="disabled">Pilih KIA</option>
+                    <option>Tidak</option>
                     <option>Ya</option>
                   </select>
                   <label class="mt-3">Vitamin</label>
-                  <select class="form-control select2" name="vitamin" style="width: 100%;" >
-                    <option selected="selected">Vit A</option>
+                  <select class="form-control select2bs4" name="vitamin" style="width: 100%;" >
+                    <option selected="selected" disabled="disabled">Pilih Vitamin</option>
+                    <option>Vit A</option>
                     <option>Vit B</option>
                   </select>
                 </div>
@@ -92,7 +101,7 @@
               <!-- /.col -->
               <div class="col-12 col-sm-6">
               <button type="submit" class="btn btn-success"><i class="fas fa-plus-square"> Tambah Data</i></button>
-              <a href="#" class="btn btn-danger"><i class="fas fa-plus-square"> Cancel</i></a>
+              <a href="{{ route ('penimbangan')}}" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
@@ -106,9 +115,32 @@
 
 
 
+        
+
+        
+        
+
+       
+
+
+
 
 @include('Template.footer')
 @include('Template.script')
+
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+  })
+
+
+</script>
     
 </body>
 </html>

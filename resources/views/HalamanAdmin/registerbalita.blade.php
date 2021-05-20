@@ -20,7 +20,7 @@
 
     <div class="container">
       <div class="mb-2">
-        <a href="#" class="btn btn-primary">Tambah Data <i class="fas fa-plus-square"></i></a>
+        <a href="{{route('addregisterbalita')}}" class="btn btn-primary">Tambah Data <i class="fas fa-plus-square"></i></a>
       </div>
       <table id="table-registrasi-balita" class="table table-bordered table-striped">
         <thead class="bg-dark">
@@ -36,22 +36,24 @@
           </tr>
         </thead>
         <tbody>
+        @foreach ($registrasibalitas as $index => $register)
           <tr>
-            <th></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <th scope="row">{{ $index + 1 }}</th>
+            <th> {{ $register-> namabalita}} </th>
+            <td> {{ $register-> tempatlahir}} </td>
+            <td> {{ $register-> tanggallahir}} </td>
+            <td> {{ $register-> jeniskelamin}} </td>
+            <td> {{ $register-> namaayah}} </td>
+            <td> {{ $register-> namaibu}} </td>
             <td>
-              <a href="#" class="btn btn-success"> <i class="fas fa-info-circle"></i></a>
-              <a href="#" class="btn btn-warning"> <i class="fas fa-pen-alt"></i></a>
-              <a href="#" class="btn btn-danger"> <i class="fas fa-trash-alt"></i></a>
+              <a href="{{route('detailregister', $register->id )}}" class="btn btn-success"> <i class="fas fa-info-circle"></i></a>
+              <a href="{{ route ('editregister', $register->id)}}"class="btn btn-warning"> <i class="fas fa-pen-alt"></i></a>
+              <a href="{{route('deleteregister', $register->id )}}" class="btn btn-danger"> <i class="fas fa-trash-alt"></i></a>
               
 
             </td>
           </tr>
+        @endforeach
         </tbody>
 
 
@@ -59,7 +61,9 @@
 
     </div>
   </div>
+  <br><br><br><br>
 </div>
+
   
 
         
@@ -67,9 +71,11 @@
 @include('Template.script')
 <script>
    $(document).ready(function(){
-        $('#table-registrasi-balita').DataTable({});
-      })
+    $('#table-registrasi-balita').DataTable({});
+      });
 </script>
+@include('sweetalert::alert')
+
     
 </body>
 </html>

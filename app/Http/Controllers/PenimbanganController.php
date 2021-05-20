@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Penimbangan;
+use App\Registrasibalita;
 
 class PenimbanganController extends Controller
 {
@@ -14,7 +15,8 @@ class PenimbanganController extends Controller
      */
     public function penimbangan()
     {
-        $penimbangans =  Penimbangan::all();
+        $penimbangans = Penimbangan::with('registrasibalitas')->get();
+        // $penimbangans = Penimbangan::with('registrasibalitas')->paginate(5);
         // dd($penimbangans);
         // $penimbangans =  Penimbangan::paginate(5);
 
@@ -28,7 +30,8 @@ class PenimbanganController extends Controller
      */
     public function addpenimbangan()
     {
-        return view('Penimbangan.addpenimbangan');
+        $regbal = Registrasibalita::all();
+        return view('Penimbangan.addpenimbangan',compact('regbal'));
     }
 
     /**
@@ -41,7 +44,8 @@ class PenimbanganController extends Controller
     {
         // dd($request->all());
         Penimbangan::create([
-            'nama' => $request->nama,
+            
+            'namabalita_id' => $request->namabalita,
             'tanggal' => $request->tanggal,
             'beratbadan' => $request->beratbadan,
             'imp' => $request->imp,
@@ -52,12 +56,7 @@ class PenimbanganController extends Controller
         return redirect('penimbangan')->with('toast_success', 'Data berhasil disimpan!');
         ;
     }
-    public function search(Request $request)
-    {
-        $search = $request->get('search');
-        $penimbangans = \DB::table('penimbangans')->where('nama', 'LIKE', "%$search%")->paginate(5);
-        return view('HalamanUser.penimbangan', ['penimbangans' => $penimbangans]);    
-    }
+   
 
 
 
@@ -80,9 +79,10 @@ class PenimbanganController extends Controller
      */
     public function editpenimbangan($id)
     {
-        $pen = Penimbangan::findOrFail($id);
+        $regbal = Registrasibalita::all();
+        $pen = Penimbangan::with('registrasibalitas')->findOrFail($id);
         
-        return view('Penimbangan.editpenimbangan', compact('pen'));
+        return view('Penimbangan.editpenimbangan', compact('pen','regbal'));
     }
 
     /**

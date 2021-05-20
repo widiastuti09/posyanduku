@@ -46,10 +46,23 @@
           <div class="card-body">
             <div class="row">
               <div class="col-md-6">
-              <div class="form-group">
+
+              <!-- <div class="form-group">
                     <label>Nama Anak</label>
-                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" value="{{$pen->nama}}">
+                    <input type="text" class="form-control" id="namabalita_id" name="namabalita" placeholder="Masukkan Nama" value="{{$pen->namabalita}}">
+                </div> -->
+
+                <div class="form-group">
+                  <label>Nama Balita</label>
+                  <select name="namabalita_id"  id="namabalita_id" class="form-control select2bs4" style="width: 100%;">
+                    <option value="" disabled="disabled">--Pilih Opsi--</option>
+                    @foreach($regbal as $penimbangan)
+                    
+                    <option value="{{$penimbangan->id}}" @if($penimbangan->id === $pen->namabalita_id) selected @endif>{{$penimbangan->namabalita}}</option>
+                    @endforeach
+                  </select>
                 </div>
+                
                 <div class="form-group">
                     <label>Tanggal</label>
                     <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Nama" value="{{$pen->tanggal}}">
@@ -104,7 +117,7 @@
               <!-- /.col -->
               <div class="col-12 col-sm-6">
               <button type="submit" class="btn btn-warning"><i class="fas fa-pen-alt"> Edit Data</i></button>
-              <a href="#" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
+              <a href="{{ route ('penimbangan')}}" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->

@@ -38,7 +38,7 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 
 Route::group(['middleware' => ['auth', 'CekLevel:admin']], function () {
     Route::get('/beranda', 'BerandaController@index');
-    Route::get('/register', 'BerandaController@register')->name('register');
+    
     Route::get('/penimbangan', 'PenimbanganController@penimbangan')->name('penimbangan');
     Route::get('/addpenimbangan', 'PenimbanganController@addpenimbangan')->name('addpenimbangan');
     Route::get('/dashboard', 'BerandaController@dashboard')->name('dashboard');
@@ -46,7 +46,14 @@ Route::group(['middleware' => ['auth', 'CekLevel:admin']], function () {
     Route::get('/editpenimbangan/{id}','PenimbanganController@editpenimbangan')->name('editpenimbangan');
     Route::post('/updatepenimbangan/{id}','PenimbanganController@update')->name('updatepenimbangan');
     Route::get('/deletepenimbangan/{id}','PenimbanganController@destroy')->name('deletepenimbangan');
-    Route::get('/search', 'PenimbanganController@search')->name('search');
+
+    Route::get('/register', 'RegistrasibalitaController@register')->name('register');
+    Route::get('/addregisterbalita', 'RegistrasibalitaController@addregisterbalita')->name('addregisterbalita');
+    Route::post('/simpan-registerbalita','RegistrasibalitaController@store')->name('simpan-registerbalita');
+    Route::get('/detailregister/{id}','RegistrasibalitaController@show')->name('detailregister');
+    Route::get('/editregister/{id}','RegistrasibalitaController@edit')->name('editregister');
+    Route::post('/updateregister/{id}','RegistrasibalitaController@update')->name('updateregister');
+    Route::get('/deleteregister/{id}','RegistrasibalitaController@destroy')->name('deleteregister');
 
 
     

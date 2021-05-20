@@ -14,4 +14,14 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="{{asset('Admin_LTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('Admin_LTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('Admin_LTE/plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('Admin_LTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+  <!-- Bootstrap4 Duallistbox -->
+    <link rel="stylesheet" href="{{asset('Admin_LTE/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css')}}">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="{{asset('Admin_LTE/plugins/daterangepicker/daterangepicker.css')}}">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="{{asset('Admin_LTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+  <!-- BS Stepper -->
 </head>
