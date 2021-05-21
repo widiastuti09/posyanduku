@@ -37,6 +37,22 @@ class RegistrasibalitaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'namabalita' => 'required',
+            'tempatlahir' => 'required',
+            'tanggallahir' => 'required',
+            'jeniskelamin' => 'required',
+            'namaayah' => 'required',
+            'namaibu' => 'required',
+            'rt'    => 'required',
+            'rw'    => 'required',
+            'usia'  => 'required',
+            'bblahir' => 'required',
+            'pblahir' => 'required',
+            'nokk'    => 'required',
+            'nikbalita' => 'required',
+            'telp'  => 'required'
+        ]);
         // dd($request->all());
         Registrasibalita::create([
         'namabalita'    => $request -> namabalita,

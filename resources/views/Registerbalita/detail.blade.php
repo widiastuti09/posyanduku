@@ -41,7 +41,7 @@
           <!-- /.card-header -->
           <form action="#" method="get">
           {{ csrf_field() }}
-          <
+          
           <table class="table table-bordered">
           <thead>
     <tr class="bg-secondary">
