@@ -42,10 +42,18 @@ class PenimbanganController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'namabalita_id' => 'required',
+            'tanggal'   => 'required',
+            'beratbadan'    => 'required',
+            'imp'           => 'required',
+            'kia'           => 'required',
+            'vitamin'       => 'required'
+        ]);
         // dd($request->all());
         Penimbangan::create([
             
-            'namabalita_id' => $request->namabalita,
+            'namabalita_id' => $request->namabalita_id,
             'tanggal' => $request->tanggal,
             'beratbadan' => $request->beratbadan,
             'imp' => $request->imp,
