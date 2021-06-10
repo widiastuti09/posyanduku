@@ -17,7 +17,7 @@ class CreatePenimbangansTable extends Migration
             $table->id();
             $table->bigInteger('namabalita_id')->unsigned();
             $table->date('tanggal');
-            $table->integer('beratbadan');
+            $table->float('beratbadan');
             $table->string('imp');
             $table->string('kia');
             $table->string('vitamin');

@@ -77,7 +77,7 @@
               <div class="col-md-6 ">
                 <!-- /.form-group -->
                 <div class="form-group">
-                  <label>IMP</label>
+                  <label>IMD</label>
                   <select class="form-control select2" name="imp" style="width: 100%;">
                     @if($pen->imp)
                       <option value="{{$pen->imp}}" >{{$pen->imp}}</option>
@@ -88,7 +88,7 @@
                   </select>
                   <label class="mt-3">KIA</label>
                   <select class="form-control select2" name="kia" style="width: 100%;" >
-                    @if($pen->imp)
+                    @if($pen->kia)
                       <option value="{{$pen->kia}}" >{{$pen->kia}}</option>  
                       <option value="" disabled="disabled">--Pilih Opsi--</option>
                       <option>Tidak</option>
@@ -101,7 +101,7 @@
                     <option value="{{$pen->vitamin}}" >{{$pen->vitamin}}</option>
                     <option value="" disabled="disabled">--Pilih Opsi--</option>
                     <option>Vit A</option>
-                    <option>Vit B</option>
+                    <option>Vit D</option>
                   @endif
                   </select>
                 </div>

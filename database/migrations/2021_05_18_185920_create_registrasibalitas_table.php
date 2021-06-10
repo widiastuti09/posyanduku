@@ -24,8 +24,8 @@ class CreateRegistrasibalitasTable extends Migration
             $table->integer('rt');
             $table->integer('rw');
             $table->integer('usia');
-            $table->string('bblahir');
-            $table->string('pblahir');
+            $table->float('bblahir');
+            $table->float('pblahir');
             $table->integer('nokk');
             $table->string('nikbalita');
             $table->string('telp');

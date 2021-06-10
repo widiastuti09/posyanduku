@@ -77,9 +77,9 @@
               <div class="col-md-6 ">
                 <!-- /.form-group -->
                 <div class="form-group">
-                  <label>IMP</label>
+                  <label>IMD</label>
                   <select class="form-control select2bs4 @error('imp') is-invalid @enderror" name="imp" style="width: 100%;" >
-                    <option value="">Pilih IMP</option>
+                    <option value="">Pilih IMD</option>
                     <option @if(old('imp') === 'Tidak') selected @endif>Tidak</option>
                     <option @if(old('imp') === 'Ya') selected @endif>Ya</option>
                   </select>

@@ -55,6 +55,23 @@ Route::group(['middleware' => ['auth', 'CekLevel:admin']], function () {
     Route::post('/updateregister/{id}','RegistrasibalitaController@update')->name('updateregister');
     Route::get('/deleteregister/{id}','RegistrasibalitaController@destroy')->name('deleteregister');
 
+    Route::get('/registeribuhamil', 'RegisterIbuHamilController@registerhamil')->name('registerhamil');
+    Route::get('/addregisteribuhamil', 'RegisterIbuHamilController@create')->name('addregisterhamil');
+    Route::get('/detailibuhamil/{id}', 'RegisterIbuHamilController@show')->name('detailibuhamil');
+    Route::post('/simpan-registeribuhamil', 'RegisterIbuHamilController@store')->name('simpan-registeribuhamil');
+    Route::get('/deleteregisteribuhamil/{id}', 'RegisterIbuHamilController@destroy')->name('deleteregisteribuhamil');
+    Route::post('/updateregisterbumil/{id}', 'RegisterIbuHamilController@update')->name('updateregisterbumil');
+    Route::get('/editregisterbumil/{id}','RegisterIbuHamilController@edit')->name('editregisterbumil');
+    
+    Route::get('/registerlansia', 'RegisterLansiaController@registerlansia')->name('registerlansia');
+    Route::get('/addregisterlansia','RegisterLansiaController@create')->name('addregisterlansia');
+    Route::get('/detailregisterlansia/{id}', 'RegisterLansiaController@show')->name('detailregisterlansia');
+    Route::post('/simpan-registerlansia', 'RegisterLansiaController@store')->name('simpan-lansia');
+    Route::get('/delete-registerlansia/{id}', 'RegisterLansiaController@destroy')->name('hapus-lansia');
+    Route::post('/updateregisterlansia/{id}', 'RegisterLansiaController@update')->name('update-lansia');
+    Route::get('/editregisterlansia/{id}', 'RegisterLansiaController@edit')->name('edit-lansia');
+
+
 
     
 });

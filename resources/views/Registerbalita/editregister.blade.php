@@ -91,15 +91,15 @@
                 </div>
                 <div class="form-group">
                     <label>Usia (Tahun)</label>
-                    <input type="number" class="form-control" id="usia" name="usia" value="{{$regbal->usia}}" placeholder="Masukkan Usia Anak">
+                    <input type="text" class="form-control" id="usia" name="usia" value="{{$regbal->usia}}" placeholder="Masukkan Usia Anak">
                 </div>
                 <div class="form-group">
                     <label>Berat Badan Lahir (Kg)</label>
-                    <input type="number" class="form-control" id="bblahir" name="bblahir" value="{{$regbal->bblahir}}" placeholder="Masukkan Berat Badan Anak">
+                    <input type="text" class="form-control" id="bblahir" name="bblahir" value="{{$regbal->bblahir}}" placeholder="Masukkan Berat Badan Anak">
                 </div>
                 <div class="form-group">
                     <label>Panjang Badan Lahir (Cm)</label>
-                    <input type="number" class="form-control" id="pblahir" name="pblahir" value="{{$regbal->pblahir}}" placeholder="Masukkan Panjamg Badan Anak">
+                    <input type="text" class="form-control" id="pblahir" name="pblahir" value="{{$regbal->pblahir}}" placeholder="Masukkan Panjamg Badan Anak">
                 </div>
                 <div class="form-group">
                     <label>No KK Balita</label>

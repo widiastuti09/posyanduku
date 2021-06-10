@@ -38,20 +38,49 @@ class RegistrasibalitaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'namabalita' => 'required',
-            'tempatlahir' => 'required',
-            'tanggallahir' => 'required',
-            'jeniskelamin' => 'required',
-            'namaayah' => 'required',
-            'namaibu' => 'required',
-            'rt'    => 'required',
-            'rw'    => 'required',
-            'usia'  => 'required',
-            'bblahir' => 'required',
-            'pblahir' => 'required',
-            'nokk'    => 'required',
-            'nikbalita' => 'required',
-            'telp'  => 'required'
+            'namabalita'    => 'required|alpha',
+            'tempatlahir'   => 'required|alpha',
+            'tanggallahir'  => 'required',
+            'jeniskelamin'  => 'required',
+            'namaayah'      => 'required|alpha',
+            'namaibu'       => 'required|alpha',
+            'rt'            => 'required|max:2',
+            'rw'            => 'required|max:2',
+            'usia'          => 'required|max:1',
+            'bblahir'       => 'required',
+            'pblahir'       => 'required',
+            'nokk'          => 'required|min:16',
+            'nikbalita'     => 'required|min:16',
+            'telp'          => 'required|max:13|min:10'
+        ],
+        [
+            'namabalita.required'   => 'Nama Balita Harus diisi',
+            'namabalita.alpha'   => 'Nama Balita Harus Diisi Dengan Huruf',
+            'tanggallahir.required' => 'Tanggal Lahir Harus diisi',
+            'tempatlahir.required' => 'Tempat Lahir Harus diisi',
+            'tempatlahir.alpha'   => 'Tempat Lahir Harus Diisi Dengan Huruf',
+            'jeniskelamin.required' => 'Jenis Kelamin Harus diisi',
+            'namaayah.required'     => 'Nama Ayah Harus diisi',
+            'namaayah.alpha'   => 'Nama Ayah Harus Diisi Dengan Huruf',
+            'namaibu.required'      => 'Nama Ibu Harus diisi',
+            'namaibu.alpha'   => 'Nama Ibu Harus Diisi Dengan Huruf',
+            'rt.required'           => 'RT Harus diisi',
+            'rt.max'                => 'RT Maksimal 2 Karakter',
+            'rw.required'           => 'RW Harus diisi',
+            'rw.max'                => 'RW Maksimal 2 Karakter',
+            'usia.required'         => 'Usia Harus diisi',
+            'usia.max'              => 'Usia Maksimal 1 Karakter',
+            'bblahir.required'      => 'Berat Badan Lahir Harus diisi',
+            'pblahir.required'      => 'Panjang Badan Lahir Harus diisi',
+            'nokk.required'         => 'No KK Harus diisi',
+            'nokk.min'              => 'No KK Kurang dari 16 Karakter',
+            'nikbalita.required'    => 'NIK Balita Harus diisi',
+            'nikbalita.min'         => 'NIK Balita Kurang dari 16 Karakter',
+            'telp.required'         => 'No Telp Harus Di isi',
+            'telp.max'              => 'No Telp Maksimal 13 Karakter',
+            'telp.min'              => 'No Telp Minimal 10 Karakter'
+            
+            
         ]);
         // dd($request->all());
         Registrasibalita::create([
@@ -71,7 +100,7 @@ class RegistrasibalitaController extends Controller
         'telp'          => $request -> telp
         ]);
 
-        return redirect('register')->with('toast_success', 'Data berhasil disimpan!');
+        return redirect('register')->with('toast_success', 'Data berhasil Disimpan!');
     }
 
     /**
@@ -109,7 +138,7 @@ class RegistrasibalitaController extends Controller
     {
         $regbal = Registrasibalita::findorfail($id);
         $regbal->update($request->all());
-        return redirect('register')->with('toast_success', 'Data berhasil diedit');
+        return redirect('register')->with('toast_success', 'Data berhasil Diedit');
     }
 
     /**

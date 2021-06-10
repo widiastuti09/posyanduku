@@ -65,7 +65,7 @@
     </tr>
     <tr>
     <th class="font-weight-bold">Tanggal Lahir</th>
-      <td scope="row" class="font-weight-normal">{{$regbal->tanggallahir}}</td>
+      <td scope="row" class="font-weight-normal">{{date('d F Y',strtotime($regbal->tanggallahir)) }}</td>
       
     
     </tr>

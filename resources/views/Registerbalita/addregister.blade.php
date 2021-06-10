@@ -122,14 +122,14 @@
                 </div>
                 <div class="form-group">
                     <label>Berat Badan Lahir (Kg)</label>
-                    <input type="number" class="form-control @error('bblahir') is-invalid @enderror" autofocus id="bblahir" name="bblahir" placeholder="Masukkan Berat Badan Anak" value="{{old('bblahir')}}">
+                    <input type="text" class="form-control @error('bblahir') is-invalid @enderror" autofocus id="bblahir" name="bblahir" placeholder="Masukkan Berat Badan Anak" value="{{old('bblahir')}}">
                     @error('bblahir')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label>Panjang Badan Lahir (Cm)</label>
-                    <input type="number" class="form-control @error('pblahir') is-invalid @enderror" autofocus id="pblahir" name="pblahir" placeholder="Masukkan Panjamg Badan Anak" value="{{old('pblahir')}}">
+                    <input type="text" class="form-control @error('pblahir') is-invalid @enderror" autofocus id="pblahir" name="pblahir" placeholder="Masukkan Panjamg Badan Anak" value="{{old('pblahir')}}">
                     @error('pblahir')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror

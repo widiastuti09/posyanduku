@@ -45,43 +45,54 @@
             <li class="nav-item">
               <a href="{{route('register')}}" class="nav-link ">
                 <i class="far fa-circle nav-icon "></i>
-                <p>Register</p>
+                <p>Register Balita</p>
               </a>
             </li>
             @endif
             <li class="nav-item">
               <a href="{{route('penimbangan')}}" class="nav-link ">
                 <i class="far fa-circle nav-icon "></i>
-                <p>Penimbangan</p>
+                <p>Penimbangan Balita</p>
               </a>
             </li>
 
           </ul>
         </li>
-        
-        
-        
-        <li class="nav-header">LABELS</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle text-danger"></i>
-              <p class="text">Important</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle text-warning"></i>
-              <p>Warning</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle text-info"></i>
-              <p>Informational</p>
-            </a>
-          </li>
-        
-      
+        <li class="nav-item menu-open">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-database"></i>
+            <p>
+              Data Ibu Hamil
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{route('registerhamil')}}" class="nav-link ">
+                <i class="far fa-circle nav-icon "></i>
+                <p>Register Ibu Hamil</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item menu-open">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-database"></i>
+            <p>
+              Data Lansia
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{route('registerlansia')}}" class="nav-link ">
+                <i class="far fa-circle nav-icon "></i>
+                <p>Register Lansia</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+ 
         <li class="nav-item">
           <a href="{{route('logout')}}" class="nav-link">
             <i class="nav-icon fas fa-sign-out-alt"></i>

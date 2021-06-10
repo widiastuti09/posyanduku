@@ -41,12 +41,12 @@
             <th scope="row">{{ $index + 1 }}</th>
             <th> {{ $register-> namabalita}} </th>
             <td> {{ $register-> tempatlahir}} </td>
-            <td> {{ $register-> tanggallahir}} </td>
+            <td>{{date('d F Y', strtotime($register->tanggallahir))}}</td>
             <td> {{ $register-> jeniskelamin}} </td>
             <td> {{ $register-> namaayah}} </td>
             <td> {{ $register-> namaibu}} </td>
             <td>
-              <a href="{{route('detailregister', $register->id )}}" class="btn btn-success"> <i class="fas fa-info-circle"></i></a>
+              <a href="{{route('detailregister', $register->id)}}" class="btn btn-success"> <i class="fas fa-info-circle"></i></a>
               <a href="{{ route ('editregister', $register->id)}}"class="btn btn-warning"> <i class="fas fa-pen-alt"></i></a>
               <a href="{{route('deleteregister', $register->id )}}" class="btn btn-danger"> <i class="fas fa-trash-alt"></i></a>
               

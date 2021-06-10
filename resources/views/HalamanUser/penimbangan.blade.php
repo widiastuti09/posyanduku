@@ -36,7 +36,7 @@
                             <th>Nama Balita</th>
                             <th>Tanggal</th>
                             <th>BB(Kg)</th>
-                            <th>IMP</th>
+                            <th>IMD</th>
                             <th>KIA</th>
                             <th>Vitamin</th>
                             <th>Action</th>
