@@ -4,18 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
 
 class LoginController extends Controller
 {
     public function postlogin (Request $request){
         // dd($request->all());
         if(Auth::attempt($request->only('email','password'))){
-            return redirect('/beranda');
+            $user = User::where('email', $request->email)->first();
+            if($user->level == 'admin'){
+                // dd("INI ADMIN");
+                return redirect('/beranda');
+            }else if($user->level == 'user'){
+                return redirect('/beranda');
+            }else{
+                return redirect('/beranda');
+            }
         }
         return redirect ('login');
     }
     public function logout (Request $request){
-       Auth::logout();
+        Auth::logout();
+        $request->session()->invalidate();
         return redirect('/login');
     }
 }

@@ -38,7 +38,7 @@ class RegistrasibalitaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'namabalita'    => 'required|alpha',
+            'namabalita'    => 'required|string',
             'tempatlahir'   => 'required|alpha',
             'tanggallahir'  => 'required',
             'jeniskelamin'  => 'required',
