@@ -40,28 +40,26 @@ class RegisterLansiaController extends Controller
         // dd($request->all());
         $request->validate([
             'tanggal_register'  => 'required',
-            'nama'              => 'required',
-            'tanggal_lahir'      => 'required',
+            'nama'              => 'required|string',
+            'tanggal_lahir'     => 'required',
             'jenis_kelamin'     => 'required',
-            'rt'                => 'required',
-            'rw'                => 'required',
-            'berat_badan'       => 'required',
-            'tinggi_badan'      => 'required',
-            'lingkar_pinggang'  => 'required',
-            'tekanan_darah'     => 'required',
-            'glukosa_darah'     => 'required',
-            'lemak_tubuh'       => 'required',
-            'imt'               => 'required',
-            'lemak_perut'       => 'required',
-            'kolestrol'         => 'required',
-            'asam_urat'         => 'required',
-            'makan_berlemak'    => 'required',
-            'makan_manis'       => 'required',
-            'zat_adiktif'       => 'required',
-            'jelantah'          => 'required',
-            'merokok'           => 'required',
-            'olahraga'          => 'required',
-            'keterangan'        => 'required'
+            'rt'                => 'required|integer',
+            'rw'                => 'required|integer',
+            'alamat'            => 'required|string',
+        ],
+        [
+            'tanggal_register.required'          => 'Tanggal register harus di isi',
+            'nama.required'                      => 'Nama Harus Diisi',        
+            'tanggal_lahir.required'             => 'Tanggal lahir harus di isi',
+            'jenis_kelamin.required'             => 'Jenis Kelamin harus di isi',
+            'rt.required'                        => 'RT harus di isi',
+            'rt.integer'                          => 'RT harus di isi angka',
+            'rw.required'                        => 'RW harus di isi',
+            'rw,integer'                          => 'RW harus di isi angka',
+            'alamat.required'                    => 'Alamat harus di isi'
+    
+        
+
         ]);
        
 
@@ -72,25 +70,10 @@ class RegisterLansiaController extends Controller
         'jenis_kelamin'    => $request -> jenis_kelamin,
         'rt'               => $request -> rt,
         'rw'               => $request -> rw,
-        'berat_badan'      => $request -> berat_badan,
-        'tinggi_badan'     => $request -> tinggi_badan,
-        'lingkar_pinggang' => $request -> lingkar_pinggang,
-        'tekanan_darah'    => $request -> tekanan_darah,
-        'glukosa_darah'    => $request -> glukosa_darah,
-        'lemak_tubuh'      => $request -> lemak_tubuh,
-        'imt'              => $request -> imt,
-        'lemak_perut'      => $request -> lemak_perut,
-        'kolestrol'        => $request -> kolestrol,
-        'asam_urat'        => $request -> asam_urat,
-        'makan_berlemak'   => $request -> makan_berlemak,
-        'makan_manis'      => $request -> makan_manis,
-        'zat_adiktif'      => $request -> zat_adiktif,
-        'jelantah'         => $request -> jelantah,
-        'merokok'          => $request -> merokok,
-        'olahraga'         => $request -> olahraga,
-        'keterangan'       => $request -> keterangan,
+        'alamat'           => $request -> alamat,
         ]);
 
+     
         return redirect('registerlansia')->with('toast_success', 'Data berhasil Disimpan!');
         
     }

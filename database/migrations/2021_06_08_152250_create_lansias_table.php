@@ -21,23 +21,7 @@ class CreateLansiasTable extends Migration
             $table->string('jenis_kelamin');
             $table->integer('rt');
             $table->integer('rw');
-            $table->float('berat_badan');
-            $table->float('tinggi_badan');
-            $table->float('lingkar_pinggang');
-            $table->string('tekanan_darah');
-            $table->float('glukosa_darah');
-            $table->float('lemak_tubuh');
-            $table->float('imt');
-            $table->float('lemak_perut');
-            $table->float('kolestrol');
-            $table->float('asam_urat');
-            $table->integer('makan_berlemak');
-            $table->integer('makan_manis');
-            $table->integer('zat_adiktif');
-            $table->integer('jelantah');
-            $table->string('merokok');
-            $table->integer('olahraga');
-            $table->string('keterangan');
+            $table->string('alamat');
             $table->timestamps();
         });
     }

@@ -44,7 +44,8 @@ class PenimbanganController extends Controller
     {
         $request->validate([
             'namabalita_id' => 'required',
-            'tanggal'   => 'required',
+            'tanggal'       => 'required',
+            'jenis_imunisasi' => 'required',
             'beratbadan'    => 'required',
             'imp'           => 'required',
             'kia'           => 'required',
@@ -55,6 +56,7 @@ class PenimbanganController extends Controller
             
             'namabalita_id' => $request->namabalita_id,
             'tanggal' => $request->tanggal,
+            'jenis_imunisasi' => $request->jenis_imunisasi,
             'beratbadan' => $request->beratbadan,
             'imp' => $request->imp,
             'kia' => $request->kia,

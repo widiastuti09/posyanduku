@@ -68,6 +68,23 @@
                     <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Nama" value="{{$pen->tanggal}}">
                 </div>
                 <div class="form-group">
+             
+                <label for="">Jenis Imunisasi</label>
+                <select class="form-control select2" name="jenis_imunisasi" style="width: 100%;">
+                    @if($pen->jenis_imunisasi)
+                      <option value="{{$pen->jenis_imunisasi}}" >{{$pen->jenis_imunisasi}}</option>
+                      <option value="" disabled="disabled">Pilih Imunisasi (Berdasarkan Umur)</option>
+                    <option >BCG, Polion 1 (0-7 hari)</option>
+                    <option >BCG, Polio 1 (1 bulan)</option>
+                    <option >DPI/HB 1, Polio 2 (2 bulan)</option>
+                    <option >DPI/HB 2, Polio 3 (3 bulan)</option>
+                    <option >DPI/HB 3, Polio 4 (4 bulan)</option>
+                    <option >Campak (9 bulan)</option>
+                    @endif
+                  </select>
+                
+                </div>
+                <div class="form-group">
                     <label>Berat Badan</label>
                     <input type="text" class="form-control" id="beratbadan" name="beratbadan" placeholder="Masukkan BB (Kg)" value="{{$pen->beratbadan}}">
                 </div>
@@ -100,8 +117,8 @@
                   @if($pen->vitamin)
                     <option value="{{$pen->vitamin}}" >{{$pen->vitamin}}</option>
                     <option value="" disabled="disabled">--Pilih Opsi--</option>
-                    <option>Vit A</option>
-                    <option>Vit D</option>
+                    <option >Vit A Biru (6 - 11 Bulan)</option>
+                    <option >Vit A Merah (1 - 5 Tahun)</option>
                   @endif
                   </select>
                 </div>

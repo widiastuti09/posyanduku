@@ -48,7 +48,7 @@
                 <div class="form-group">
                   <label>Nama Balita</label>
                   <select name="namabalita_id"  id="namabalita_id" class="form-control select2bs4 @error('namabalita_id') is-invalid @enderror" style="width: 100%;">
-                    <option value="">Pilih Nama</option>
+                    <option value="" >Pilih Nama</option>
                     @foreach($regbal as $penimbangan)
                       <option @if(old("namabalita_id") == $penimbangan->id) selected @endif value="{{$penimbangan->id}}">{{$penimbangan->namabalita}}</option>
                     @endforeach
@@ -65,12 +65,28 @@
                       @enderror    
                 </div>
                 <div class="form-group">
+                  <label>Jenis Imunisasi</label>
+                  <select class="form-control select2bs4 @error('jenis_imunisasi') is-invalid @enderror" name="jenis_imunisasi" style="width: 100%;" >
+                    <option value="">Pilih Imunisasi (Berdasarkan Umur)</option>
+                    <option @if(old('jenis_imunisasi') === 'BCG, Polion 1 (0-7 hari)') selected @endif>BCG, Polion 1 (0-7 hari)</option>
+                    <option @if(old('jenis_imunisasi') === 'BCG, Polio 1 (1 bulan)') selected @endif>BCG, Polio 1 (1 bulan)</option>
+                    <option @if(old('jenis_imunisasi') === 'DPI/HB 1, Polio 2 (2 bulan)') selected @endif>DPI/HB 1, Polio 2 (2 bulan)</option>
+                    <option @if(old('jenis_imunisasi') === 'DPI/HB 2, Polio 3 (3 bulan)') selected @endif>DPI/HB 2, Polio 3 (3 bulan)</option>
+                    <option @if(old('jenis_imunisasi') === 'DPI/HB 3, Polio 4 (4 bulan)') selected @endif>DPI/HB 3, Polio 4 (4 bulan)</option>
+                    <option @if(old('jenis_imunisasi') === 'Campak (9 bulan)') selected @endif>Campak (9 bulan)</option>
+                  </select>
+                  @error('jenis_imunisasi')
+                    <div class="invalid-feedback">{{$message}}</div>
+                  @enderror
+                </div>
+                <div class="form-group">
                     <label>Berat Badan</label>
                     <input type="text" class="form-control @error('beratbadan') is-invalid @enderror" id="beratbadan" name="beratbadan" placeholder="Masukkan BB (Kg)" value="{{ old ('beratbadan')}}">
                     @error('beratbadan')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                   </div>
+                
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
@@ -89,9 +105,9 @@
                 </div>
                 
                 <div class="form-group">
-                  <label class="mt-3">KIA</label>
+                  <label>KIA</label>
                   <select class="form-control select2bs4 @error('kia') is-invalid @enderror" name="kia" style="width: 100%;"  >
-                  <option selected="selected" disabled="disabled">Pilih KIA</option>
+                  <option value="">Pilih KIA</option>
                     <option @if(old('kia') === 'Tidak') selected @endif>Tidak</option>
                     <option @if(old('kia') === 'Ya') selected @endif>Ya</option>
                   </select>
@@ -100,11 +116,11 @@
                     @enderror
                     </div>
                 <div class="form-group">
-                  <label class="mt-3">Vitamin</label>
+                  <label>Vitamin</label>
                   <select class="form-control select2bs4 @error('vitamin') is-invalid @enderror" name="vitamin" style="width: 100%;" value="{{old('vitamin')}}">
                     <option selected="selected" disabled="disabled">Pilih Vitamin</option>
-                    <option @if(old('vitamin') === 'Vit A') selected @endif>Vit A</option>
-                    <option @if(old('vitamin') === 'Vit B') selected @endif>Vit B</option>
+                    <option @if(old('vitamin') === 'Vit A Biru (6 - 11 Bulan)') selected @endif>Vit A Biru (6 - 11 Bulan)</option>
+                    <option @if(old('vitamin') === 'Vit A Merah (1 - 5 Tahun)') selected @endif>Vit A Merah (1 - 5 Tahun)</option>
                   </select>
                   @error('vitamin')
                     <div class="invalid-feedback">{{$message}}</div>
@@ -134,7 +150,7 @@
         </div>
         <!-- /.card -->
 
-
+<br><br><br><br>
 
         
 

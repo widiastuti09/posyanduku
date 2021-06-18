@@ -35,6 +35,7 @@
                             <th>No</th>
                             <th>Nama Balita</th>
                             <th>Tanggal</th>
+                            <th>Jenis Imunisasi</th>
                             <th>BB(Kg)</th>
                             <th>IMD</th>
                             <th>KIA</th>
@@ -50,9 +51,9 @@
                         @foreach ($penimbangans as $index =>$penimbangan )
                         <tr>
                             <th scope="row">{{ $index + 1 }}</th>
-                            <td>{{ $penimbangan->registrasibalitas->namabalita }}</td>
-                         
+                            <td>{{ $penimbangan->registrasibalitas->namabalita }}</td> 
                             <td>{{date('d F Y', strtotime($penimbangan->tanggal)) }}</td>
+                            <td>{{ $penimbangan->jenis_imunisasi}}</td>
                             <td>{{ $penimbangan->beratbadan}}</td>
                             <td>{{ $penimbangan->imp }}</td>
                             <td>{{ $penimbangan->kia }}</td>

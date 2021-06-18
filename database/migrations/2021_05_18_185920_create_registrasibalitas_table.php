@@ -23,11 +23,11 @@ class CreateRegistrasibalitasTable extends Migration
             $table->string('namaibu');
             $table->integer('rt');
             $table->integer('rw');
-            $table->integer('usia');
+            $table->float('usia');
             $table->float('bblahir');
             $table->float('pblahir');
-            $table->integer('nokk');
-            $table->string('nikbalita');
+            $table->bigInteger('nokk');
+            $table->bigInteger('nikbalita');
             $table->string('telp');
             $table->timestamps();
         });

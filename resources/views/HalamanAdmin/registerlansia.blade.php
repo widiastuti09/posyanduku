@@ -29,8 +29,6 @@
             <th>Nama</th>
             <th>Tanggal Lahir</th>
             <th>Jenis Kelamin</th>
-            <th>TB</th>
-            <th>BB</th>
             <th>RT</th>
             <th>RW</th>
             <th>Aksi</th>
@@ -45,8 +43,6 @@
             <td>{{$register->nama}}</td>
             <td>{{date('d F Y', strtotime($register->tanggal_lahir))}}</td>
             <td>{{$register->jenis_kelamin}}</td>
-            <td>{{$register->tinggi_badan}}</td>
-            <td>{{$register->berat_badan}}</td>
             <td>{{$register->rt}}</td>
             <td>{{$register->rw}}</td> 
             <td>

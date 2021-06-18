@@ -10,7 +10,7 @@ class Penimbangan extends Model
     protected $table = "penimbangans";
     protected $primaryKey = "id";
     protected $fillable = [
-        'id', 'namabalita_id', 'tanggal', 'beratbadan', 'imp', 'kia', 'vitamin'  
+        'id', 'namabalita_id', 'tanggal','jenis_imunisasi' ,'beratbadan', 'imp', 'kia', 'vitamin'  
     ];
     public function registrasibalitas()
     {

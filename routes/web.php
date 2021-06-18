@@ -75,6 +75,14 @@ Route::group(['middleware' => ['auth', 'CekLevel:admin']], function () {
     Route::post('/updateregisterlansia/{id}', 'RegisterLansiaController@update')->name('update-lansia');
     Route::get('/editregisterlansia/{id}', 'RegisterLansiaController@edit')->name('edit-lansia');
 
+    Route::get('/pemeriksaanlansia', 'PemeriksaanLansiaController@index')->name('pemeriksaanlansia');
+    Route::get('/detailpemeriksaanlansia/{id}', 'PemeriksaanLansiaController@show')->name('detailpemeriksaanlansia');
+    Route::get('/addpemeriksaanlansia', 'PemeriksaanLansiaController@create')->name('addpemeriksaanlansia');
+    Route::post('/simpanpemeriksaanlansia', 'PemeriksaanLansiaController@store')->name('simpanpemeriksaanlansia');
+    Route::get('/deletepemeriksaanlansia/{id}', 'PemeriksaanLansiaController@destroy')->name('deletepemeriksaanlansia');
+    Route::get('/editpemeriksaanlansia/{id}', 'PemeriksaanLansiaController@edit')->name('editpemeriksaanlansia');
+    Route::post('/updatepemeriksaan/{id}', 'PemeriksaanLansiaController@update')->name('updatepemeriksaanlansia');
+
 
 
     
@@ -91,6 +99,13 @@ Route::group(['middleware' => ['auth', 'CekLevel:user2,admin']], function(){
     Route::get('/delete-registerlansia/{id}', 'RegisterLansiaController@destroy')->name('hapus-lansia');
     Route::post('/updateregisterlansia/{id}', 'RegisterLansiaController@update')->name('update-lansia');
     Route::get('/editregisterlansia/{id}', 'RegisterLansiaController@edit')->name('edit-lansia');
+
+    Route::get('/pemeriksaanlansia', 'PemeriksaanLansiaController@index')->name('pemeriksaanlansia');
+    Route::get('/detailpemeriksaanlansia/{id}', 'PemeriksaanLansiaController@show')->name('detailpemeriksaanlansia');
+    Route::get('/addpemeriksaanlansia', 'PemeriksaanLansiaController@create')->name('addpemeriksaanlansia');
+    Route::post('/simpanpemeriksaanlansia', 'PemeriksaanLansiaController@store')->name('simpanpemeriksaanlansia');
+    Route::get('/deletepemeriksaanlansia/{id}', 'PemeriksaanLansiaController@destroy')->name('deletepemeriksaanlansia');
+    Route::get('/editpemeriksaanlansia/{id}', 'PemeriksaanLansiaController@edit')->name('editpemeriksaanlansia');
 });
 
 
