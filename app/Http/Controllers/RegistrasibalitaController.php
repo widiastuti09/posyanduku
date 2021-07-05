@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Registrasibalita;
+use App\Ibuhamil;
+use App\User;
 
 class RegistrasibalitaController extends Controller
 {
@@ -26,7 +28,9 @@ class RegistrasibalitaController extends Controller
      */
     public function addregisterbalita()
     {
-        return view('Registerbalita.addregister');
+        $ibuHamil = Ibuhamil::all();
+        $users = User::where('level', 'umum')->get();
+        return view('Registerbalita.addregister', compact('ibuHamil','users'));
     }
 
     /**
@@ -43,7 +47,6 @@ class RegistrasibalitaController extends Controller
             'tanggallahir'  => 'required',
             'jeniskelamin'  => 'required',
             'namaayah'      => 'required|string',
-            'namaibu'       => 'required|string',
             'rt'            => 'required|max:2',
             'rw'            => 'required|max:2',
             'usia'          => 'required|max:1',
@@ -82,14 +85,19 @@ class RegistrasibalitaController extends Controller
             
             
         ]);
-        // dd($request->all());
+
+        if($request->terdaftar){
+            $ibuHamil = Ibuhamil::findOrFail($request->id_ibu);
+        }
+
         Registrasibalita::create([
         'namabalita'    => $request -> namabalita,
         'tempatlahir'   => $request -> tempatlahir,
         'tanggallahir'  => $request -> tanggallahir,
         'jeniskelamin'  => $request -> jeniskelamin,
         'namaayah'      => $request -> namaayah,
-        'namaibu'       => $request -> namaibu,
+        'namaibu'       => $request->terdaftar ? $ibuHamil->nama : $request -> namaibu,
+        'id_ibu'        => $request->terdaftar ? $request -> id_ibu : null,
         'rt'            => $request -> rt,
         'rw'            => $request -> rw,
         'usia'          => $request -> usia,
@@ -97,7 +105,8 @@ class RegistrasibalitaController extends Controller
         'pblahir'       => $request -> pblahir,
         'nokk'          => $request -> nokk,
         'nikbalita'     => $request -> nikbalita,
-        'telp'          => $request -> telp
+        'telp'          => $request -> telp,
+        'user_id'       => $request -> punya ? $request-> user_id : null
         ]);
 
         return redirect('register')->with('toast_success', 'Data berhasil Disimpan!');

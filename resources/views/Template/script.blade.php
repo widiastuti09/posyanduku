@@ -16,6 +16,3 @@
 
 
 @yield('script')
-<script>
-    console.log("TOLDEM SCRIPT")
-</script>
