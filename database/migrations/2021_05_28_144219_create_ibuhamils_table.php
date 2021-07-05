@@ -32,7 +32,10 @@ class CreateIbuhamilsTable extends Migration
             $table->integer('keguguranke');
             $table->string('telp',13);
             $table->date('tglregister');
+            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

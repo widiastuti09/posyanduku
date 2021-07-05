@@ -29,7 +29,10 @@ class CreateRegistrasibalitasTable extends Migration
             $table->bigInteger('nokk');
             $table->bigInteger('nikbalita');
             $table->string('telp');
+            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

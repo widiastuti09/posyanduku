@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Ibuhamil;
+use App\User;
 
 class RegisterIbuHamilController extends Controller
 {
@@ -25,7 +26,8 @@ class RegisterIbuHamilController extends Controller
      */
     public function create()
     {
-        return view('RegisterIbuHamil.addregister');
+        $users = User::where('level', 'umum')->get();
+        return view('RegisterIbuHamil.addregister', compact('users'));
     }
 
     /**
@@ -98,7 +100,8 @@ class RegisterIbuHamilController extends Controller
             'persalinanke'  =>$request ->persalinanke, 
             'keguguranke'   =>$request ->keguguranke, 
             'telp'          =>$request ->telp, 
-            'tglregister'   =>$request ->tglregister
+            'tglregister'   =>$request ->tglregister,
+            'user_id'       =>$request ->punya ? $request -> user_id : null
         ]);
 
         return redirect('registeribuhamil')->with('toast_success', 'Data Berhasil Disimpan');

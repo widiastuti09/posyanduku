@@ -135,5 +135,20 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/deleteregisteribuhamil/{id}', 'RegisterIbuHamilController@destroy')->name('deleteregisteribuhamil');
     Route::post('/updateregisterbumil/{id}', 'RegisterIbuHamilController@update')->name('updateregisterbumil');
     Route::get('/editregisterbumil/{id}','RegisterIbuHamilController@edit')->name('editregisterbumil');
+
+    Route::get('/pegguna', 'UserController@index')->name('pengguna.index');
+
+    Route::get('/pegguna/tambah-petugas', 'UserController@tambahPetugas')->name('pengguna.tambah-petugas');
+    Route::post('/pengguna/store-petugas', 'UserController@storePetugas')->name('pengguna.store-petugas');
+    Route::get('/pengguna/{id}/edit-petugas', 'UserController@editPetugas')->name('pengguna.edit-petugas');
+    Route::put('/pengguna/update-petugas/{id}', 'UserController@updatePetugas')->name('pengguna.update-petugas');
+    Route::delete('/pengguna/hapus-petugas/{id}', 'UserController@hapusPetugas')->name('pengguna.hapus-petugas');
+
+    Route::get('/pengguna/tambah-umum', 'UserController@tambahUmum')->name('pengguna.tambah-umum');
+    Route::post('/pengguna/store-umum', 'UserController@storeUmum')->name('pengguna.store-umum');
+    Route::get('/pengguna/{id}/edit-umum', 'UserController@editUmum')->name('pengguna.edit-umum');
+    Route::put('/pengguna/update-umum/{id}', 'UserController@updateUmum')->name('pengguna.update-umum');
+    Route::delete('/pengguna/hapus-umum/{id}', 'UserController@hapusUmum')->name('pengguna.hapus-umum');
+
 });
 

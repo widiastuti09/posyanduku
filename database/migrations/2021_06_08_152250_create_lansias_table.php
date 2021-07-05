@@ -22,7 +22,10 @@ class CreateLansiasTable extends Migration
             $table->integer('rt');
             $table->integer('rw');
             $table->string('alamat');
+            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
