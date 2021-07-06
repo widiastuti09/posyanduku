@@ -150,5 +150,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/pengguna/update-umum/{id}', 'UserController@updateUmum')->name('pengguna.update-umum');
     Route::delete('/pengguna/hapus-umum/{id}', 'UserController@hapusUmum')->name('pengguna.hapus-umum');
 
+    Route::get('pemeriksaaan-ibu-hamil', 'PemeriksaanIbuHamilController@index')->name('pemeriksaanibuhamil.index');
+    Route::get('pemeriksaaan-ibu-hamil/create', 'PemeriksaanIbuHamilController@create')->name('pemeriksaanibuhamil.create');
+    Route::get('pemeriksaaan-ibu-hamil/{id}', 'PemeriksaanIbuHamilController@show')->name('pemeriksaanibuhamil.show');
+    Route::post('pemeriksaaan-ibu-hamil/store', 'PemeriksaanIbuHamilController@store')->name('pemeriksaanibuhamil.store');
+    Route::get('pemeriksaaan-ibu-hamil/{id}/edit', 'PemeriksaanIbuHamilController@edit')->name('pemeriksaanibuhamil.edit');
+    Route::put('pemeriksaaan-ibu-hamil/{id}', 'PemeriksaanIbuHamilController@update')->name('pemeriksaanibuhamil.update');
+    Route::delete('pemeriksaaan-ibu-hamil/delete/{id}', 'PemeriksaanIbuHamilController@destroy')->name('pemeriksaanibuhamil.destroy');
+
 });
 

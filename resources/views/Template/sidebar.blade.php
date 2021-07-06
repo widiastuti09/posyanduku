@@ -25,7 +25,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link">
+                    <a href="{{ route('dashboard') }}" class="nav-link @if(Request::is('dashboard')) active @endif">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -34,7 +34,7 @@
                 </li>
 
                 @if (auth()->user()->level == 'admin' || auth()->user()->level == 'user')
-                    <li class="nav-item menu-open">
+                    <li class="nav-item @if(Request::is('register') || Request::is('penimbangan')) menu-open @endif">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-database"></i>
                             <p>
@@ -61,7 +61,7 @@
 
                         </ul>
                     </li>
-                    <li class="nav-item menu-open">
+                    <li class="nav-item @if(Request::is('registeribuhamil') || Request::is('pemeriksaaan-ibu-hamil')) menu-open @endif">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-database"></i>
                             <p>
@@ -77,11 +77,17 @@
                                     <p>Register Ibu Hamil</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('pemeriksaanibuhamil.index') }}" class="nav-link ">
+                                    <i class="far fa-circle nav-icon "></i>
+                                    <p>Pemeriksaan Ibu Hamil</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 @endif
                 @if (auth()->user()->level == 'admin' || auth()->user()->level == 'user2')
-                    <li class="nav-item menu-open">
+                <li class="nav-item @if(Request::is('registerlansia') || Request::is('pemeriksaanlansia')) menu-open @endif">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-database"></i>
                             <p>
@@ -108,7 +114,7 @@
                     </li>
                 @endif
                 @if (auth()->user()->level === 'admin')
-                    <li class="nav-item menu-open">
+                <li class="nav-item @if(Request::is('pegguna')) menu-open @endif">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-database"></i>
                             <p>

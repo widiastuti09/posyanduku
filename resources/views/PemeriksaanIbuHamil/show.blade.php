@@ -20,7 +20,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="">
-                        <h1>Data Registrasi Ibu Hamil</h1>
+                        <h1>Detail Data Lansia</h1>
                     </div>
 
                 </div>
@@ -33,7 +33,7 @@
                 <!-- SELECT2 EXAMPLE -->
                 <div class="card card-default">
                     <div class="card-header bg-primary ">
-                        <div class="card-title text-center">Form Detail Data</div>
+                        <div class="card-title text-center">Form Detail Pemeriksaan Lansia</div>
 
                         <div class="card-tools">
 
@@ -42,7 +42,7 @@
                     </div>
                     <!-- /.card-header -->
                     <form action="#" method="get">
-                        {{ csrf_field() }}
+                        <!-- {{ csrf_field() }} -->
 
                         <table class="table table-bordered">
                             <thead>
@@ -55,45 +55,41 @@
 
                             <tbody>
                                 <tr>
-                                    <th class="font-weight-bold">Tanggal Register</th>
-                                    <td scope="row" class="font-weight-normal">
-                                        {{date('d F Y', strtotime($regmil->tglregister))}}</td>
-                                </tr>
-                                <tr>
                                     <th class="font-weight-bold">Nama Ibu Hamil</th>
-                                    <td scope="row" class="font-weight-normal">{{ $regmil->nama}}</td>
+                                    <td scope="row" class="font-weight-normal">{{ $pemeriksaan_ibu_hamil->ibuhamil->nama }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="font-weight-bold">Tanggal Lahir</th>
-                                    <td scope="row" class="font-weight-normal">
-                                        {{date('d F Y', strtotime( $regmil->tgllahir))}}</td>
+                                    <th class="font-weight-bold">Tinggi Badan</th>
+                                    <td scope="row" class="font-weight-normal">{{ $pemeriksaan_ibu_hamil->tinggibadan }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="font-weight-bold">Nama Suami</th>
-                                    <td scope="row" class="font-weight-normal">{{$regmil->namasuami}}</td>
+                                    <th class="font-weight-bold">Hemoglobin</th>
+                                    <td scope="row" class="font-weight-normal">{{ $pemeriksaan_ibu_hamil->hemoglobin_atas }} / {{ $pemeriksaan_ibu_hamil->hemoglobin_bawah }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="font-weight-bold">Gol Darah</th>
-                                    <td scope="row" class="font-weight-normal">{{$regmil->goldarah}}</td>
+                                    <th class="font-weight-bold">Hari Taksiran Persalinan (HTP)</th>
+                                    <td scope="row" class="font-weight-normal">{{ $pemeriksaan_ibu_hamil->htp }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="font-weight-bold">Usia</th>
-                                    </th>
-                                    <td scope="row" class="font-weight-normal">{{$regmil->usia}}</td>
+                                    <th class="font-weight-bold">Hari Pertama Haid Terkahir (HPHT)</th>
+                                    <td scope="row" class="font-weight-normal">{{ $pemeriksaan_ibu_hamil->hpht }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="font-weight-bold">RT</th>
-                                    <td scope="row" class="font-weight-normal">{{$regmil->rt}}</td>
+                                    <th class="font-weight-bold">Berat Badan (Kg)</th>
+                                    <td scope="row" class="font-weight-normal">{{ $pemeriksaan_ibu_hamil->beratbadan }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="font-weight-bold">RW</th>
-                                    <td scope="row" class="font-weight-normal">{{$regmil->rw}}</td>
+                                    <th class="font-weight-bold">Hamil Ke (G)</th>
+                                    <td scope="row" class="font-weight-normal">{{ $pemeriksaan_ibu_hamil->hamilke }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="font-weight-bold">No Telp</th>
-                                    <td class="font-weight-normal">{{$regmil->telp}}</td>
+                                    <th class="font-weight-bold">Persalinan Ke (P)</th>
+                                    <td scope="row" class="font-weight-normal">{{ $pemeriksaan_ibu_hamil->persalinanke }}</td>
                                 </tr>
-
+                                <tr>
+                                    <th class="font-weight-bold">Jumlah Keguguran (P)</th>
+                                    <td scope="row" class="font-weight-normal">{{ $pemeriksaan_ibu_hamil->keguguranke }}</td>
+                                </tr>
                             </tbody>
                         </table>
 
@@ -102,9 +98,8 @@
 
                             <!-- /.col -->
                             <div class="col-12 col-sm-6 mb-3 ml-2">
-                                <a href="{{route('editregisterbumil', $regmil->id)}}" class="btn btn-warning"><i
-                                        class="fas fa-pen-alt"> Edit Data</i></a>
-                                <a href="{{route('registerhamil')}}" class="btn btn-info"><i
+                                <a href="{{ route('pemeriksaanibuhamil.edit', $pemeriksaan_ibu_hamil->id) }}" class="btn btn-warning"><i class="fas fa-pen-alt"> Edit Data</i></a>
+                                <a href="{{ route('pemeriksaanibuhamil.index') }}" class="btn btn-info"><i
                                         class="fas fa-arrow-circle-left"> Kembali</i></a>
                                 <!-- /.form-group -->
                             </div>
@@ -116,14 +111,15 @@
 
 
             </div>
-            <!-- /.card -->
-            <br><br><br><br><br><br><br><br>
+            <br><br><br><br><br>
 
 
 
 
             @include('Template.footer')
-            @include('Template.script')
+        </section>
+    </div>
+    @include('Template.script')
 
 </body>
 
