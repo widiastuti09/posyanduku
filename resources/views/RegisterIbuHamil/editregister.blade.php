@@ -61,20 +61,6 @@
                 <div class="form-group">
                     <label>Nama Suami</label>
                     <input type="text" class="form-control" id="namasuami" name="namasuami" value="{{$regmil->namasuami}}">
-
-                </div>
-                
-               
-                <div class="form-group">
-                    <label>Gol Darah</label>
-                    <select class="form-control select2 @error('goldarah') is-invalid @enderror" autofocus name="goldarah" style="width: 100%;" >
-                        <option value="{{$regmil->goldarah}}">{{$regmil->goldarah}}</option>
-                        <option disabled="disabled">Pilih Golongan Darah</option>
-                        <option>A</option>
-                        <option>B</option>
-                        <option>AB</option>
-                        <option>O</option>
-                    </select>
                 </div>
                 <!-- <div class="form-group">
                     <label>Gol Darah</label>
@@ -84,39 +70,24 @@
                     @enderror
                 </div> -->
                 <div class="form-group">
-                    <label>Tinggi Badan</label>
-                    <input type="text" class="form-control" autofocus id="tinggibadan" placeholder="Masukkan Tinggi Badan" name="tinggibadan" value="{{$regmil->tinggibadan}}">
-                </div>
-                <div class="form-group">
                     <label>Usia (Tahun)</label>
                     <input type="number" class="form-control" autofocus id="usia" name="usia" placeholder="Masukkan Usia" value="{{$regmil->usia}}">
                 </div>
-                <div class="form-group">
-                    <label>Hemoglobin (HB) g/dL</label>
-                    <input type="number" class="form-control" name="hemoglobin" placeholder="Masukkan HB" value="{{$regmil->hemoglobin}}">
-                  
-                </div>
-                <div class="form-group">
-                    <label>Hari Taksiran Persalinan (HTP)</label>
-                    <input type="date" class="form-control" autofocus id="htp" name="htp" placeholder="Masukkan HTP" value="{{$regmil->htp}}">
-                   
-                </div>
-               
-              
-
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
               <div class="col-md-6 ">
                 <!-- /.form-group -->
                 <div class="form-group">
-                    <label>Hari Pertama Haid Terkahir (HPHT)</label>
-                    <input type="date" class="form-control @error('hpht') is-invalid @enderror" autofocus id="hpht" name="hpht" placeholder="Masukkan HPHT" value="{{$regmil->hpht}}">
-                </div>
-                 
-                <div class="form-group">
-                    <label>Berat Badan (Kg)</label>
-                    <input type="text" class="form-control" autofocus id="beratbadan" name="beratbadan" placeholder="Masukkan Berat Badan" value="{{$regmil->beratbadan}}">
+                  <label>Gol Darah</label>
+                  <select class="form-control select2 @error('goldarah') is-invalid @enderror" autofocus name="goldarah" style="width: 100%;" >
+                      <option value="{{$regmil->goldarah}}">{{$regmil->goldarah}}</option>
+                      <option disabled="disabled">Pilih Golongan Darah</option>
+                      <option>A</option>
+                      <option>B</option>
+                      <option>AB</option>
+                      <option>O</option>
+                  </select>
                 </div>
                 <div class="form-group">
                     <label>RT</label>
@@ -126,22 +97,7 @@
                     <label>RW</label>
                     <input type="number" class="form-control" autofocus id="rw" name="rw" placeholder="Masukkan RW" value="{{$regmil->rw}}">
                 </div>
-               
-                <div class="form-group">
-                    <label>Hamil Ke (G)</label>
-                    <input type="text" class="form-control @error('hamilke') is-invalid @enderror" autofocus id="hamilke" name="hamilke" placeholder="Masukkan Hamil Ke" value="{{$regmil->hamilke}}">
-                </div>
-                <div class="form-group">
-                    <label>Persalinan Ke (P)</label>
-                    <input type="number" class="form-control" autofocus id="persalinanke" name="persalinanke" placeholder="Masukkan Persalinan Ke" value="{{$regmil->persalinanke}}">
-                 
-                </div>
-                <div class="form-group">
-                    <label>Jumlah Keguguran (P)</label>
-                    <input type="number" class="form-control" autofocus id="keguguranke" name="keguguranke" placeholder="Masukkan Keguguran Ke" value="{{$regmil->keguguranke}}">
-                 
-                </div>
-                <div class="form-group">
+               <div class="form-group">
                     <label>No Telp</label>
                     <input type="number" class="form-control" autofocus id="telp" name="telp" placeholder="Masukkan Nomor Telp" value="{{$regmil->telp}}">
                  
