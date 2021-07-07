@@ -64,6 +64,11 @@ class UserController extends Controller
 
     }
 
+    public function detailPetugas($id){
+        $petugas = User::findorfail($id);
+        return view('User.petugas.detail', Compact('petugas'));
+    }
+
     public function hapusPetugas($id){
         $petugas = User::findOrFail($id);
 
@@ -127,4 +132,5 @@ class UserController extends Controller
 
         return redirect()->route('pengguna.index');   
     }
+    
 }

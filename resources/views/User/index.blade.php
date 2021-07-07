@@ -69,7 +69,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     method="post">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="DELETE">
-                                                    <a href="#" class="btn btn-success"> <i
+                                                    <a href="{{route ('pengguna.detail-petugas', $petugas->id)}}" class="btn btn-success"> <i
                                                             class="fas fa-info-circle"></i></a>
                                                     <a href="{{ route('pengguna.edit-petugas', $petugas->id) }}"
                                                         class="btn btn-warning"> <i class="fas fa-pen-alt"></i></a>

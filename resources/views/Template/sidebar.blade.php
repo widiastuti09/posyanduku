@@ -33,7 +33,7 @@
                     </a>
                 </li>
 
-                @if (auth()->user()->level == 'admin' || auth()->user()->level == 'user')
+                @if (auth()->user()->level == 'admin' || auth()->user()->level == 'kader1')
                     <li class="nav-item @if(Request::is('register') || Request::is('penimbangan')) menu-open @endif">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-database"></i>
@@ -86,7 +86,7 @@
                         </ul>
                     </li>
                 @endif
-                @if (auth()->user()->level == 'admin' || auth()->user()->level == 'user2')
+                @if (auth()->user()->level == 'admin' || auth()->user()->level == 'kader2')
                 <li class="nav-item @if(Request::is('registerlansia') || Request::is('pemeriksaanlansia')) menu-open @endif">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-database"></i>

@@ -40,7 +40,31 @@
           <!-- /.card-header -->
           <form action="{{route('simpan-lansia')}}" method="post">
             {{ csrf_field() }}
-          <div class="card-body">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Punya Akun</label>
+                    <div class="d-flex gap-5 align-items-center mb-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="punya_akun" id="terdaftar" value="punya">
+                            <label class="form-check-label" for="terdaftar">
+                                  Ya
+                            </label>
+                      </div>
+                    <div class="form-check ml-3">
+                      <input class="form-check-input" type="radio" name="punya_akun"
+                          id="tidak-terdaftar" value="tidak_punya">
+                          <label class="form-check-label" for="tidak-terdaftar">
+                               Tidak
+                          </label>
+                    </div>
+                  </div>
+
+                  <div id="akun-container"></div>
+                </div>
+              </div>
+            </div>
             <div class="row">
               <div class="col-md-6">
               <div class="form-group">
@@ -131,6 +155,31 @@
 @include('Template.footer')
 
 @include('Template.script')
+
+<script>
+      $(document).ready(function() {
+          $("input[name*='punya_akun']").click(function() {
+              let html = ''
+              if ($(this).val() === 'punya') {
+                  $('#akun-container').html(`
+                    <input type="hidden" value="punya" name="punya"/>
+                    <select class="form-control select2"
+                      autofocus name="user_id" style="width: 100%;">
+                      <option value="">Pilih Akun</option>
+                      @forelse($users as $user)
+                        <option @if (old('user_id') === $user->name) selected @endif value="{!! $user->id !!}">{!! $user->name !!}</option>
+                      @empty
+                        <option disabled>Tidak ada data</option>
+                      @endforelse
+                    </select>
+                  `)
+              }else{
+                $('#akun-container').html(``)
+              }
+          })
+      })
+  </script>
+
 
 
     

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Lansia;
+use App\User;
 
 class RegisterLansiaController extends Controller
 {
@@ -25,8 +26,8 @@ class RegisterLansiaController extends Controller
      */
     public function create()
     {
-        
-        return view('Lansia.addregisterlansia');
+        $users = User::where('level', 'umum')->get();
+        return view('Lansia.addregisterlansia', compact('users'));
     }
 
     /**
