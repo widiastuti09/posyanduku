@@ -105,6 +105,10 @@ class UserController extends Controller
 
         return redirect()->route('pengguna.index');
     }
+    public function detailUmum($id){
+        $umum = User::findorfail($id);
+        return view('User.umum.detail', Compact('umum'));
+    }
 
     public function editUmum($id) {
         $umum = User::findOrFail($id);

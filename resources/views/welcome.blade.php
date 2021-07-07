@@ -8,7 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-
+        @include('Template.style')
         <!-- Styles -->
         <style>
             html, body {
@@ -65,7 +65,7 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('/login')) ->
+            <!-- @if (Route::has('/login')) ->
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
@@ -78,11 +78,15 @@
                         @endif
                     @endauth
                 </div>
-            @endif
+            @endif -->
 
             <div class="content">
                 <div class="title m-b-md">
                     Posyanduku
+                </div>
+                <div>
+                    <a href="/login" class="btn btn-primary">Login</a>
+                   
                 </div>
 
                 <div class="links">

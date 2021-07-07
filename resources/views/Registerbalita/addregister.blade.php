@@ -47,7 +47,7 @@
                         {{ csrf_field() }}
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Punya Akun</label>
                                         <div class="d-flex gap-5 align-items-center mb-2">
@@ -69,6 +69,8 @@
 
                                         <div id="akun-container"></div>
                                     </div>
+                                    <div class="row">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Nama Balita</label>
                                         <input type="text"

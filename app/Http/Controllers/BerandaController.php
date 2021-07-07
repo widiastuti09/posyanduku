@@ -17,6 +17,7 @@ class BerandaController extends Controller
     // }  
     public function dashboard()
     {
+        
         return view('HalamanDepan.dashboard');
     }
 }
