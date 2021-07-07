@@ -301,6 +301,8 @@
                             @endforelse
                           </select>
                         `)
+                    }else{
+                        $('#akun-container').html('')
                     }
                 })
             })

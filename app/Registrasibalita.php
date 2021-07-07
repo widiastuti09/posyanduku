@@ -14,7 +14,6 @@ class Registrasibalita extends Model
     // ];
 
     protected $guarded = [];
-
     public function penimbangans()
     {
         return $this->hasMany(Penimbangan::class);

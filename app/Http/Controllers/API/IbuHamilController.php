@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Ibuhamil;
+use App\PemeriksaanIbuHamil;
 use Auth;
 
 class IbuHamilController extends Controller
@@ -17,7 +18,7 @@ class IbuHamilController extends Controller
         $ibuhamil = Ibuhamil::where('user_id', Auth::user()->id)->get();
 
         return response()->json([
-            'message' => 'Berhasil mengambil data ibu hamil',
+            'message' => 'Berhasil mengambil data register ibu hamil',
             'status' => 200,
             'data' => $ibuhamil
         ]);
@@ -27,9 +28,19 @@ class IbuHamilController extends Controller
         $ibuhamil = Ibuhamil::findOrFail($id);
 
         return response()->json([
-            'message' => 'Berhasil mengambil data ibu hamil',
+            'message' => 'Berhasil mengambil register data ibu hamil',
             'status' => 200,
             'data' => $ibuhamil
+        ]);
+    }
+
+    public function periksabumil($id){
+        $pemeriksaanibuhamil = PemeriksaanIbuHamil::where('id_ibu', $id)->get();
+
+        return response()->json([
+            'message' => 'Berhasil mengambil data pemeriksaan ibu hamil',
+            'status' => 200,
+            'data' => $pemeriksaanibuhamil
         ]);
     }
 }

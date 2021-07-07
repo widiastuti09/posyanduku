@@ -26,3 +26,12 @@ Route::get('/ibu-hamil/{id}', 'API\IbuHamilController@detailIbuHamil');
 
 Route::get('/balita', 'API\BalitaController@balita');
 Route::get('/balita/{id}', 'API\BalitaController@detailBalita');
+
+Route::get('/lansia', 'API\LansiaController@lansia');
+Route::get('/lansia/{id}', 'API\LansiaController@detailLansia');
+
+Route::get('/pemeriksaan-bumil/{id}', 'API\IbuHamilController@periksabumil');
+Route::get('/penimbangan-balita/{id}', 'API\BalitaController@penimbanganBalita');
+Route::get('/pemeriksaan-lansia/{id}', 'API\LansiaController@periksaLansia');
+
+

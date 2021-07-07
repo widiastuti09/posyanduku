@@ -72,6 +72,7 @@ class RegisterLansiaController extends Controller
         'rt'               => $request -> rt,
         'rw'               => $request -> rw,
         'alamat'           => $request -> alamat,
+        'user_id'       =>$request ->punya ? $request -> user_id : null
         ]);
 
      
