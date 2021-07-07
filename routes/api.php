@@ -20,3 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/login-mobile', 'API\AuthController@login');
 Route::get('/user-mobile', 'API\AuthController@user');
+
+Route::get('/ibu-hamil', 'API\IbuHamilController@ibuHamil');
+Route::get('/ibu-hamil/{id}', 'API\IbuHamilController@detailIbuHamil');
+
+Route::get('/balita', 'API\BalitaController@balita');
+Route::get('/balita/{id}', 'API\BalitaController@detailBalita');

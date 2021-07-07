@@ -106,7 +106,7 @@ class RegistrasibalitaController extends Controller
         'nokk'          => $request -> nokk,
         'nikbalita'     => $request -> nikbalita,
         'telp'          => $request -> telp,
-        'user_id'       => $request -> punya ? $request-> user_id : null
+        'user_id'       => $request -> punya_akun ? $request-> user_id : null
         ]);
 
         return redirect('register')->with('toast_success', 'Data berhasil Disimpan!');
