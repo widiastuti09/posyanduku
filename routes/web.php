@@ -42,10 +42,14 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 
 Route::group(['middleware' => ['auth', 'CekLevel:admin']], function () {
     Route::get('/beranda', 'BerandaController@index');
+
     
     Route::get('/penimbangan', 'PenimbanganController@penimbangan')->name('penimbangan');
     Route::get('/addpenimbangan', 'PenimbanganController@addpenimbangan')->name('addpenimbangan');
+
     Route::get('/dashboard', 'BerandaController@dashboard')->name('dashboard');
+
+
     Route::post('/simpan-penimbangan','PenimbanganController@store')->name('simpan-penimbangan');
     Route::get('/editpenimbangan/{id}','PenimbanganController@editpenimbangan')->name('editpenimbangan');
     Route::post('/updatepenimbangan/{id}','PenimbanganController@update')->name('updatepenimbangan');

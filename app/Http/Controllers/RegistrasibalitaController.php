@@ -162,4 +162,6 @@ class RegistrasibalitaController extends Controller
         $regbal->delete();
         return back()->with('toast_success', 'Data berhasil dihapus');
     }
+
+    
 }
