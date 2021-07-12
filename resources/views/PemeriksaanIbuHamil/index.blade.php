@@ -22,8 +22,10 @@
 
             <div class="container">
                 <div class="mb-2">
+                @if (auth()->user()->level === 'admin') 
                     <a href="{{route('pemeriksaanibuhamil.create')}}" class="btn btn-primary">Tambah Data <i
                             class="fas fa-plus-square"></i></a>
+                @endif
                 </div>
                 <table id="table-pemeriksaan-ibuhamil" class="table table-bordered table-striped">
                     <thead class="bg-dark">
@@ -44,10 +46,12 @@
                                     <input type="hidden" name="_method" value="DELETE">
                                     <a href="{{ route('pemeriksaanibuhamil.show', $pih->id) }}" class="btn btn-success">
                                         <i class="fas fa-info-circle"></i></a>
+                                        @if (auth()->user()->level === 'admin')  
                                     <a href="{{ route('pemeriksaanibuhamil.edit', $pih->id) }}" class="btn btn-warning">
                                         <i class="fas fa-pen-alt"></i></a>
                                     <button type="submit"
                                         class="btn btn-danger"> <i class="fas fa-trash-alt"></i></button>
+                                        @endif
                                 </form>
                             </td>
 

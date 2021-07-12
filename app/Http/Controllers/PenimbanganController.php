@@ -78,7 +78,8 @@ class PenimbanganController extends Controller
      */
     public function show($id)
     {
-        //
+        $pen = Penimbangan::findorfail($id);
+        return view ('Penimbangan.detailpenimbangan', compact('pen'));
     }
 
     /**

@@ -30,7 +30,7 @@
                 <!-- SELECT2 EXAMPLE -->
                 <div class="card card-default">
                     <div class="card-header bg-primary">
-                        <h3 class="card-title">Form Tambah Data Pemeriksaan Lansia</h3>
+                        <h3 class="card-title">Form Data Pemeriksaan Ibu Hamil</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -169,7 +169,7 @@
 
                                 <!-- /.col -->
                                 <div class="col-12 col-sm-6">
-                                    <button type="submit" class="btn btn-success"><i class="fas fa-plus-square"> Tambah
+                                    <button type="submit" class="btn btn-success"><i class="fas fa-plus-square"> Simpan
                                             Data</i></button>
                                     <a href="{{ route ('pemeriksaanibuhamil.index')}}" class="btn btn-info"><i
                                             class="fas fa-arrow-circle-left"> Kembali</i></a>

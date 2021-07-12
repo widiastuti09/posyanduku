@@ -51,6 +51,7 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 
 
     Route::post('/simpan-penimbangan','PenimbanganController@store')->name('simpan-penimbangan');
+    Route::get('/detail-penimbangan/{id}','PenimbanganController@show')->name('detail-penimbangan');
     Route::get('/editpenimbangan/{id}','PenimbanganController@editpenimbangan')->name('editpenimbangan');
     Route::post('/updatepenimbangan/{id}','PenimbanganController@update')->name('updatepenimbangan');
     Route::get('/deletepenimbangan/{id}','PenimbanganController@destroy')->name('deletepenimbangan');
@@ -123,7 +124,7 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
     
 });
 
-Route::group(['middleware' => ['auth', 'CekLevel:user2,admin']], function(){
+Route::group(['middleware' => ['auth', 'CekLevel:kader2,admin']], function(){
 
     Route::get('/beranda', 'BerandaController@index');
 
@@ -147,7 +148,7 @@ Route::group(['middleware' => ['auth', 'CekLevel:user2,admin']], function(){
       Route::get('/Jadwal-Balita', 'JadwalbalitaController@index')->name('jadwalpenimbangan');
       Route::get('/Add-Jadwal-Balita', 'JadwalbalitaController@create')->name('addjadwalpenimbangan');
       Route::post('/simpan-jadwal-balita','JadwalbalitaController@store')->name('simpanjadwalpenimbangan');
-      Route::get('/Hapis-jadwal-balita/{id}','JadwalbalitaController@destroy')->name('hapusjadwalpenimbangan');
+      Route::get('/Hapus-jadwal-balita/{id}','JadwalbalitaController@destroy')->name('hapusjadwalpenimbangan');
       Route::get('/Detail-jadwal-balita/{id}','JadwalbalitaController@show')->name('detailjadwalpenimbangan');
       Route::get('Edit-jadwal-balita/{id}','JadwalbalitaController@edit')->name('editjadwalpenimbangan');
       Route::post('Update-jadwal-balita/{id}','JadwalbalitaController@update')->name('updatejadwalpenimbangan');
@@ -185,6 +186,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/addpenimbangan', 'PenimbanganController@addpenimbangan')->name('addpenimbangan');
     Route::get('/dashboard', 'BerandaController@dashboard')->name('dashboard');
     Route::post('/simpan-penimbangan','PenimbanganController@store')->name('simpan-penimbangan');
+    Route::get('/detail-penimbangan/{id}','PenimbanganController@show')->name('detail-penimbangan');
     Route::get('/editpenimbangan/{id}','PenimbanganController@editpenimbangan')->name('editpenimbangan');
     Route::post('/updatepenimbangan/{id}','PenimbanganController@update')->name('updatepenimbangan');
     Route::get('/deletepenimbangan/{id}','PenimbanganController@destroy')->name('deletepenimbangan');

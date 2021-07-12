@@ -20,7 +20,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="">
-                        <h1>Detail Data Lansia</h1>
+                        <h1>Detail Data Ibu Hamil</h1>
                     </div>
 
                 </div>
@@ -33,7 +33,7 @@
                 <!-- SELECT2 EXAMPLE -->
                 <div class="card card-default">
                     <div class="card-header bg-primary ">
-                        <div class="card-title text-center">Form Detail Pemeriksaan Lansia</div>
+                        <div class="card-title text-center">Form Detail Pemeriksaan Ibu Hamil</div>
 
                         <div class="card-tools">
 
@@ -98,7 +98,9 @@
 
                             <!-- /.col -->
                             <div class="col-12 col-sm-6 mb-3 ml-2">
+                            @if (auth()->user()->level === 'admin') 
                                 <a href="{{ route('pemeriksaanibuhamil.edit', $pemeriksaan_ibu_hamil->id) }}" class="btn btn-warning"><i class="fas fa-pen-alt"> Edit Data</i></a>
+                            @endif
                                 <a href="{{ route('pemeriksaanibuhamil.index') }}" class="btn btn-info"><i
                                         class="fas fa-arrow-circle-left"> Kembali</i></a>
                                 <!-- /.form-group -->

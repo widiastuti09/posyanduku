@@ -26,8 +26,10 @@
             
             <div class="container">
                 <div class="mb-2">
+                @if (auth()->user()->level === 'admin') 
                 <a href="{{route('addpenimbangan')}}" class="btn btn-success "> Tambah Data <i
                             class="fas fa-plus-square"></i></a>
+                @endif
                 </div>
                 <table id="table-penimbangan" class="table table-bordered table-striped">
                     <thead class="bg-dark">
@@ -59,12 +61,15 @@
                             <td>{{ $penimbangan->kia }}</td>
                             <td>{{ $penimbangan->vitamin }}</td>
                             <td>
-                           
+                                <a href="{{route('detail-penimbangan', $penimbangan->id) }}" class="btn btn-success"><i
+                                        class="fas fa-info-circle"></i></a>
+                            @if (auth()->user()->level === 'admin') 
                                 <a href="{{route('editpenimbangan',$penimbangan->id) }}" class="btn btn-warning"><i
                                         class="fas fa-pen-alt"></i></a>
 
                                 <a href="{{route('deletepenimbangan', $penimbangan->id) }}" class="btn btn-danger"><i
                                         class="fas fa-trash-alt"></i></a>
+                            @endif
                             </td>
                             
                         </tr>

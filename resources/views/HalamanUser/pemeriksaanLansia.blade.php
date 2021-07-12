@@ -26,8 +26,11 @@
             
             <div class="container">
                 <div class="mb-2">
+                @if (auth()->user()->level === 'admin') 
                 <a href="{{route('addpemeriksaanlansia')}}" class="btn btn-success "> Tambah Data <i
                             class="fas fa-plus-square"></i></a>
+
+                @endif
                 </div>
                 <table id="table-pemeriksaan" class="table table-bordered table-striped">
                     <thead class="bg-dark">
@@ -58,13 +61,16 @@
                             <td>{{$pemeriksaanlansia->tekanan_darah}}</td>
                             
                             <td>
+
                            
                                 <a href="{{route ('detailpemeriksaanlansia', $pemeriksaanlansia->id)}}" class="btn btn-success"><i
                                         class="fas fa-info-circle"></i></a>
+                                        @if (auth()->user()->level === 'admin') 
                                 <a href="{{route('editpemeriksaanlansia', $pemeriksaanlansia->id)}}" class="btn btn-warning"><i
                                         class="fas fa-pen-alt"></i></a>
                                 <a href="{{route ('deletepemeriksaanlansia', $pemeriksaanlansia->id)}}" class="btn btn-danger"><i
                                         class="fas fa-trash-alt"></i></a>
+                                        @endif
                             </td>
                             
                         </tr>

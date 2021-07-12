@@ -142,6 +142,7 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
+                        @if (auth()->user()->level === 'admin' || auth()->user()->level == 'kader1') 
                             <li class="nav-item">
                                 <a href="{{route('jadwalpenimbangan')}}" class="nav-link ">
                                     <i class="far fa-circle nav-icon "></i>
@@ -154,12 +155,15 @@
                                     <p>Ibu Hamil</p>
                                 </a>
                             </li>
+                            @endif
+                            @if (auth()->user()->level === 'admin' || auth()->user()->level == 'kader2') 
                             <li class="nav-item">
                                 <a href="{{route('jadwallansia')}}" class="nav-link ">
                                     <i class="far fa-circle nav-icon "></i>
                                     <p>Lansia</p>
                                 </a>
                             </li>
+                            @endif
                         </ul>
                     </li>
                  @endif

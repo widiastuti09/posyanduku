@@ -133,7 +133,7 @@
           
               <!-- /.col -->
               <div class="col-12 col-sm-6">
-              <button type="submit" class="btn btn-warning"><i class="fas fa-pen-alt"> Edit Data</i></button>
+              <button type="submit" class="btn btn-success"><i class="fas fa-plus-square"> Simpan Data</i></button>
               <a href="{{ route ('penimbangan')}}" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
                 <!-- /.form-group -->
               </div>

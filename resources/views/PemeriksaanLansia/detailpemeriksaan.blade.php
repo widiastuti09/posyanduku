@@ -178,7 +178,9 @@
           
               <!-- /.col -->
               <div class="col-12 col-sm-6 mb-3 ml-2">
+              @if (auth()->user()->level === 'admin') 
               <a href="#" class="btn btn-warning"><i class="fas fa-pen-alt"> Edit Data</i></a>
+              @endif
               <a href="{{route ('pemeriksaanlansia')}}" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
                 <!-- /.form-group -->
               </div>
