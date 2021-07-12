@@ -68,9 +68,9 @@
                     <label for="">Status</label>
                     <select class="form-control select2 @error('status') is-invalid @enderror" name="status" id="status">
                         <option value="">Pilih Status</option>
-                        <option @if (old('status') === 'AkanDatang' selected @endif)>Akan Datang</option>
-                        <option  @if (old('status') === 'Mulai' selected @endif)>Mulai</option>
-                        <option  @if (old('status') === 'Selesai' selected @endif)>Selesai</option>
+                        <option >Akan Datang</option>
+                        <option >Mulai</option>
+                        <option >Selesai</option>
                         
                     </select>
                     @error('status')
