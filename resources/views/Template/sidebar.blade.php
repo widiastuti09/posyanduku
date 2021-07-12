@@ -132,6 +132,37 @@
                         </ul>
                     </li>
                 @endif
+                @if (auth()->user()->level == 'admin' || auth()->user()->level == 'kader1' ||  auth()->user()->level == 'kader2')
+                    <li class="nav-item @if(Request::is('Jadwal-Balita') || Request::is('Jadwal-Bumil')||Request::is('Jadwal-Lansia')) menu-open @endif">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-database"></i>
+                            <p>
+                                Jadwal Posyandu
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('jadwalpenimbangan')}}" class="nav-link ">
+                                    <i class="far fa-circle nav-icon "></i>
+                                    <p>Balita</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('jadwalpemeriksaan')}}" class="nav-link ">
+                                    <i class="far fa-circle nav-icon "></i>
+                                    <p>Ibu Hamil</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('jadwallansia')}}" class="nav-link ">
+                                    <i class="far fa-circle nav-icon "></i>
+                                    <p>Lansia</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                 @endif
                 <li class="nav-item">
                     <a href="{{ route('logout') }}" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>

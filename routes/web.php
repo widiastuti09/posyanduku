@@ -40,7 +40,7 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 
 
 
-Route::group(['middleware' => ['auth', 'CekLevel:admin']], function () {
+    Route::group(['middleware' => ['auth', 'CekLevel:admin']], function () {
     Route::get('/beranda', 'BerandaController@index');
 
     
@@ -88,6 +88,37 @@ Route::group(['middleware' => ['auth', 'CekLevel:admin']], function () {
     Route::post('/updatepemeriksaan/{id}', 'PemeriksaanLansiaController@update')->name('updatepemeriksaanlansia');
 
 
+    //Jadwal balita
+
+    Route::get('/Jadwal-Balita', 'JadwalbalitaController@index')->name('jadwalpenimbangan');
+    Route::get('/Add-Jadwal-Balita', 'JadwalbalitaController@create')->name('addjadwalpenimbangan');
+    Route::post('/simpan-jadwal-balita','JadwalbalitaController@store')->name('simpanjadwalpenimbangan');
+    Route::get('/Hapis-jadwal-balita/{id}','JadwalbalitaController@destroy')->name('hapusjadwalpenimbangan');
+    Route::get('/Detail-jadwal-balita/{id}','JadwalbalitaController@show')->name('detailjadwalpenimbangan');
+    Route::get('Edit-jadwal-balita/{id}','JadwalbalitaController@edit')->name('editjadwalpenimbangan');
+    Route::post('Update-jadwal-balita/{id}','JadwalbalitaController@update')->name('updatejadwalpenimbangan');
+
+    //Jadwal bumil
+
+    Route::get('/Jadwal-Bumil', 'JadwalbumilController@index')->name('jadwalpemeriksaan');
+    Route::get('/Add-Jadwal-Bumil', 'JadwalbumilController@create')->name('addjadwalpemeriksaan');
+    Route::get('/Detail-jadwal-bumil/{id}','JadwalbumilController@show')->name('detailjadwalpemeriksaan');
+    Route::post('/simpan-jadwal-bumil','JadwalbumilController@store')->name('simpanjadwalpemeriksaan');
+    Route::get('Edit-jadwal-bumil/{id}','JadwalbumilController@edit')->name('editjadwalpemeriksaan');
+    Route::get('/Hapis-jadwal-bumil/{id}','JadwalbumilController@destroy')->name('hapusjadwalpemeriksaan');
+  
+
+    Route::post('Update-jadwal-bumil/{id}','JadwalbumilController@update')->name('updatejadwalpemeriksaan');
+
+    //Jadwal lansia 
+    
+    Route::get('/Jadwal-Lansia', 'JadwallansiaController@index')->name('jadwallansia');
+    Route::get('/Add-Jadwal-Lansia', 'JadwallansiaController@create')->name('addjadwallansia');
+    Route::post('/simpan-jadwal','JadwallansiaController@store')->name('simpanjadwallansia');
+    Route::get('/Hapis-jadwal/{id}','JadwallansiaController@destroy')->name('hapusjadwallansia');
+    Route::get('/Detail-jadwal/{id}','JadwallansiaController@show')->name('detailjadwallansia');
+    Route::get('Edit-jadwal/{id}','JadwallansiaController@edit')->name('editjadwallansia');
+    Route::post('Update-jadwal/{id}','JadwallansiaController@update')->name('updatejadwallansia');
 
     
 });
@@ -110,6 +141,40 @@ Route::group(['middleware' => ['auth', 'CekLevel:user2,admin']], function(){
     Route::post('/simpanpemeriksaanlansia', 'PemeriksaanLansiaController@store')->name('simpanpemeriksaanlansia');
     Route::get('/deletepemeriksaanlansia/{id}', 'PemeriksaanLansiaController@destroy')->name('deletepemeriksaanlansia');
     Route::get('/editpemeriksaanlansia/{id}', 'PemeriksaanLansiaController@edit')->name('editpemeriksaanlansia');
+
+      //Jadwal balita
+
+      Route::get('/Jadwal-Balita', 'JadwalbalitaController@index')->name('jadwalpenimbangan');
+      Route::get('/Add-Jadwal-Balita', 'JadwalbalitaController@create')->name('addjadwalpenimbangan');
+      Route::post('/simpan-jadwal-balita','JadwalbalitaController@store')->name('simpanjadwalpenimbangan');
+      Route::get('/Hapis-jadwal-balita/{id}','JadwalbalitaController@destroy')->name('hapusjadwalpenimbangan');
+      Route::get('/Detail-jadwal-balita/{id}','JadwalbalitaController@show')->name('detailjadwalpenimbangan');
+      Route::get('Edit-jadwal-balita/{id}','JadwalbalitaController@edit')->name('editjadwalpenimbangan');
+      Route::post('Update-jadwal-balita/{id}','JadwalbalitaController@update')->name('updatejadwalpenimbangan');
+  
+      //Jadwal bumil
+  
+      Route::get('/Jadwal-Bumil', 'JadwalbumilController@index')->name('jadwalpemeriksaan');
+      Route::get('/Add-Jadwal-Bumil', 'JadwalbumilController@create')->name('addjadwalpemeriksaan');
+      Route::get('/Detail-jadwal-bumil/{id}','JadwalbumilController@show')->name('detailjadwalpemeriksaan');
+      Route::post('/simpan-jadwal-bumil','JadwalbumilController@store')->name('simpanjadwalpemeriksaan');
+      Route::get('Edit-jadwal-bumil/{id}','JadwalbumilController@edit')->name('editjadwalpemeriksaan');
+      Route::get('/Hapis-jadwal-bumil/{id}','JadwalbumilController@destroy')->name('hapusjadwalpemeriksaan');
+    
+  
+      Route::post('Update-jadwal-bumil/{id}','JadwalbumilController@update')->name('updatejadwalpemeriksaan');
+  
+      //Jadwal lansia 
+      
+      Route::get('/Jadwal-Lansia', 'JadwallansiaController@index')->name('jadwallansia');
+      Route::get('/Add-Jadwal-Lansia', 'JadwallansiaController@create')->name('addjadwallansia');
+      Route::post('/simpan-jadwal','JadwallansiaController@store')->name('simpanjadwallansia');
+      Route::get('/Hapis-jadwal/{id}','JadwallansiaController@destroy')->name('hapusjadwallansia');
+      Route::get('/Detail-jadwal/{id}','JadwallansiaController@show')->name('detailjadwallansia');
+      Route::get('Edit-jadwal/{id}','JadwallansiaController@edit')->name('editjadwallansia');
+      Route::post('Update-jadwal/{id}','JadwallansiaController@update')->name('updatejadwallansia');
+  
+
 });
 
 
@@ -164,6 +229,38 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('pemeriksaaan-ibu-hamil/{id}/edit', 'PemeriksaanIbuHamilController@edit')->name('pemeriksaanibuhamil.edit');
     Route::put('pemeriksaaan-ibu-hamil/{id}', 'PemeriksaanIbuHamilController@update')->name('pemeriksaanibuhamil.update');
     Route::delete('pemeriksaaan-ibu-hamil/delete/{id}', 'PemeriksaanIbuHamilController@destroy')->name('pemeriksaanibuhamil.destroy');
+
+      //Jadwal balita
+
+      Route::get('/Jadwal-Balita', 'JadwalbalitaController@index')->name('jadwalpenimbangan');
+      Route::get('/Add-Jadwal-Balita', 'JadwalbalitaController@create')->name('addjadwalpenimbangan');
+      Route::post('/simpan-jadwal-balita','JadwalbalitaController@store')->name('simpanjadwalpenimbangan');
+      Route::get('/Hapis-jadwal-balita/{id}','JadwalbalitaController@destroy')->name('hapusjadwalpenimbangan');
+      Route::get('/Detail-jadwal-balita/{id}','JadwalbalitaController@show')->name('detailjadwalpenimbangan');
+      Route::get('Edit-jadwal-balita/{id}','JadwalbalitaController@edit')->name('editjadwalpenimbangan');
+      Route::post('Update-jadwal-balita/{id}','JadwalbalitaController@update')->name('updatejadwalpenimbangan');
+  
+      //Jadwal bumil
+  
+      Route::get('/Jadwal-Bumil', 'JadwalbumilController@index')->name('jadwalpemeriksaan');
+      Route::get('/Add-Jadwal-Bumil', 'JadwalbumilController@create')->name('addjadwalpemeriksaan');
+      Route::get('/Detail-jadwal-bumil/{id}','JadwalbumilController@show')->name('detailjadwalpemeriksaan');
+      Route::post('/simpan-jadwal-bumil','JadwalbumilController@store')->name('simpanjadwalpemeriksaan');
+      Route::get('Edit-jadwal-bumil/{id}','JadwalbumilController@edit')->name('editjadwalpemeriksaan');
+      Route::get('/Hapis-jadwal-bumil/{id}','JadwalbumilController@destroy')->name('hapusjadwalpemeriksaan');
+      Route::post('Update-jadwal-bumil/{id}','JadwalbumilController@update')->name('updatejadwalpemeriksaan');
+  
+      
+           //Jadwal lansia 
+      
+      Route::get('/Jadwal-Lansia', 'JadwallansiaController@index')->name('jadwallansia');
+      Route::get('/Add-Jadwal-Lansia', 'JadwallansiaController@create')->name('addjadwallansia');
+      Route::post('/simpan-jadwal','JadwallansiaController@store')->name('simpanjadwallansia');
+      Route::get('/Hapis-jadwal/{id}','JadwallansiaController@destroy')->name('hapusjadwallansia');
+      Route::get('/Detail-jadwal/{id}','JadwallansiaController@show')->name('detailjadwallansia');
+      Route::get('Edit-jadwal/{id}','JadwallansiaController@edit')->name('editjadwallansia');
+      Route::post('Update-jadwal/{id}','JadwallansiaController@update')->name('updatejadwallansia');
+  
 
 });
 

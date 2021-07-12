@@ -169,6 +169,6 @@ class PemeriksaanLansiaController extends Controller
     {
         $plansia = Pemeriksaanlansia::findOrFail($id);
         $plansia->delete();
-        return back()->with('toas_success', 'Data Berhasil Dihapus!')->with('toast_success', 'Data berhasil dihapus!');
+        return back()->with('toast_success', 'Data berhasil dihapus!');
     }
 }
