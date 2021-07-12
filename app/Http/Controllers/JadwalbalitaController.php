@@ -58,7 +58,7 @@ class JadwalbalitaController extends Controller
             'status'      => $request -> status,
         ]);
 
-        return redirect('/Jadwal-Balita');
+        return redirect('/Jadwal-Balita')->with('toast_success', 'Data berhasil Disimpan!');
 
         
 
@@ -100,7 +100,7 @@ class JadwalbalitaController extends Controller
     {
         $jadbal = Jadwalbalita::findorfail($id);
         $jadbal ->update($request->all());
-        return redirect('/Jadwal-Balita');
+        return redirect('/Jadwal-Balita')->with('toast_success', 'Data berhasil Diedit!');
     }
 
     /**
@@ -113,6 +113,6 @@ class JadwalbalitaController extends Controller
     {
         $jadbal = Jadwalbalita::findOrFail($id);
         $jadbal->delete();
-        return back();  
+        return back()->with('toast_success', 'Data berhasil Dihapus!');  
     }
 }

@@ -57,7 +57,7 @@ class JadwalbumilController extends Controller
             'status'    => $request -> status,
         ]);
 
-        return redirect('/Jadwal-Bumil');
+        return redirect('/Jadwal-Bumil')->with('toast_success', 'Data berhasil Disimpan!');
     }
 
     /**
@@ -95,7 +95,7 @@ class JadwalbumilController extends Controller
     {
         $jadmil = Jadwalbumil::findorfail($id);
         $jadmil -> update ($request->all());
-        return redirect('/Jadwal-Bumil');
+        return redirect('/Jadwal-Bumil')->with('toast_success', 'Data berhasil Diedit!');
     }
 
     /**
@@ -108,6 +108,6 @@ class JadwalbumilController extends Controller
     {
         $jadmil = Jadwalbumil::findorfail($id);
         $jadmil -> delete();
-        return back ();
+        return back ()->with('toast_success', 'Data berhasil Dihapus!');
     }
 }

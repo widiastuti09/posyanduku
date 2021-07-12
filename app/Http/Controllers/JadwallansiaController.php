@@ -57,7 +57,7 @@ class JadwallansiaController extends Controller
             'status'    => $request -> status,
         ]);
 
-        return redirect('/Jadwal-Lansia');
+        return redirect('/Jadwal-Lansia')->with('toast_success', 'Data berhasil Disimpan!');
     }
 
     /**
@@ -95,7 +95,7 @@ class JadwallansiaController extends Controller
     {
         $jadlan = Jadwallansia::findorfail($id);
         $jadlan -> update ($request->all());
-        return redirect('/Jadwal-Lansia');
+        return redirect('/Jadwal-Lansia')->with('toast_success', 'Data berhasil Diedit!');
     }
 
     /**
@@ -108,6 +108,6 @@ class JadwallansiaController extends Controller
     {
         $jadlan = Jadwallansia::findorfail($id);
         $jadlan -> delete();
-        return back ();
+        return back ()->with('toast_success', 'Data berhasil Dihapus!');
     }
 }
