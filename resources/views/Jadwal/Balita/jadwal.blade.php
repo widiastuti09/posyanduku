@@ -14,7 +14,7 @@
 <div class="content-wrapper">
   <div class="container-fluid">
     <div class="text-center">
-      <h3>Jadwal Penimbagan Balita</h3>
+      <h3>Jadwal Penimbangan Balita</h3>
     </div>
 
     <div class="container">

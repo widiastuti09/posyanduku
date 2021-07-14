@@ -15,6 +15,7 @@ class PemeriksaanLansiaController extends Controller
      */
     public function index()
     {
+        
         $pemeriksaanlansias = Pemeriksaanlansia::with('lansias')->get();
         // dd($pemeriksaanlansias);
 

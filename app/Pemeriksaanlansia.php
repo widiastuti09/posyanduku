@@ -16,6 +16,6 @@ class Pemeriksaanlansia extends Model
     ];
     public function lansias()
     {
-        return $this->belongsTo(Lansia::class, 'id');
+        return $this->belongsTo(Lansia::class, 'namalansia_id');
     }
 }

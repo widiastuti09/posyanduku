@@ -19,7 +19,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="">
-                        <h1>Data Pemeriksaan Ibu Hamil</h1>
+                        <h1>Data Resti Ibu Hamil</h1>
                     </div>
 
                 </div>
@@ -30,7 +30,7 @@
                 <!-- SELECT2 EXAMPLE -->
                 <div class="card card-default">
                     <div class="card-header bg-primary">
-                        <h3 class="card-title">Form Tambah Data Pemeriksaan Ibu Hamil</h3>
+                        <h3 class="card-title">Form Tambah Data Resti Ibu Hamil</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <form action="{{route('pemeriksaanibuhamil.store')}}" method="post">
+                    <form action="{{route('simpanbumilresti')}}" method="post">
                         {{ csrf_field() }}
                         <div class="card-body">
                             <div class="row">
@@ -62,104 +62,71 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
 
                                     <div class="form-group">
-                                        <label>Tinggi Badan</label>
+                                        <label>Umur Hamil (MG)</label>
                                         <input type="text"
-                                            class="form-control @error('tinggibadan') is-invalid @enderror" autofocus
-                                            id="tinggibadan" placeholder="Masukkan Tinggi Badan" name="tinggibadan"
-                                            value="{{ old('tinggibadan') }}">
-                                        @error('tinggibadan')
+                                            class="form-control @error('umur_hamil') is-invalid @enderror" autofocus
+                                            id="umur_hamil" placeholder="Masukkan Umur Kehamilan" name="umur_hamil"
+                                            value="{{ old('umur_hamil') }}">
+                                        @error('umur_hamil')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label>Hemoglobin Atas(HB) g/dL</label>
-                                        <input type="number"
-                                            class="form-control @error('hemoglobin_atas') is-invalid @enderror" autofocus
-                                            id="hemoglobin_atas" name="hemoglobin_atas" placeholder="Masukkan HB"
-                                            value="{{ old('hemoglobin_atas') }}">
-                                        @error('hemoglobin_atas')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Hemoglobin Bawah (HB) g/dL</label>
-                                        <input type="number"
-                                            class="form-control @error('hemoglobin_bawah') is-invalid @enderror" autofocus
-                                            id="hemoglobin_bawah" name="hemoglobin_bawah" placeholder="Masukkan HB"
-                                            value="{{ old('hemoglobin_bawah') }}">
-                                        @error('hemoglobin_bawah')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Hari Taksiran Persalinan (HTP)</label>
-                                        <input type="date" class="form-control @error('htp') is-invalid @enderror"
-                                            autofocus id="htp" name="htp" placeholder="Masukkan HTP"
-                                            value="{{ old('htp') }}">
-                                        @error('htp')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Hari Pertama Haid Terkahir (HPHT)</label>
-                                        <input type="date" class="form-control @error('hpht') is-invalid @enderror"
-                                            autofocus id="hpht" name="hpht" placeholder="Masukkan HPHT"
-                                            value="{{ old('hpht') }}">
-                                        @error('hpht')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-
-
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-md-6 ">
-
-                                    <div class="form-group">
-                                        <label>Berat Badan (Kg)</label>
+                                        <label>G/P/A</label>
                                         <input type="text"
-                                            class="form-control @error('beratbadan') is-invalid @enderror" autofocus
-                                            id="beratbadan" name="beratbadan" placeholder="Masukkan Berat Badan"
-                                            value="{{ old('beratbadan') }}">
-                                        @error('beratbadan')
+                                            class="form-control @error('gpa') is-invalid @enderror" autofocus
+                                            id="gpa" name="gpa" placeholder="G/P/A"
+                                            value="{{ old('gpa') }}">
+                                        @error('gpa')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label>Hamil Ke (G)</label>
-                                        <input type="text" class="form-control @error('hamilke') is-invalid @enderror"
-                                            autofocus id="hamilke" name="hamilke" placeholder="Masukkan Hamil Ke"
-                                            value="{{ old('hamilke') }}">
-                                        @error('hamilke')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Persalinan Ke (P)</label>
-                                        <input type="number"
-                                            class="form-control @error('persalinanke') is-invalid @enderror" autofocus
-                                            id="persalinanke" name="persalinanke" placeholder="Masukkan Persalinan Ke"
-                                            value="{{ old('persalinanke') }}">
-                                        @error('persalinanke')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Jumlah Keguguran (P)</label>
-                                        <input type="number"
-                                            class="form-control @error('keguguranke') is-invalid @enderror" autofocus
-                                            id="keguguranke" name="keguguranke" placeholder="Masukkan Keguguran Ke"
-                                            value="{{ old('keguguranke') }}">
-                                        @error('keguguranke')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                        <label>Asuransi</label>
+                    
+                                        <select class="form-control select2 @error('asuransi') is-invalid @enderror"
+                                            autofocus name="asuransi" style="width: 100%;">
+                                            <option value="">Pilih Asuransi</option>
+                                            <option @if (old('asuransi') === 'Umum') selected @endif>Umum</option>
+                                            <option @if (old('asuransi') === 'BPJS') selected @endif>BPJS</option>
 
+                                        </select>   
+                                        @error('auransi')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Resiko Tinggi</label>
+                                        <input type="text" class="form-control @error('resiko_tinggi') is-invalid @enderror"
+                                            autofocus id="resiko_tinggi" name="resiko_tinggi" placeholder="Masukkan Resiko"
+                                            value="{{ old('resiko_tinggi') }}">
+                                        @error('resiko_tinggi')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>HPL</label>
+                                        <input type="date" class="form-control @error('hpl') is-invalid @enderror"
+                                            autofocus id="hpl" name="hpl" placeholder="Masukkan HPL"
+                                            value="{{ old('hpl') }}">
+                                        @error('hpl')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Wali Bumil</label>
+                                        <input type="text" class="form-control @error('wali_bumil') is-invalid @enderror"
+                                            autofocus id="wali_bumil" name="wali_bumil" placeholder="Masukkan Wali Bumil"
+                                            value="{{ old('wali_bumil') }}">
+                                        @error('wali_bumil')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
+                               
                                 <!-- /.col -->
                             </div>
                             <!-- /.row -->

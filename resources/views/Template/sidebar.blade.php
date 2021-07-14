@@ -56,6 +56,12 @@
                                     <p>Pemeriksaan Ibu Hamil</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{route('bumilresti')}}" class="nav-link ">
+                                    <i class="fas fa-chevron-right nav-icon text-warning"></i>
+                                    <p>Laporan Ibu Hamil Resti</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item @if(Request::is('register') || Request::is('penimbangan')) menu-open @endif">

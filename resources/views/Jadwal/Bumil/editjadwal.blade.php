@@ -28,7 +28,7 @@
         <!-- SELECT2 EXAMPLE -->
         <div class="card card-default">
           <div class="card-header bg-primary">
-            <h3 class="card-title">Form Tambah Jadwal Pemeriksaan Ibu Hamil</h3>
+            <h3 class="card-title">Form Edit Jadwal Pemeriksaan Ibu Hamil</h3>
 
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse">
