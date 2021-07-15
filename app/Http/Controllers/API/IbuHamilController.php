@@ -54,6 +54,7 @@ class IbuHamilController extends Controller
             'data' => $bumilresti
         ]);
     }
+    
 
 
 }

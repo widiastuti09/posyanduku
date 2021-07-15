@@ -52,12 +52,12 @@
                                             name="id_ibu" style="width: 100%;">
                                             <option value="">Pilih nama</option>
                                             @foreach ($ibuHamil as $hamil)
-                                                <option value="{{ $hamil->id }}" @if(old('id_ibu') === $hamil->id) selected @endif>{{ $hamil->nama }}</option>
+                                                <option  @if(old('id_ibu') == $hamil->id) selected @endif value="{{ $hamil->id }}">{{ $hamil->nama }}</option>
                                             @endforeach
                                         </select>
-                                        @error('id_ibu')
-                                        <div class="invalid-feedback">{{$message}}</div>
-                                        @enderror
+                                            @error('id_ibu')
+                                                <div class="invalid-feedback">{{$message}}</div>
+                                            @enderror
                                     </div>
                                 </div>
                             </div>
@@ -85,8 +85,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label>Asuransi</label>
-                    
+                                        <label>Asuransi</label>                   
                                         <select class="form-control select2 @error('asuransi') is-invalid @enderror"
                                             autofocus name="asuransi" style="width: 100%;">
                                             <option value="">Pilih Asuransi</option>
@@ -94,7 +93,7 @@
                                             <option @if (old('asuransi') === 'BPJS') selected @endif>BPJS</option>
 
                                         </select>   
-                                        @error('auransi')
+                                        @error('asuransi')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>

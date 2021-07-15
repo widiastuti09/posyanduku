@@ -52,7 +52,7 @@
                                             name="id_ibu" style="width: 100%;">
                                             <option value="">Pilih nama</option>
                                             @foreach ($ibuHamil as $hamil)
-                                                <option value="{{ $hamil->id }}" @if(old('id_ibu') === $hamil->id) selected @endif>{{ $hamil->nama }}</option>
+                                                <option  @if(old('id_ibu') == $hamil->id) selected @endif value="{{ $hamil->id }}">{{ $hamil->nama }}</option>
                                             @endforeach
                                         </select>
                                         @error('id_ibu')

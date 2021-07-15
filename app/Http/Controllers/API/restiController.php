@@ -2,10 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Ibuhamil;
+use App\Bumilresti;
+use Auth;
+
+
 
 class restiController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth_mobile');
+    }
     /**
      * Display a listing of the resource.
      *

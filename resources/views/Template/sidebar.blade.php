@@ -6,7 +6,6 @@
             class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Posyandu</span>
     </a>
-
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
@@ -34,7 +33,7 @@
                 </li>
 
                 @if (auth()->user()->level == 'admin' || auth()->user()->level == 'kader1')
-                <li class="nav-item @if(Request::is('registeribuhamil') || Request::is('pemeriksaaan-ibu-hamil')) menu-open @endif">
+                <li class="nav-item @if(Request::is('registeribuhamil') || Request::is('pemeriksaaan-ibu-hamil') || Request::is('Bumil-resti')) menu-open @endif">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-female"></i>
                             <p>
