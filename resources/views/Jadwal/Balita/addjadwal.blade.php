@@ -70,7 +70,6 @@
                         <option value="" >Pilih Status</option>
                         <option >Akan Datang</option>
                         <option >Mulai</option>
-                        <option >Selesai</option>
                         
                         
                     </select>

@@ -272,6 +272,15 @@ Route::group(['middleware' => ['auth']], function () {
       Route::get('/Detail-jadwal/{id}','JadwallansiaController@show')->name('detailjadwallansia');
       Route::get('Edit-jadwal/{id}','JadwallansiaController@edit')->name('editjadwallansia');
       Route::post('Update-jadwal/{id}','JadwallansiaController@update')->name('updatejadwallansia');
+
+      //resti
+    Route::get('/Bumil-resti', 'BumilrestiController@index')->name('bumilresti');
+    Route::get('/Add-Bumil-resti', 'BumilrestiController@create')->name('addbumilresti');
+    Route::post('/Simpan-Bumil-resti', 'BumilrestiController@store')->name('simpanbumilresti');
+    Route::get('/Hapus-Bumil-resti/{id}', 'BumilrestiController@destroy')->name('hapusbumilresti');
+    Route::get('/Detail-Bumil-resti/{id}', 'BumilrestiController@show')->name('detailbumilresti');
+    Route::get('/Edit-Bumil-resti/{id}','BumilrestiController@edit')->name('editbumilresti');
+    Route::post('/Update-Bumil-resti/{id}', 'BumilrestiController@update')->name('updatebumilresti');
   
 
 });

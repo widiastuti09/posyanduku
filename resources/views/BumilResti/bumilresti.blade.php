@@ -19,8 +19,11 @@
 
     <div class="container">
       <div class="mb-2">
+      @if (auth()->user()->level === 'admin') 
         <a href="{{route('addbumilresti')}}" class="btn btn-primary">Tambah Data <i class="fas fa-plus-square"></i></a>
+        @endif
       </div>
+
       <table id="table-bumil-resti" class="table table-bordered table-striped">
         <thead class="bg-dark">
           <tr>
@@ -49,9 +52,10 @@
             <td>{{$resti->resiko_tinggi}}</td>
             <td>
                 <a href="{{route('detailbumilresti',$resti->id)}}" class="btn btn-success"> <i class="fas fa-info-circle"></i></a>
+                @if (auth()->user()->level === 'admin') 
                 <a href="{{route('editbumilresti', $resti->id)}}" class="btn btn-warning"> <i class="fas fa-pen-alt"></i></a>
                 <a href="{{route('hapusbumilresti',$resti->id)}}" class="btn btn-danger"> <i class="fas fa-trash-alt"></i></a>
-
+                @endif
             </td>
         </tr>
         @endforeach

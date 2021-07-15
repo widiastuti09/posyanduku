@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Ibuhamil;
 use App\PemeriksaanIbuHamil;
+use App\Bumilresti;
 use Auth;
 
 class IbuHamilController extends Controller
@@ -43,4 +44,16 @@ class IbuHamilController extends Controller
             'data' => $pemeriksaanibuhamil
         ]);
     }
+
+    public function Bumilresti($id){
+        $bumilresti = Bumilresti::where('id_ibu', $id)->get();
+
+        return response()->json([
+            'message' => 'Berhasil mengambil data Resiko Tinggi ibu hamil',
+            'status' => 200,
+            'data' => $bumilresti
+        ]);
+    }
+
+
 }

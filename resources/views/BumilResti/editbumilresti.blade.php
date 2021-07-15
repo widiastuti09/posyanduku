@@ -38,6 +38,7 @@
             </div>
           </div>
           <!-- /.card-header -->
+          
           <form action="{{route('updatebumilresti', $bumilresti->id)}}" method="post">
             {{ csrf_field() }}
             <div class="card-body"> 
@@ -122,6 +123,7 @@
           
           <!-- /.col -->
           <div class="col-12 col-sm-6">
+          
           <button type="submit" class="btn btn-success"><i class="fas fa-plus-square"> Simpan Data</i></button>
           <a href="{{ route ('bumilresti')}}" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
             <!-- /.form-group -->
