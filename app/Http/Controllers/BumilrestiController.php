@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Bumilresti;
 use App\Ibuhamil;
+use PDF;
 
 class BumilrestiController extends Controller
 {
@@ -113,5 +114,12 @@ class BumilrestiController extends Controller
         $bumilresti = Bumilresti::findorfail($id);
         $bumilresti -> delete();
         return back()->with('toast_success', 'Data berhasil dihapus!');
+    }
+    public function print()
+    {
+        $bumilresti = Bumilresti::with('ibuhamil')->get();
+        $pdf = PDF::loadview('Laporan.CetakResti', compact('bumilresti'))->setPaper('A4','lanscape');
+        return $pdf->stream();
+
     }
 }

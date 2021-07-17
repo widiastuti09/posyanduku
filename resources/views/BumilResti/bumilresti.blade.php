@@ -22,6 +22,7 @@
       @if (auth()->user()->level === 'admin') 
         <a href="{{route('addbumilresti')}}" class="btn btn-primary">Tambah Data <i class="fas fa-plus-square"></i></a>
         @endif
+        <a href="{{route('cetakbumilresti')}}" class="btn btn-secondary">Cetak Data <i class="fas fa-print"></i></a>
       </div>
 
       <table id="table-bumil-resti" class="table table-bordered table-striped">

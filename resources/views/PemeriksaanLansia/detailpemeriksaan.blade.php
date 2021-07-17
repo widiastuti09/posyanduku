@@ -112,18 +112,6 @@
      
     </tr>
     <tr>
-    <th class="font-weight-bold">Lemak Perut</th>
-      <td scope="row" class="font-weight-normal">{{$plansia->lemak_perut}}</td>
-      
-    
-    </tr>
-    <tr>
-    <th class="font-weight-bold">Glukosa Darah</th>
-      <td scope="row" class="font-weight-normal">{{$plansia->glukosa_darah}}</td>
-      
- 
-    </tr>
-    <tr>
     <th class="font-weight-bold">Kolestrol</th>
       <td  class="font-weight-normal">{{$plansia->kolestrol}}</td>
       

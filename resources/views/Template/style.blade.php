@@ -24,4 +24,7 @@
   <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="{{asset('Admin_LTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
   <!-- BS Stepper -->
+  <!-- PDF-->
+  <link rel="stylesheet" href="{{asset('Admin_LTE/plugins/pdfmake/pdfmake.min.js')}}">
+  <link rel="stylesheet" href="{{asset('Admin_LTE/plugins/pdfmake/vfs_fonts.js')}}">
 </head>

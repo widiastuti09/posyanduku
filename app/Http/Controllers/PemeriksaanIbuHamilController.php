@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\PemeriksaanIbuHamil;
 use App\Ibuhamil;
+use PDF;
 
 class PemeriksaanIbuHamilController extends Controller
 {
@@ -69,5 +70,11 @@ class PemeriksaanIbuHamilController extends Controller
         $pemeriksaan_ibu_hamil->delete();
 
         return redirect()->route('pemeriksaanibuhamil.index')->with('toast_success','Data Berhasil dihapus!');
+    }
+    public function print()
+    {
+        $pemeriksaan_ibu_hamil = PemeriksaanIbuHamil::orderBy('created_at', 'DESC')->get();
+        $pdf = PDF::loadview('Laporan.CetakBumil', compact('pemeriksaan_ibu_hamil'))->setPaper('A4','landscape');
+        return $pdf->stream();
     }
 }

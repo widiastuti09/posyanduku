@@ -26,6 +26,8 @@
                     <a href="{{route('pemeriksaanibuhamil.create')}}" class="btn btn-primary">Tambah Data <i
                             class="fas fa-plus-square"></i></a>
                 @endif
+                    <a href="{{route('cetakbumil')}}" class="btn btn-secondary">Cetak Data <i class="fas fa-print"></i></a>  
+
                 </div>
                 <table id="table-pemeriksaan-ibuhamil" class="table table-bordered table-striped">
                     <thead class="bg-dark">
@@ -80,6 +82,7 @@
         });
 
     </script>
+   
     @include('sweetalert::alert')
 
 

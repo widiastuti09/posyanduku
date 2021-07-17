@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Penimbangan;
 use App\Registrasibalita;
+use PDF;
 
 class PenimbanganController extends Controller
 {
@@ -123,5 +124,12 @@ class PenimbanganController extends Controller
         $pen->delete();
         return back()->with('toast_success', 'Data berhasil dihapus!');
 
+    }
+
+    public function print()
+    {
+        $penimbangan = Penimbangan::with('registrasibalitas')->get();
+        $pdf = PDF::loadview('Laporan.CetakBalita', compact('penimbangan'))->setPaper('A4','landscape');
+        return $pdf->stream();
     }
 }

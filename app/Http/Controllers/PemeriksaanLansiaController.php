@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pemeriksaanlansia;
 use App\Lansia;
+use PDF;
 
 class PemeriksaanLansiaController extends Controller
 {
@@ -171,5 +172,12 @@ class PemeriksaanLansiaController extends Controller
         $plansia = Pemeriksaanlansia::findOrFail($id);
         $plansia->delete();
         return back()->with('toast_success', 'Data berhasil dihapus!');
+    }
+    public function print()
+    {
+        $pemeriksaanlansias = Pemeriksaanlansia::with('lansias')->get();
+        $pdf = PDF::loadview('Laporan.CetakLansia', compact('pemeriksaanlansias'))->setPaper('A4','lanscape');
+        return $pdf->stream();
+
     }
 }

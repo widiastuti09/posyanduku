@@ -30,6 +30,7 @@
                 <a href="{{route('addpenimbangan')}}" class="btn btn-success "> Tambah Data <i
                             class="fas fa-plus-square"></i></a>
                 @endif
+                <a href="{{route('cetakpenimbangan')}}" class="btn btn-secondary">Cetak Data <i class="fas fa-print"></i></a>
                 </div>
                 <table id="table-penimbangan" class="table table-bordered table-striped">
                     <thead class="bg-dark">

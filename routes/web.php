@@ -71,6 +71,9 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
     Route::get('/deleteregisteribuhamil/{id}', 'RegisterIbuHamilController@destroy')->name('deleteregisteribuhamil');
     Route::post('/updateregisterbumil/{id}', 'RegisterIbuHamilController@update')->name('updateregisterbumil');
     Route::get('/editregisterbumil/{id}','RegisterIbuHamilController@edit')->name('editregisterbumil');
+
+    
+
     
     Route::get('/registerlansia', 'RegisterLansiaController@registerlansia')->name('registerlansia');
     Route::get('/addregisterlansia','RegisterLansiaController@create')->name('addregisterlansia');
@@ -129,8 +132,7 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
     Route::get('/Detail-Bumil-resti/{id}', 'BumilrestiController@show')->name('detailbumilresti');
     Route::get('/Edit-Bumil-resti/{id}','BumilrestiController@edit')->name('editbumilresti');
     Route::post('/Update-Bumil-resti/{id}', 'BumilrestiController@update')->name('updatebumilresti');
-
-
+  
     
 });
 
@@ -153,6 +155,9 @@ Route::group(['middleware' => ['auth', 'CekLevel:kader2,admin']], function(){
     Route::get('/deletepemeriksaanlansia/{id}', 'PemeriksaanLansiaController@destroy')->name('deletepemeriksaanlansia');
     Route::get('/editpemeriksaanlansia/{id}', 'PemeriksaanLansiaController@edit')->name('editpemeriksaanlansia');
 
+    //pdf
+    Route::get('/cetaklansia', 'PemeriksaanLansiaController@print')->name('cetaklansia');
+
       //Jadwal balita
 
       Route::get('/Jadwal-Balita', 'JadwalbalitaController@index')->name('jadwalpenimbangan');
@@ -170,9 +175,7 @@ Route::group(['middleware' => ['auth', 'CekLevel:kader2,admin']], function(){
       Route::get('/Detail-jadwal-bumil/{id}','JadwalbumilController@show')->name('detailjadwalpemeriksaan');
       Route::post('/simpan-jadwal-bumil','JadwalbumilController@store')->name('simpanjadwalpemeriksaan');
       Route::get('Edit-jadwal-bumil/{id}','JadwalbumilController@edit')->name('editjadwalpemeriksaan');
-      Route::get('/Hapis-jadwal-bumil/{id}','JadwalbumilController@destroy')->name('hapusjadwalpemeriksaan');
-    
-  
+      Route::get('/Hapus-jadwal-bumil/{id}','JadwalbumilController@destroy')->name('hapusjadwalpemeriksaan');
       Route::post('Update-jadwal-bumil/{id}','JadwalbumilController@update')->name('updatejadwalpemeriksaan');
   
       //Jadwal lansia 
@@ -200,6 +203,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/editpenimbangan/{id}','PenimbanganController@editpenimbangan')->name('editpenimbangan');
     Route::post('/updatepenimbangan/{id}','PenimbanganController@update')->name('updatepenimbangan');
     Route::get('/deletepenimbangan/{id}','PenimbanganController@destroy')->name('deletepenimbangan');
+
+    //pdf
+    Route::get('/cetakPenimbangan', 'PenimbanganController@print')->name('cetakpenimbangan');
 
     Route::get('/register', 'RegistrasibalitaController@register')->name('register');
     Route::get('/addregisterbalita', 'RegistrasibalitaController@addregisterbalita')->name('addregisterbalita');
@@ -242,6 +248,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('pemeriksaaan-ibu-hamil/{id}', 'PemeriksaanIbuHamilController@update')->name('pemeriksaanibuhamil.update');
     Route::delete('pemeriksaaan-ibu-hamil/delete/{id}', 'PemeriksaanIbuHamilController@destroy')->name('pemeriksaanibuhamil.destroy');
 
+      //pdf
+      Route::get('/CetakBumil', 'PemeriksaanIbuHamilController@print')->name('cetakbumil');
+
+
       //Jadwal balita
 
       Route::get('/Jadwal-Balita', 'JadwalbalitaController@index')->name('jadwalpenimbangan');
@@ -281,6 +291,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/Detail-Bumil-resti/{id}', 'BumilrestiController@show')->name('detailbumilresti');
     Route::get('/Edit-Bumil-resti/{id}','BumilrestiController@edit')->name('editbumilresti');
     Route::post('/Update-Bumil-resti/{id}', 'BumilrestiController@update')->name('updatebumilresti');
+
+    //pdf
+
+    Route::get('/cetak-bumil-resti', 'BumilrestiController@print')->name('cetakbumilresti');
   
 
 });

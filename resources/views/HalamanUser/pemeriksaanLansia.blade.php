@@ -31,6 +31,8 @@
                             class="fas fa-plus-square"></i></a>
 
                 @endif
+                <a href="{{route('cetaklansia')}}"class="btn btn-secondary"> Cetak Data <i
+                            class="fas fa-print"></i></a>
                 </div>
                 <table id="table-pemeriksaan" class="table table-bordered table-striped">
                     <thead class="bg-dark">
