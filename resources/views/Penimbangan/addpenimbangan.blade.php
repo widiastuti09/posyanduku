@@ -126,6 +126,16 @@
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                 </div>
+                <div class="form-group">
+                  <label>Penyakit (optional)</label>
+                  <select class="form-control select2bs4 penyakit" name="penyakit" style="width: 100%;" value="{{old('penyakit')}}">
+                    <option selected="selected" disabled="disabled">Pilih penyakit</option>
+                    <option value="Demam">Demam</option>
+                    <option value="Luka dan Sakit Kulit">Luka dan Sakit Kulit</option>
+                    <option value="Batuk">Batuk</option>
+                    <option value="Diare">Diare</option>
+                  </select>
+                </div>
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
