@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Jadwalbalita;
+use App\User;
+use Carbon\Carbon;
 
 
 class JadwalbalitaController extends Controller
@@ -58,11 +60,12 @@ class JadwalbalitaController extends Controller
             'status'      => $request -> status,
         ]);
 
-        return redirect('/Jadwal-Balita')->with('toast_success', 'Data berhasil Disimpan!');
-
         
+        $deviceToken = User::whereNotNull('device_token')->pluck('device_token')->all();
 
+        $this->sendNotification("Jadwal", "Jadwal pemeriksaan balita tanggal ".Carbon::parse($request->tanggal)->format('d M Y')." pukul ".$request->waktu, $deviceToken);
 
+        return redirect('/Jadwal-Balita')->with('toast_success', 'Data berhasil Disimpan!');
     }
 
     /**
@@ -114,5 +117,49 @@ class JadwalbalitaController extends Controller
         $jadbal = Jadwalbalita::findOrFail($id);
         $jadbal->delete();
         return back()->with('toast_success', 'Data berhasil Dihapus!');  
+    }
+
+    public function sendNotification($title, $body, $token){
+        $data = [
+            'title' => $title,
+            'body' => $body,
+        ];
+
+        $device_token = [];
+
+        foreach($token as $t){
+            $device_token[] = $t;
+        }
+        $payload = [
+            'registration_ids' => $device_token,
+            'notification' => $data
+        ];
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://fcm.googleapis.com/fcm/send",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_HTTPHEADER => array(
+                "Content-type: application/json",
+                "Authorization: key=".env('FIREBASE_SERVER_KEY')
+            ),
+        ));
+
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($payload));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+        
+        return response()->json([
+            'message' => 'Berhasil mengirim notif',
+            'status' => 200,
+            'data' => json_encode($response)
+        ], 200);
     }
 }
