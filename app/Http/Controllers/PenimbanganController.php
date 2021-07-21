@@ -62,6 +62,7 @@ class PenimbanganController extends Controller
             'imp' => $request->imp,
             'kia' => $request->kia,
             'vitamin' => $request->vitamin,
+            'penyakit' => $request->penyakit
         ]);
 
         return redirect('penimbangan')->with('toast_success', 'Data berhasil disimpan!');
