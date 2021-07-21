@@ -59,21 +59,21 @@
                 </div>
                 <div class="form-group">
                     <label for="">Tanggal Pemeriksaan</label>
-                    <input type="date" class="form-control select2 @error('tanggal_periksa') is-invalid @enderror" name="tanggal_periksa" id="tanggal_periksa"> 
+                    <input type="date" class="form-control  @error('tanggal_periksa') is-invalid @enderror" name="tanggal_periksa" id="tanggal_periksa"> 
                     @error('tanggal_periksa')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="">Berat Badan</label>
-                    <input type="text" class="form-control select2 @error('berat_badan') is-invalid @enderror" placeholder="Masukkan Berat Badan" name="berat_badan" id="berat_badan">
+                    <input type="text" class="form-control  @error('berat_badan') is-invalid @enderror" placeholder="Masukkan Berat Badan" name="berat_badan" id="berat_badan">
                     @error('berat_badan')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="">Tinggi Badan</label>
-                    <input type="text" class="form-control select2 @error('tinggi_badan') is-invalid @enderror" placeholder="Masukkan Tinggi Badan" name="tinggi_badan" id="tinggi_badan">
+                    <input type="text" class="form-control  @error('tinggi_badan') is-invalid @enderror" placeholder="Masukkan Tinggi Badan" name="tinggi_badan" id="tinggi_badan">
                     @error('tinggi_badan')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
@@ -81,42 +81,42 @@
                
                 <div class="form-group">
                     <label for="">Lingkar Pinggang (Cm)</label>
-                    <input type="text" class="form-control select2 @error('lingkar_pinggang') is-invalid @enderror" placeholder="Masukkan Ukuran Lingkar Pinggang" name="lingkar_pinggang" id="lingkar_pinggang">
+                    <input type="text" class="form-control  @error('lingkar_pinggang') is-invalid @enderror" placeholder="Masukkan Ukuran Lingkar Pinggang" name="lingkar_pinggang" id="lingkar_pinggang">
                     @error('lingkar_pinggang')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="">Tekanan Darah</label>
-                    <input type="text" class="form-control select2 @error('tekanan_darah') is-invalid @enderror" placeholder="Masukkan Tekanan Darah" name="tekanan_darah" id="tekanan_darah">
+                    <input type="text" class="form-control  @error('tekanan_darah') is-invalid @enderror" placeholder="Masukkan Tekanan Darah" name="tekanan_darah" id="tekanan_darah">
                     @error('tekanan_darah')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="">Glukosa Darah</label>
-                    <input type="text" class="form-control select2 @error('glukosa_darah') is-invalid @enderror" placeholder="Masukkan Glukosa Darah" name="glukosa_darah" id="glukosa_darah">
+                    <input type="text" class="form-control  @error('glukosa_darah') is-invalid @enderror" placeholder="Masukkan Glukosa Darah" name="glukosa_darah" id="glukosa_darah">
                     @error('glukosa_darah')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="">Lemak Tubuh</label>
-                    <input type="text" class="form-control select2 @error('lemak_tubuh') is-invalid @enderror" placeholder="Masukkan Lemak Darah" name="lemak_tubuh" id="lemak_tubuh">
+                    <input type="text" class="form-control  @error('lemak_tubuh') is-invalid @enderror" placeholder="Masukkan Lemak Darah" name="lemak_tubuh" id="lemak_tubuh">
                     @error('lemak_tubuh')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="">IMT</label>
-                    <input type="text" class="form-control select2 @error('imt') is-invalid @enderror" placeholder="Masukkan Indeks Massa Tubuh" name="imt" id="imt">
+                    <input type="text" class="form-control  @error('imt') is-invalid @enderror" placeholder="Masukkan Indeks Massa Tubuh" name="imt" id="imt">
                     @error('imt')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                 </div>
               <div class="form-group">
                     <label for="">Lemak Perut</label>
-                    <input type="text" class="form-control select2 @error('lemak_perut') is-invalid @enderror" placeholder="Masukkan Lemak Perut" name="lemak_perut" id="lemak_perut">
+                    <input type="text" class="form-control  @error('lemak_perut') is-invalid @enderror" placeholder="Masukkan Lemak Perut" name="lemak_perut" id="lemak_perut">
                     @error('lemak_perut')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
@@ -130,21 +130,21 @@
               
                 <div class="form-group">
                     <label for="">Kolestrol</label>
-                    <input type="text" class="form-control select2 @error('kolestrol') is-invalid @enderror" placeholder="Masukkan Kolestrol" name="kolestrol" id="kolestrol">
+                    <input type="text" class="form-control  @error('kolestrol') is-invalid @enderror" placeholder="Masukkan Kolestrol" name="kolestrol" id="kolestrol">
                     @error('kolestrol')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="">Asam Urat</label>
-                    <input type="text" class="form-control select2 @error('asam_urat') is-invalid @enderror" placeholder="Masukkan Tekanan Darah" name="asam_urat" id="asam_urat">
+                    <input type="text" class="form-control  @error('asam_urat') is-invalid @enderror" placeholder="Masukkan Tekanan Darah" name="asam_urat" id="asam_urat">
                     @error('asam_urat')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="">Makan Berlemak</label>
-                    <input type="text" class="form-control select2 @error('makan_berlemak') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="makan_berlemak" id="makan_berlemak">
+                    <input type="text" class="form-control  @error('makan_berlemak') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="makan_berlemak" id="makan_berlemak">
                     @error('makan_berlemak')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
@@ -152,7 +152,7 @@
 
                 <div class="form-group">
                     <label for="">Makan Manis</label>
-                    <input type="text" class="form-control select2 @error('makan_manis') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="makan_manis" id="makan_manis">
+                    <input type="text" class="form-control  @error('makan_manis') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="makan_manis" id="makan_manis">
                     @error('makan_manis')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
@@ -160,7 +160,7 @@
 
                 <div class="form-group">
                     <label for="">Makan/Minum Zat Adiktif</label>
-                    <input type="text" class="form-control select2 @error('zat_adiktif') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="zat_adiktif" id="zat_adiktif">
+                    <input type="text" class="form-control @error('zat_adiktif') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="zat_adiktif" id="zat_adiktif">
                     @error('zat_adiktif')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
@@ -168,7 +168,7 @@
 
                 <div class="form-group">
                     <label for="">Penggunaan Jelantah</label>
-                    <input type="text" class="form-control select2 @error('jelantah') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="jelantah" id="jelantah">
+                    <input type="text" class="form-control @error('jelantah') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="jelantah" id="jelantah">
                     @error('jelantah')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
@@ -176,7 +176,7 @@
 
                 <div class="form-group">
                     <label for="">Merokok</label>
-                    <select class="form-control select2 @error('merokok') is-invalid @enderror" value="" name="merokok" id="merokok">
+                    <select class="form-control @error('merokok') is-invalid @enderror" value="" name="merokok" id="merokok">
                         <option value="">Pilih Data</option>
                         <option >Ya</option>
                         <option >Tidak</option>
@@ -189,7 +189,7 @@
 
                 <div class="form-group">
                     <label for="">Olahraga</label>
-                    <input type="text" class="form-control select2 @error('olahraga') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="olahraga" id="olahraga">
+                    <input type="text" class="form-control @error('olahraga') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="olahraga" id="olahraga">
                     @error('olahraga')
                         <div class="invalid-feedback">{{$message}}</div>
                     @enderror
@@ -197,10 +197,21 @@
 
                 <div class="form-group">
                     <label for="">Keterangan</label>
-                    <input type="text" class="form-control select2 @error('keterangan') is-invalid @enderror" placeholder="Konseling" name="keterangan" id="keterangan">
+                    <input type="text" class="form-control @error('keterangan') is-invalid @enderror" placeholder="Konseling" name="keterangan" id="keterangan">
                     @error('keterangan')
                         <div class="invalid-feedback">{{$message}}</div>
                     @enderror
+                </div>
+                <div class="form-group">
+                  <label>Penyakit (optional)</label>
+                  <select class="form-control select2bs4 penyakit" name="penyakit" style="width: 100%;" value="{{old('penyakit')}}">
+                    <option selected="selected" disabled="disabled">Pilih penyakit</option>
+                    <option value="Kolesterol">Kolesterol</option>
+                    <option value="Hipertensi">Hipertensi</option>
+                    <option value="Diabetes">Diabetes</option>
+                    <option value="Asam urat">Asam urat</option>
+                    <option value="Osteoporosis">Osteoporosis</option>
+                  </select>
                 </div>
 
               </div>
@@ -231,7 +242,19 @@
 @include('Template.footer')
 
 @include('Template.script')
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
 
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+  })
+
+
+</script>
 
     
 </body>

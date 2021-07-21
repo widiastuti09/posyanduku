@@ -62,4 +62,12 @@ class AuthController extends Controller{
             'data' => $user
         ]);
     }
+
+    public function saveDeviceToken(Request $ruquest){
+        auth()->user()->update(['device_token' => $request->device_token]);
+        return response()->json([
+            'message'=>'Berhasil menyimpan token',
+            'status' => 200,
+        ], 200);
+    }
 }

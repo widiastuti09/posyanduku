@@ -115,6 +115,7 @@ class PemeriksaanLansiaController extends Controller
             'merokok'           => $request ->merokok, 
             'olahraga'          => $request ->olahraga, 
             'keterangan'        => $request -> keterangan,
+            'penyakit'          => $request ->penyakit,
 
         ]);
 

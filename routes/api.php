@@ -19,6 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/login-mobile', 'API\AuthController@login');
+Route::post('/save-token', 'API\AuthController@saveDeviceToken');
+
 Route::get('/user-mobile', 'API\AuthController@user');
 
 Route::get('/ibu-hamil', 'API\IbuHamilController@ibuHamil');
