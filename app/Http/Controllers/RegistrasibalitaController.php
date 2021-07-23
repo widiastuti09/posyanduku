@@ -43,7 +43,7 @@ class RegistrasibalitaController extends Controller
     {
         $request->validate([
             'namabalita'    => 'required|string',
-            'tempatlahir'   => 'required|alpha',
+            'tempatlahir'   => 'required|',
             'tanggallahir'  => 'required',
             'jeniskelamin'  => 'required',
             'namaayah'      => 'required|string',
@@ -58,7 +58,7 @@ class RegistrasibalitaController extends Controller
         ],
         [
             'namabalita.required'   => 'Nama Balita Harus diisi',
-            'namabalita.alpha'   => 'Nama Balita Harus Diisi Dengan Huruf',
+            'namabalita.required'   => 'Nama Balita Harus diisi',
             'tanggallahir.required' => 'Tanggal Lahir Harus diisi',
             'tempatlahir.required' => 'Tempat Lahir Harus diisi',
             'tempatlahir.alpha'   => 'Tempat Lahir Harus Diisi Dengan Huruf',
