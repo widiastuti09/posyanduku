@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\User;
 use Validator;
 use Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendCodeVerification;
 
 class AuthController extends Controller{
 
@@ -70,4 +72,87 @@ class AuthController extends Controller{
             'status' => 200,
         ], 200);
     }
+
+    public function resetPassword(Request $request){
+        $user = User::where('email', $request->email)->first();
+        // dd($user);
+
+        if($user){
+            $random = rand(100000,999999);
+            $user->update([
+                'code_digit' => $random
+            ]);
+            $sendMail = Mail::to($user->email)
+            ->send(new SendCodeVerification($random, $user->name));
+            
+            return response()->json([
+                'message' => 'Berhasil kirim code',
+                'status' => 200
+            ], 200);
+        }else{
+            return response()->json([
+                'message' => 'Gagal kirim code',
+                'status' => 403
+            ], 403);   
+        }
+    }
+
+    public function verificationCode(Request $request){
+        $user = User::where('code_digit', $request->code_digit)->first();
+        // dd($user);
+
+        if($user){
+            return response()->json([
+                'message' => 'Berhasil verification code',
+                'status' => 200
+            ], 200);
+        }else{
+            return response()->json([
+                'message' => 'Gagal verifikasi code',
+                'status' => 403
+            ], 403);   
+        }
+    }
+
+    public function gantiPassword(Request $request){
+        $rules = [
+            'password' => 'required',
+            'konfirmasi_password' => 'required',
+            'code_digit' => 'required'
+        ];
+
+        $messages = [
+            'required' => ':attribute harus diisi'
+        ];
+
+        $validation = Validator::make($request->all(), $rules, $messages);
+
+        if($validation->fails()){
+            return response()->json([
+                'message' => 'Terjadi kesalahan',
+                'status' => 409,
+                'error' => $validation->errors()
+            ], 409);
+        }
+
+        $user = User::where('code_digit', $request->code_digit)->first();
+        
+        if($user){
+            $user->update([
+                'password' => bcrypt($request->password),
+                'code_digit' => null
+            ]);
+    
+            return response()->json([
+                'message' => 'Ubah password berhasil',
+                'status' => 200
+            ], 200);  
+        }else{
+            return response()->json([
+                'message' => 'Gagal password berhasil',
+                'status' => 403
+            ], 403);  
+        }
+    }
+
 }
