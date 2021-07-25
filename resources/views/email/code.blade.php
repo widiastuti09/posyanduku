@@ -8,6 +8,6 @@ konfirmasi Kode Reset Password
 <h5>Masukkan kode ini untuk menyelesaikan reset password</h5>
 <h5>Salam Sehat</h5>
 
-Thanks U,<br>
-{{config('app.name')}}
+Terimakasih<br>
+<center>E-Posyandu</center>
 @endcomponent
