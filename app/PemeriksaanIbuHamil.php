@@ -10,6 +10,6 @@ class PemeriksaanIbuHamil extends Model
     protected $guarded = [];
 
     public function ibuhamil() {
-        return $this->belongsTo(Ibuhamil::class, 'id');
+        return $this->belongsTo(Ibuhamil::class, 'id_ibu');
     }
 }
