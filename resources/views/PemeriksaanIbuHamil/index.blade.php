@@ -43,18 +43,15 @@
                             <td scope="row">{{ $index + 1}}</td>
                             <td>{{ $pih->ibuhamil->nama}}</td>
                             <td>
-                                <form action="{{ 'pemeriksaanibuhamil.destroy', $pih->id }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="_method" value="DELETE">
+                                
                                     <a href="{{ route('pemeriksaanibuhamil.show', $pih->id) }}" class="btn btn-success">
                                         <i class="fas fa-info-circle"></i></a>
                                         @if (auth()->user()->level === 'admin')  
                                     <a href="{{ route('pemeriksaanibuhamil.edit', $pih->id) }}" class="btn btn-warning">
                                         <i class="fas fa-pen-alt"></i></a>
-                                    <button type="submit"
-                                        class="btn btn-danger"> <i class="fas fa-trash-alt"></i></button>
+                                    <a href="{{route ('pemeriksaanibuhamil.destroy', $pih->id) }}" class="btn btn-danger"> <i class="fas fa-trash-alt"></i></a>
                                         @endif
-                                </form>
+                                
                             </td>
 
                             @endforeach

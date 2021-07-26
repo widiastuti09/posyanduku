@@ -246,7 +246,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('pemeriksaaan-ibu-hamil/store', 'PemeriksaanIbuHamilController@store')->name('pemeriksaanibuhamil.store');
     Route::get('pemeriksaaan-ibu-hamil/{id}/edit', 'PemeriksaanIbuHamilController@edit')->name('pemeriksaanibuhamil.edit');
     Route::put('pemeriksaaan-ibu-hamil/{id}', 'PemeriksaanIbuHamilController@update')->name('pemeriksaanibuhamil.update');
-    Route::delete('pemeriksaaan-ibu-hamil/delete/{id}', 'PemeriksaanIbuHamilController@destroy')->name('pemeriksaanibuhamil.destroy');
+    Route::get('pemeriksaaan-ibu-hamil/delete/{id}', 'PemeriksaanIbuHamilController@destroy')->name('pemeriksaanibuhamil.destroy');
 
       //pdf
       Route::get('/CetakBumil', 'PemeriksaanIbuHamilController@print')->name('cetakbumil');
