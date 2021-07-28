@@ -99,6 +99,20 @@ class BumilrestiController extends Controller
     public function update(Request $request, $id)
     {
         $bumilresti = Bumilresti::findorfail($id);
+        $rules = [
+            'id_ibu'            => 'required',
+            'umur_hamil'        => 'required',
+            'gpa'               => 'required',
+            'asuransi'          => 'required',
+            'resiko_tinggi'     => 'required',
+            'hpl'               => 'required',
+            'wali_bumil'        => 'required',
+        ];
+        $messages = [
+            'required' => ':attribute tidak boleh kosong'
+        ];
+
+        $this->validate($request, $rules, $messages);
         $bumilresti->update($request->all());
         return redirect()->route('bumilresti')->with('toast_success','Data Berhasil diubah!');
     }

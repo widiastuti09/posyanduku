@@ -42,7 +42,6 @@
                             <th>BB(Kg)</th>
                             <th>IMD</th>
                             <th>KIA</th>
-                            <th>Vitamin</th>
                             <th>Action</th>
                             
                         </tr>
@@ -60,7 +59,7 @@
                             <td>{{ $penimbangan->beratbadan}}</td>
                             <td>{{ $penimbangan->imp }}</td>
                             <td>{{ $penimbangan->kia }}</td>
-                            <td>{{ $penimbangan->vitamin }}</td>
+                            
                             <td>
                                 <a href="{{route('detail-penimbangan', $penimbangan->id) }}" class="btn btn-success"><i
                                         class="fas fa-info-circle"></i></a>

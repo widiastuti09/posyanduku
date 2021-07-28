@@ -108,6 +108,20 @@ class PenimbanganController extends Controller
     public function update(Request $request, $id)
     {
         $pen = Penimbangan::findOrFail($id);
+        $rules=[
+            'namabalita_id' => 'required',
+            'tanggal'       => 'required',
+            'jenis_imunisasi' => 'required',
+            'beratbadan'    => 'required',
+            'imp'           => 'required',
+            'kia'           => 'required',
+            'vitamin'       => 'required'
+        ];
+        $messages = [
+            'required' => ':attribute tidak boleh kosong'
+        ];
+
+        $this->validate($request, $rules, $messages);
         $pen->update($request->all());
         return redirect('penimbangan')->with('toast_success', 'Data berhasil diedit!');
 

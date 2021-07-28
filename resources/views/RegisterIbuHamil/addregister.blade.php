@@ -73,7 +73,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Tanggal Register</label>
-                                        <input type="date" class="form-control @" autofocus id="tglregister"
+                                        <input type="date" class="form-control @error('tglregister') is-invalid @enderror" autofocus id="tglregister"
                                             name="tglregister" value="{{ old('tglregister') }}">
                                         @error('tglregister')
                                             <div class="invalid-feedback">{{ $message }}</div>

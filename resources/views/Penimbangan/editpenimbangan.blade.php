@@ -54,23 +54,29 @@
 
                 <div class="form-group">
                   <label>Nama Balita</label>
-                  <select name="namabalita_id"  id="namabalita_id" class="form-control select2bs4" style="width: 100%;">
+                  <select name="namabalita_id"  id="namabalita_id" class="form-control select2bs4  @error('namabalita_id') is-invalid @enderror" style="width: 100%;">
                     <option value="" disabled="disabled">--Pilih Opsi--</option>
                     @foreach($regbal as $penimbangan)
                     
                     <option value="{{$penimbangan->id}}" @if($penimbangan->id === $pen->namabalita_id) selected @endif>{{$penimbangan->namabalita}}</option>
                     @endforeach
                   </select>
+                  @error('namabalita_id')
+                    <span class="invalid-feedback">{{$message}}</span>
+                  @enderror
                 </div>
                 
                 <div class="form-group">
                     <label>Tanggal</label>
-                    <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Nama" value="{{$pen->tanggal}}">
+                    <input type="date" class="form-control @error('tanggal') is-invalid @enderror" id="tanggal" name="tanggal" placeholder="Masukkan Nama" value="{{$pen->tanggal}}">
+                    @error('tanggal')
+                      <div class="invalid-feedback">{{$message}}</div>
+                      @enderror    
                 </div>
                 <div class="form-group">
              
                 <label for="">Jenis Imunisasi</label>
-                <select class="form-control select2" name="jenis_imunisasi" style="width: 100%;">
+                <select class="form-control select2 @error('jenis_imunisasi') is-invalid @enderror" name="jenis_imunisasi" style="width: 100%;">
                     @if($pen->jenis_imunisasi)
                       <option value="{{$pen->jenis_imunisasi}}" >{{$pen->jenis_imunisasi}}</option>
                       <option value="" disabled="disabled">Pilih Imunisasi (Berdasarkan Umur)</option>
@@ -82,11 +88,17 @@
                     <option >Campak (9 bulan)</option>
                     @endif
                   </select>
+                  @error('jenis_imunisasi')
+                    <div class="invalid-feedback">{{$message}}</div>
+                  @enderror
                 
                 </div>
                 <div class="form-group">
                     <label>Berat Badan</label>
-                    <input type="text" class="form-control" id="beratbadan" name="beratbadan" placeholder="Masukkan BB (Kg)" value="{{$pen->beratbadan}}">
+                    <input type="text" class="form-control @error('beratbadan') is-invalid @enderror" id="beratbadan" name="beratbadan" placeholder="Masukkan BB (Kg)" value="{{$pen->beratbadan}}">
+                    @error('beratbadan')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -95,7 +107,7 @@
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>IMD</label>
-                  <select class="form-control select2" name="imp" style="width: 100%;">
+                  <select class="form-control select2 @error('imp') is-invalid @enderror" name="imp" style="width: 100%;">
                     @if($pen->imp)
                       <option value="{{$pen->imp}}" >{{$pen->imp}}</option>
                       <option value="" disabled="disabled">--Pilih Opsi--</option>
@@ -103,8 +115,11 @@
                       <option >Ya</option>
                     @endif
                   </select>
+                  @error('imp')
+                    <div class="invalid-feedback">{{$message}}</div>
+                  @enderror
                   <label class="mt-3">KIA</label>
-                  <select class="form-control select2" name="kia" style="width: 100%;" >
+                  <select class="form-control select2 @error('kia') is-invalid @enderror" name="kia" style="width: 100%;" >
                     @if($pen->kia)
                       <option value="{{$pen->kia}}" >{{$pen->kia}}</option>  
                       <option value="" disabled="disabled">--Pilih Opsi--</option>
@@ -112,8 +127,11 @@
                       <option>Ya</option>
                     @endif
                   </select>
+                  @error('kia')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
                   <label class="mt-3">Vitamin</label>
-                  <select class="form-control select2" name="vitamin" style="width: 100%;" value="{{$pen->vitamin}}">
+                  <select class="form-control select2 @error('vitamin') is-invalid @enderror" name="vitamin" style="width: 100%;" value="{{$pen->vitamin}}">
                   @if($pen->vitamin)
                     <option value="{{$pen->vitamin}}" >{{$pen->vitamin}}</option>
                     <option value="" disabled="disabled">--Pilih Opsi--</option>
@@ -121,7 +139,22 @@
                     <option >Vit A Merah (1 - 5 Tahun)</option>
                   @endif
                   </select>
+                  @error('vitamin')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
+                  <label class="mt-3">Penyakit (optional)</label>
+                  <select class="form-control select2bs4"  name="penyakit" style="width: 100%;" value="{{$pen->penyakit}}">
+                  @if($pen->penyakit)
+                  <option value="{{$pen->penyakit}}" >{{$pen->penyakit}}</option>
+                    <option selected="selected" disabled="disabled">Pilih penyakit</option>
+                    <option value="Demam">Demam</option>
+                    <option value="Luka dan Sakit Kulit">Luka dan Sakit Kulit</option>
+                    <option value="Batuk">Batuk</option>
+                    <option value="Diare">Diare</option>
+                    @endif
+                  </select>
                 </div>
+
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->

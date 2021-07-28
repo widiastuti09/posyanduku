@@ -60,6 +60,24 @@ class PemeriksaanIbuHamilController extends Controller
 
     public function update(Request $request, $id){
         $pemeriksaan_ibu_hamil = PemeriksaanIbuHamil::findOrFail($id);
+        $rules = [
+            'id_ibu' => 'required',
+            'tinggibadan' => 'required',
+            'hemoglobin_atas' => 'required',
+            'hemoglobin_bawah' => 'required',
+            'htp' => 'required',
+            'hpht' => 'required',
+            'beratbadan' => 'required',
+            'hamilke' => 'required',
+            'persalinanke' => 'required',
+            'keguguranke' => 'required',
+        ];
+
+        $messages = [
+            'required' => ':attribute tidak boleh kosong'
+        ];
+
+        $this->validate($request, $rules, $messages);
         $pemeriksaan_ibu_hamil->update($request->all());
 
         return redirect()->route('pemeriksaanibuhamil.index')->with('toast_success','Data Berhasil diubah!');

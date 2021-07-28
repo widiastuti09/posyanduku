@@ -158,6 +158,56 @@ class PemeriksaanLansiaController extends Controller
     public function update(Request $request, $id)
     {
         $plansia = Pemeriksaanlansia::findOrfail($id);
+        $rules = [
+            'namalansia_id'     =>  'required',
+            'tanggal_periksa'   =>  'required',
+            'berat_badan'       =>  'required|integer',
+            'tinggi_badan'      =>  'required|integer',
+            'lingkar_pinggang'  =>  'required|',
+            'tekanan_darah'     =>  'required|',
+            'glukosa_darah'     =>  'required',
+            'lemak_tubuh'       =>  'required',
+            'imt'               =>  'required',
+            'lemak_perut'       =>  'required',
+            'kolestrol'         =>  'required',
+            'asam_urat'         =>  'required',
+            'makan_berlemak'    =>  'required|integer',
+            'makan_manis'       =>  'required|integer',
+            'zat_adiktif'       =>  'required|integer',
+            'jelantah'          =>  'required',
+            'merokok'           =>  'required',
+            'olahraga'          =>  'required|integer',
+            'keterangan'        =>  'required|string',
+        ];
+        $messages = [
+            'namalansia_id.required'    => 'Nama Lansia harus di isi',     
+            'tanggal_periksa.required'  => 'Tanggal Periksa harus di isi',   
+            'berat_badan.required'      => 'Berat badan harus di isi',
+            'berat_badan.integer'       => 'Berat badan harus di isi angka',
+            'tinggi_badan.required'     => 'Tinggi badan harus di isi',
+            'tinggi_badan.integer'      => 'Tinggi badan harus di isi angka',
+            'lingkar_pinggang.required' => 'Lingkar pinggang harus di isi',
+            'tekanan_darah.required'    => 'Tekanan darah harus di isi',
+            'glukosa_darah.required'    => 'Glukosa darah harus di isi',
+            'lemak_tubuh.required'      => 'Lemak tubuh harus di isi',
+            'imt.required'              => 'IMT harus di isi',
+            'lemak_perut.required'      => 'Lemak perut harus di isi',
+            'kolestrol.required'        => 'Kolestrol harus di isi',
+            'asam_urat.required'        => 'Asam urat harus di isi',
+            'makan_berlemak.required'   => 'Makan berlemak harus di isi',
+            'makan_berlemak.integer'   => 'Makan berlemak harus di isi angka',
+            'makan_manis.required'      => 'Makan Manis harus di isi',
+            'makan_manis.integer'      => 'Makan Manis harus di isi angka',
+            'zat_adiktif.required'      => 'Zat Adiktif harus di isi', 
+            'zat_adiktif.integer'      => 'Zat Adiktif harus di isi angka', 
+            'jelantah.required'         => 'Jelantah harus di isi',
+            'jelantah.integer'         => 'Jelantah harus di isi angka',
+            'merokok.required'          => 'Merokok harus di isi',
+            'olahraga.required'         => 'Olahraga harus di isi',
+            'olahraga.integer'         => 'Olahraga harus di isi angka',
+            'keterangan.required'       => 'Keterangan harus di isi'
+        ];
+        $this->validate($request, $rules, $messages);
         $plansia->update($request->all());
         return redirect('pemeriksaanlansia')->with('toast_success','Data berhasil diedit!');
     }

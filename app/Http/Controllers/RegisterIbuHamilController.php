@@ -114,6 +114,22 @@ class RegisterIbuHamilController extends Controller
     public function update(Request $request, $id)
     {
         $regmil = Ibuhamil::findorfail($id);
+        $rules= [
+            'nama'          => 'required|string',
+            'tgllahir'      => 'required',
+            'namasuami'     => 'required|string',
+            'goldarah'      => 'required',
+            'usia'          => 'required|max:2',
+            'rt'            => 'required|max:2',
+            'rw'            => 'required|max:2',
+            'telp'          => 'required|max:13',
+            'tglregister'   => 'required' 
+        ];
+
+        $messages= [
+            'required' => ':attribute tidak boleh kosong'
+        ];
+        $this->validate($request, $rules, $messages);
         $regmil->update($request->all());
         return redirect('registeribuhamil')->with('toast_success','Data Berhasil Diedit');
     }

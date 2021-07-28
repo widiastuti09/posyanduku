@@ -101,6 +101,19 @@ class JadwallansiaController extends Controller
     public function update(Request $request, $id)
     {
         $jadlan = Jadwallansia::findorfail($id);
+        $rules = [
+            'tanggal' => 'required',
+            'waktu'     => 'required',
+            'keterangan' => 'required',
+            'status'    => 'required'
+        ];
+
+        $messages = [
+            'required' => ':attribute tidak boleh kosong'
+        ];
+
+        $this->validate($request, $rules, $messages);
+
         $jadlan -> update ($request->all());
         return redirect('/Jadwal-Lansia')->with('toast_success', 'Data berhasil Diedit!');
     }

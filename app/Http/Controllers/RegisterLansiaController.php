@@ -114,6 +114,27 @@ class RegisterLansiaController extends Controller
     public function update(Request $request, $id)
     {
         $lansias = Lansia::findorfail($id);
+        $rules = [
+            'tanggal_register'  => 'required',
+            'nama'              => 'required|string',
+            'tanggal_lahir'     => 'required',
+            'jenis_kelamin'     => 'required',
+            'rt'                => 'required|integer',
+            'rw'                => 'required|integer',
+            'alamat'            => 'required|string',
+        ];
+        $messages = [
+            'tanggal_register.required'          => 'Tanggal register harus di isi',
+            'nama.required'                      => 'Nama Harus Diisi',        
+            'tanggal_lahir.required'             => 'Tanggal lahir harus di isi',
+            'jenis_kelamin.required'             => 'Jenis Kelamin harus di isi',
+            'rt.required'                        => 'RT harus di isi',
+            'rt.integer'                          => 'RT harus di isi angka',
+            'rw.required'                        => 'RW harus di isi',
+            'rw,integer'                          => 'RW harus di isi angka',
+            'alamat.required'                    => 'Alamat harus di isi'
+        ];
+        $this->validate($request, $rules, $messages);
         $lansias -> update($request->all());
         return redirect('registerlansia')->with('toast_success', 'Data Berhasil Diedit');
     }

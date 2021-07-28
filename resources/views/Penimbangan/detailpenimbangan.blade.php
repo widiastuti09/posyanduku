@@ -80,6 +80,10 @@
         <th class="font-weight-bold">Vitamin</th>
         <td scope="row"  class="font-weight-normal">{{$pen->vitamin}}</td>
     </tr>
+    <tr>
+        <th class="font-weight-bold">Penyakit</th>
+        <td scope="row"  class="font-weight-normal">{{$pen->penyakit}}</td>
+    </tr>
     
    
   </tbody>

@@ -47,20 +47,31 @@
               <div class="col-md-6">
               <div class="form-group">
                     <label>Tanggal Register</label>
-                    <input type="date" class="form-control"  id="tglregister" name="tglregister" value="{{$regmil->tglregister}}">
+                    <input type="date" class="form-control @error('tglregister') is-invalid @enderror"  id="tglregister" name="tglregister" value="{{$regmil->tglregister}}">
+                    @error('tglregister')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label>Nama Ibu Hamil</label>
-                    <input type="text" class="form-control" id="nama" name="nama" value="{{$regmil->nama}}">
+                    <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{$regmil->nama}}">
+                    @error('nama')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label>Tanggal Lahir </label>
-                    <input type="date" class="form-control" autofocus id="tglllahir" name="tgllahir" value="{{$regmil->tgllahir}}">
-                   
+                    <input type="date" class="form-control @error('tgllahir') is-invalid @enderror"" autofocus id="tglllahir" name="tgllahir" value="{{$regmil->tgllahir}}">
+                    @error('tgllahir')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label>Nama Suami</label>
-                    <input type="text" class="form-control" id="namasuami" name="namasuami" value="{{$regmil->namasuami}}">
+                    <input type="text" class="form-control @error('namasuami') is-invalid @enderror" id="namasuami" name="namasuami" value="{{$regmil->namasuami}}">
+                    @error('namasuami')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <!-- <div class="form-group">
                     <label>Gol Darah</label>
@@ -71,7 +82,10 @@
                 </div> -->
                 <div class="form-group">
                     <label>Usia (Tahun)</label>
-                    <input type="number" class="form-control" autofocus id="usia" name="usia" placeholder="Masukkan Usia" value="{{$regmil->usia}}">
+                    <input type="number" class="form-control @error('usia') is-invalid @enderror" autofocus id="usia" name="usia" placeholder="Masukkan Usia" value="{{$regmil->usia}}">
+                    @error('usia')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -88,19 +102,30 @@
                       <option>AB</option>
                       <option>O</option>
                   </select>
+                  @error('goldarah')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
                 </div>
                 <div class="form-group">
                     <label>RT</label>
-                    <input type="number" class="form-control " autofocus id="rt" name="rt" placeholder="Masukkan RT" value="{{$regmil->rt}}">
+                    <input type="number" class="form-control @error('rt') is-invalid @enderror" autofocus id="rt" name="rt" placeholder="Masukkan RT" value="{{$regmil->rt}}">
+                    @error('rt')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label>RW</label>
-                    <input type="number" class="form-control" autofocus id="rw" name="rw" placeholder="Masukkan RW" value="{{$regmil->rw}}">
+                    <input type="number" class="form-control @error('rw') is-invalid @enderror" autofocus id="rw" name="rw" placeholder="Masukkan RW" value="{{$regmil->rw}}">
+                    @error('rw')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                <div class="form-group">
                     <label>No Telp</label>
-                    <input type="number" class="form-control" autofocus id="telp" name="telp" placeholder="Masukkan Nomor Telp" value="{{$regmil->telp}}">
-                 
+                    <input type="number" class="form-control @error('telp') is-invalid @enderror" autofocus id="telp" name="telp" placeholder="Masukkan Nomor Telp" value="{{$regmil->telp}}">
+                    @error('telp')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <!-- /.form-group -->
               </div>
