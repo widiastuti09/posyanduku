@@ -16,7 +16,8 @@ class JadwalbumilController extends Controller
      */
     public function index()
     {
-        $jadmil = Jadwalbumil::all();
+        // $jadmil = Jadwalbumil::all();
+        $jadmil = Jadwalbumil::orderBy('tanggal','DESC')->get();
         return view ('Jadwal.Bumil.jadwal', compact('jadmil'));
     }
 

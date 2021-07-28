@@ -16,7 +16,8 @@ class JadwallansiaController extends Controller
      */
     public function index()
     {
-        $jadlan = Jadwallansia::all();
+        // $jadlan = Jadwallansia::all();
+        $jadlan = Jadwallansia::orderBy('tanggal','desc')->get();
         return view ('Jadwal.Lansia.jadwal', compact('jadlan'));
     }
 
