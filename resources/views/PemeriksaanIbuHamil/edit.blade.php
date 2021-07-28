@@ -51,7 +51,7 @@
                                         <select name="id_ibu" id="id_ibu" class="form-control select2bs4 @error('id_ibu') is-invalid @enderror"  style="width: 100%;">
                                             <option value="" disabled="disabled">Pilih nama</option>
                                             @foreach ($ibuHamil as $hamil)
-                                                <option value="{{ $hamil->id }}" @if($pemeriksaan_ibu_hamil->id === $hamil->id_ibu) selected @endif>{{ $hamil->nama }}</option>
+                                                <option value="{{$hamil->id}}" @if($hamil->id === $pemeriksaan_ibu_hamil->id_ibu) selected @endif>{{$hamil->nama}}</option>
                                             @endforeach
                                         </select>
                                         @error('id_ibu')
