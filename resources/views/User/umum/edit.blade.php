@@ -68,7 +68,7 @@
                                             <input type="password"
                                                 class="form-control @error('password') is-invalid @enderror"
                                                 name="password" placeholder="Masukan password" id="password">
-                                            <div class="input-group-append">
+                                                <div class="input-group-append">
                                                 <button class="btn btn-outline-secondary" type="button"
                                                     id="button-show-password">
                                                     <i class="fas fa-eye"></i>
@@ -83,12 +83,12 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="password">Konfirmasi Password</label>
-                                        <div class="input-group mb-3">
+                                        <div class="input-group mb-3" >
                                             <input type="password"
                                                 class="form-control @error('confirm_password') is-invalid @enderror"
                                                 name="confirm_password" placeholder="Masukan password"
                                                 id="confirm-password">
-                                            <div class="input-group-append">
+                                                <div class="input-group-append">
                                                 <button class="btn btn-outline-secondary" type="button"
                                                     id="button-show-confirm-password">
                                                     <i class="fas fa-eye"></i>
@@ -121,5 +121,37 @@
     @include('Template.script')
 
 </body>
+<script>
+        $(document).ready(function() {
+            var showPassword = true;
+            var showConfirmPassword = true;
+            $('#button-show-password').on('click', function() {
+                if (showPassword) {
+                    $('#password').prop('type', 'text');
+                    $(this).children().removeClass('fa-eye');
+                    $(this).children().addClass('fa-eye-slash');
+                } else {
+                    $('#password').prop('type', 'password');
+                    $(this).children().removeClass('fa-eye-slash');
+                    $(this).children().addClass('fa-eye');
+                }
+                showPassword = !showPassword
+            });
+
+            $('#button-show-confirm-password').on('click', function() {
+                if (showConfirmPassword) {
+                    $('#confirm-password').prop('type', 'text');
+                    $(this).children().removeClass('fa-eye');
+                    $(this).children().addClass('fa-eye-slash');
+                } else {
+                    $('#confirm-password').prop('type', 'password');
+                    $(this).children().removeClass('fa-eye-slash');
+                    $(this).children().addClass('fa-eye');
+                }
+                showConfirmPassword = !showConfirmPassword
+            });
+        })
+    </script>
+
 
 </html>
