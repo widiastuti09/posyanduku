@@ -20,7 +20,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="">
-                        <h1>Data Lansia</h1>
+                        <h1>Data Petugas Umum</h1>
                     </div>
 
                 </div>
@@ -72,16 +72,9 @@
                                                     <i class="fas fa-eye"></i>
                                                 </button>
                                             </div>
-                                            
-                                             <!-- <div class="input-group" id="show_hide_password">
-                                                <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" id="password" placeholder="Masukkan Password">
-                                                    <div class="input-group-addon">
-                                                        <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-                                                    </div>
-                                            </div> -->
                                         </div>
                                         @error('password')
-                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="text-danger" style="font-size : 12px">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
@@ -99,10 +92,10 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        @error('confirm_password')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
                                     </div>
+                                    @error('confirm_password')
+                                        <div class="text-danger" style="font-size : 12px">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group">

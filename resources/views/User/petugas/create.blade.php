@@ -19,7 +19,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="">
-                        <h1>Data Lansia</h1>
+                        <h1>Data Petugas</h1>
                     </div>
 
                 </div>
@@ -53,7 +53,7 @@
                             <div class="form-group">
                                 <label for="email">Email Petugas</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" placeholder="Masukan email Petugas">
+                                    name="email" placeholder="Masukan email Petugas" value="{{old('email')}}">
                                 @error('email')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -67,7 +67,7 @@
                                     <option value="kader2">Kader Lansia</option>
                                 </select>
                                 @error('level')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="invalid-feedback">{{$message}}</div>
                                 @enderror
                             </div>
                             <div class="row">
@@ -76,8 +76,8 @@
                                         <label for="password">Password</label>
                                         <div class="input-group mb-3">
                                             <input type="password"
-                                                class="form-control @error('password') is-invalid @enderror"
-                                                name="password" placeholder="Masukan password Petugas" id="password">
+                                                class="form-control @error('password') is-invalid @enderror" autofocus
+                                                name="password" placeholder="Masukan password Petugas" id="password" value="{{old('password')}}">
                                             <div class="input-group-append">
                                                 <button class="btn btn-outline-secondary" type="button"
                                                     id="button-show-password">
@@ -86,7 +86,7 @@
                                             </div>
                                         </div>
                                         @error('password')
-                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="text-danger" style="font-size : 12px">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
@@ -95,9 +95,9 @@
                                         <label for="password">Konfirmasi Password</label>
                                         <div class="input-group mb-3">
                                             <input type="password"
-                                                class="form-control @error('confirm_password') is-invalid @enderror"
-                                                name="confirm_password" placeholder="Masukan password Petugas"
+                                                class="form-control @error('confirm_password') is-invalid @enderror" name="confirm_password" placeholder="Masukan password Petugas"
                                                 id="confirm-password">
+                                                
                                             <div class="input-group-append">
                                                 <button class="btn btn-outline-secondary" type="button"
                                                     id="button-show-confirm-password">
@@ -105,12 +105,14 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        @error('confirm_password')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
+                                       
                                     </div>
+                                    @error('confirm_password')
+                                            <div class="text-danger" style="font-size : 12px">{{ $message }}</div>
+                                        @enderror
                                 </div>
                             </div>
+                            <br>
                             <div class="form-group">
                                 <input type="submit" class="form-control btn btn-primary" value="Simpan">
                             </div>

@@ -16,7 +16,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="">
-                        <h1>Data Register Petugas</h1>
+                        <h1>Data Register Umum</h1>
                     </div>
                 </div>
             </div>

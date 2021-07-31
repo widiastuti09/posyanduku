@@ -19,7 +19,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="">
-                        <h1>Data Lansia</h1>
+                        <h1>Data Petugas</h1>
                     </div>
 
                 </div>

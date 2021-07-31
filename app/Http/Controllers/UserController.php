@@ -23,12 +23,13 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required',
             'level' => 'required',
-            'password' => 'required',
-            'confirm_password' => 'required',
+            'password' => 'required|min:8',
+            'confirm_password' => 'required_with:password|same:password|min:8'
         ];
 
         $messages = [
-            'required' => 'Bidang :attribute harus diisi'
+            'required' => ':attribute harus diisi',
+            'same' => 'Password dan konfirmasi password tidak sama'
         ];
 
         $this->validate($request, $rules, $messages);
@@ -85,12 +86,13 @@ class UserController extends Controller
         $rules = [
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
-            'confirm_password' => 'required',
+            'password' => 'required|min:8',
+            'confirm_password' => 'required_with:password|same:password|min:8',
         ];
 
         $messages = [
-            'required' => 'Bidang :attribute harus diisi'
+            'required' => 'Bidang :attribute harus diisi',
+            'same' => 'Password dan konfirmasi password tidak sama'
         ];
 
         $this->validate($request, $rules, $messages);

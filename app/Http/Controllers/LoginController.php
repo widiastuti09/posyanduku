@@ -10,7 +10,17 @@ class LoginController extends Controller
 {
     public function postlogin (Request $request){
         // dd($request->all());
+        $rules = [
+            'email' => 'required',
+            'password' => 'required|min:8',
+        ];
+        $messages = [
+            'required' => ':attribute harus diisi',
+            'min:8'     => ':attribute minimal 8 karakter'
+        ];
+        $this->validate($request, $rules, $messages);
         if(Auth::attempt($request->only('email','password'))){
+            
             $user = User::where('email', $request->email)->first();
             if($user->level == 'admin'){
                 // dd("INI ADMIN");
