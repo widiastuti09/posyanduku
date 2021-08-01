@@ -53,7 +53,7 @@ class JadwallansiaController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        Jadwallansia::create([
+        $jadwal = Jadwallansia::create([
             'tanggal' => $request -> tanggal,
             'waktu'     => $request -> waktu,
             'keterangan' => $request -> keterangan,
@@ -62,7 +62,12 @@ class JadwallansiaController extends Controller
 
         $deviceToken = User::whereNotNull('device_token')->pluck('device_token')->all();
 
-        $this->sendNotification("Jadwal", "Jadwal pemeriksaan ibu lansia tanggal ".Carbon::parse($request->tanggal)->format('d M Y')." pukul ".$request->waktu, $deviceToken);
+        $this->sendNotification(
+            "Jadwal", 
+            "Jadwal pemeriksaan lansia tanggal ".Carbon::parse($request->tanggal)->format('d M Y')." pukul ".$request->waktu, 
+            $deviceToken,
+            $jadwal
+        );
 
         return redirect('/Jadwal-Lansia')->with('toast_success', 'Data berhasil Disimpan!');
     }
@@ -131,10 +136,11 @@ class JadwallansiaController extends Controller
         return back ()->with('toast_success', 'Data berhasil Dihapus!');
     }
 
-    public function sendNotification($title, $body, $token){
+    public function sendNotification($title, $body, $token, $jadwal){
         $data = [
             'title' => $title,
             'body' => $body,
+            'click_action' => 'com.example.e_posyandu.JADWAL_LANSIA'
         ];
 
         $device_token = [];
@@ -144,7 +150,8 @@ class JadwallansiaController extends Controller
         }
         $payload = [
             'registration_ids' => $device_token,
-            'notification' => $data
+            'notification' => $data,
+            'data' => $jadwal
         ];
 
         $curl = curl_init();

@@ -68,7 +68,7 @@ class JadwalbalitaController extends Controller
         "Jadwal pemeriksaan balita tanggal ".Carbon::parse($request->tanggal)->format('d M Y')." pukul ".$request->waktu, 
         $deviceToken,
         $jadwal);
-
+        
         return redirect('/Jadwal-Balita')->with('toast_success', 'Data berhasil Disimpan!');
     }
 
@@ -119,6 +119,7 @@ class JadwalbalitaController extends Controller
 
         $this->validate($request, $rules, $messages);
         $jadbal ->update($request->all());
+        
         return redirect('/Jadwal-Balita')->with('toast_success', 'Data berhasil Diedit!');
     }
 
