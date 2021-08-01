@@ -139,6 +139,7 @@ class JadwalbalitaController extends Controller
         $data = [
             'title' => $title,
             'body' => $body,
+            'click_action' => 'com.example.e_posyandu.JADWAL_BALITA'
         ];
 
         $device_token = [];
