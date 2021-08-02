@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @include('Template.style')
-    <title>Edit Register Ibu Hamil</title>
+    <title>Data Registrasi Ibu Hamil</title>
 </head>
 <body>
 @include('Template.navbar')

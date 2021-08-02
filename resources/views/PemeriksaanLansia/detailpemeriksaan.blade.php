@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Penimbangan</title>
+    <title>Data Pemeriksaan Lansia</title>
 @include('Template.style')
 </head>
 <body>
@@ -167,7 +167,7 @@
               <!-- /.col -->
               <div class="col-12 col-sm-6 mb-3 ml-2">
               @if (auth()->user()->level === 'admin') 
-              <a href="#" class="btn btn-warning"><i class="fas fa-pen-alt"> Edit Data</i></a>
+              <a href="{{route('editpemeriksaanlansia', $plansia->id)}}" class="btn btn-warning"><i class="fas fa-pen-alt"> Edit Data</i></a>
               @endif
               <a href="{{route ('pemeriksaanlansia')}}" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
                 <!-- /.form-group -->
