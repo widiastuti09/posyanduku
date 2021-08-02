@@ -17,7 +17,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="">
-            <h1>Data Jadwal Penibangan</h1>
+            <h1>Data Jadwal Penimbangan</h1>
           </div>
           
         </div>
@@ -87,7 +87,7 @@
           <!-- /.col -->
           <div class="col-12 col-sm-6">
           <button type="submit" class="btn btn-success"><i class="fas fa-plus-square"> Simpan Data</i></button>
-          <a href="{{ route ('registerlansia')}}" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
+          <a href="{{route('jadwalpenimbangan')}}" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
             <!-- /.form-group -->
           </div>
           <!-- /.col -->
