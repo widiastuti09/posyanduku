@@ -21,7 +21,7 @@ class UserController extends Controller
     public function storePetugas(Request $request){
         $rules = [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users',
             'level' => 'required',
             'password' => 'required|min:8',
             'confirm_password' => 'required_with:password|same:password|min:8'
@@ -29,7 +29,8 @@ class UserController extends Controller
 
         $messages = [
             'required' => ':attribute harus diisi',
-            'same' => 'Password dan konfirmasi password tidak sama'
+            'same' => 'Password dan konfirmasi password tidak sama',
+            'unique' => ":attribute sudah terpakai"
         ];
 
         $this->validate($request, $rules, $messages);
@@ -87,14 +88,15 @@ class UserController extends Controller
     public function storeUmum(Request $request){
         $rules = [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users',
             'password' => 'required|min:8',
             'confirm_password' => 'required_with:password|same:password|min:8',
         ];
 
         $messages = [
             'required' => 'Bidang :attribute harus diisi',
-            'same' => 'Password dan konfirmasi password tidak sama'
+            'same' => 'Password dan konfirmasi password tidak sama',
+            'unique' => ":attribute sudah terpakai"
         ];
 
         $this->validate($request, $rules, $messages);
