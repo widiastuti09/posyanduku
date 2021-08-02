@@ -85,7 +85,7 @@
           <!-- /.col -->
           <div class="col-12 col-sm-6">
           <button type="submit" class="btn btn-success"><i class="fas fa-plus-square"> Tambah Data</i></button>
-          <a href="#" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
+          <a href="{{ route('jadwallansia') }}" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
             <!-- /.form-group -->
           </div>
           <!-- /.col -->

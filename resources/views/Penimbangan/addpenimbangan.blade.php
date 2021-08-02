@@ -121,6 +121,7 @@
                     <option selected="selected" disabled="disabled">Pilih Vitamin</option>
                     <option @if(old('vitamin') === 'Vit A Biru (6 - 11 Bulan)') selected @endif>Vit A Biru (6 - 11 Bulan)</option>
                     <option @if(old('vitamin') === 'Vit A Merah (1 - 5 Tahun)') selected @endif>Vit A Merah (1 - 5 Tahun)</option>
+                    <option @if(old('vitamin') === 'Tidak Ada') selected @endif>Tidak Ada</option>
                   </select>
                   @error('vitamin')
                     <div class="invalid-feedback">{{$message}}</div>
@@ -128,7 +129,7 @@
                 </div>
                 <div class="form-group">
                   <label>Penyakit (optional)</label>
-                  <select class="form-control select2bs4  name="penyakit" style="width: 100%;" value="{{old('penyakit')}}">
+                  <select class="form-control select2bs4"  name="penyakit" style="width: 100%;" value="{{old('penyakit')}}">
                     <option selected="selected" disabled="disabled">Pilih penyakit</option>
                     <option value="Demam">Demam</option>
                     <option value="Luka dan Sakit Kulit">Luka dan Sakit Kulit</option>

@@ -17,7 +17,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="">
-            <h1>Data Jadwal Penibangan</h1>
+          <h1>Data Resti Ibu Hamil</h1>
           </div>
           
         </div>
@@ -82,7 +82,7 @@
                 </div> -->
                 <div class="form-group">
              
-                <label for="">Jenis Imunisasi</label>
+                <label for="">Asuransi</label>
                 <select class="form-control select2" id="asuransi" name="asuransi" style="width: 100%;">
                     @if($bumilresti->asuransi)
                       <option value="{{$bumilresti->asuransi}}" >{{$bumilresti->asuransi}}</option>

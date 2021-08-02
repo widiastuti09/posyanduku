@@ -85,7 +85,7 @@
           
               <!-- /.col -->
               <div class="col-12 col-sm-6 mb-3 ml-2">
-              <a href="#" class="btn btn-warning"><i class="fas fa-pen-alt"> Edit Data</i></a>
+              <a href="{{route('editjadwalpenimbangan', $jadbal->id)}}" class="btn btn-warning"><i class="fas fa-pen-alt"> Edit Data</i></a>
               <a href="{{route('jadwalpenimbangan')}}" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
                 <!-- /.form-group -->
               </div>

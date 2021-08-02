@@ -137,21 +137,19 @@
                     <option value="" disabled="disabled">--Pilih Opsi--</option>
                     <option >Vit A Biru (6 - 11 Bulan)</option>
                     <option >Vit A Merah (1 - 5 Tahun)</option>
+                    <option>Tidak Ada</option>
                   @endif
                   </select>
                   @error('vitamin')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                   <label class="mt-3">Penyakit (optional)</label>
-                  <select class="form-control select2bs4"  name="penyakit" style="width: 100%;" value="{{$pen->penyakit}}">
-                  @if($pen->penyakit)
-                  <option value="{{$pen->penyakit}}" >{{$pen->penyakit}}</option>
+                  <select class="form-control select2bs4"  name="penyakit" style="width: 100%;">
                     <option selected="selected" disabled="disabled">Pilih penyakit</option>
-                    <option value="Demam">Demam</option>
-                    <option value="Luka dan Sakit Kulit">Luka dan Sakit Kulit</option>
-                    <option value="Batuk">Batuk</option>
-                    <option value="Diare">Diare</option>
-                    @endif
+                    <option value="Demam" @if($pen->penyakit === 'Demam') selected @endif>Demam</option>
+                    <option value="Luka dan Sakit Kulit" @if($pen->penyakit === 'Luka dan Sakit Kulit') selected @endif>Luka dan Sakit Kulit</option>
+                    <option value="Batuk" @if($pen->penyakit === 'Batuk') selected @endif>Batuk</option>
+                    <option value="Diare" @if($pen->penyakit === 'Diare') selected @endif>Diare</option>
                   </select>
                 </div>
 
