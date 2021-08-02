@@ -203,7 +203,9 @@ class RegistrasibalitaController extends Controller
     {
         $regbal = Registrasibalita::findorfail($id);
         $regbal->delete();
-        return back()->with('toast_success', 'Data berhasil dihapus');
+        // return back()->with('toast_success', 'Data berhasil dihapus');
+        return response()->json(['status'=>'Data Berhasil dihapus !']);
+
     }
 
     

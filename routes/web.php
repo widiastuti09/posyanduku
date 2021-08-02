@@ -54,7 +54,9 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
     Route::get('/detail-penimbangan/{id}','PenimbanganController@show')->name('detail-penimbangan');
     Route::get('/editpenimbangan/{id}','PenimbanganController@editpenimbangan')->name('editpenimbangan');
     Route::post('/updatepenimbangan/{id}','PenimbanganController@update')->name('updatepenimbangan');
-    Route::get('/deletepenimbangan/{id}','PenimbanganController@destroy')->name('deletepenimbangan');
+    // Route::get('/deletepenimbangan/{id}','PenimbanganController@destroy')->name('deletepenimbangan');
+    Route::delete('/deletepenimbangan/{id}','PenimbanganController@destroy');
+
 
     Route::get('/register', 'RegistrasibalitaController@register')->name('register');
     Route::get('/addregisterbalita', 'RegistrasibalitaController@addregisterbalita')->name('addregisterbalita');
@@ -62,7 +64,9 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
     Route::get('/detailregister/{id}','RegistrasibalitaController@show')->name('detailregister');
     Route::get('/editregister/{id}','RegistrasibalitaController@edit')->name('editregister');
     Route::post('/updateregister/{id}','RegistrasibalitaController@update')->name('updateregister');
-    Route::get('/deleteregister/{id}','RegistrasibalitaController@destroy')->name('deleteregister');
+    // Route::get('/deleteregister/{id}','RegistrasibalitaController@destroy')->name('deleteregister');
+    Route::delete('/deleteregister/{id}','RegistrasibalitaController@destroy');
+
 
     Route::get('/registeribuhamil', 'RegisterIbuHamilController@registerhamil')->name('registerhamil');
     Route::get('/addregisteribuhamil', 'RegisterIbuHamilController@create')->name('addregisterhamil');

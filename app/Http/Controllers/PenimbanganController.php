@@ -137,7 +137,9 @@ class PenimbanganController extends Controller
     {
         $pen = Penimbangan::findOrFail($id);
         $pen->delete();
-        return back()->with('toast_success', 'Data berhasil dihapus!');
+        // return back()->with('toast_success', 'Data berhasil dihapus!');
+        return response()->json(['status'=>'Data Berhasil dihapus !']);
+
 
     }
 

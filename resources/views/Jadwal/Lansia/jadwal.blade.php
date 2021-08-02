@@ -87,7 +87,7 @@
                         };
                         $.ajax({
                             type: "DELETE",
-                            url: '/Hapus-jadwal-lansia/' + delete_id,
+                            url: '/Hapus-jadwal/' + delete_id,
                             data: data,
                             success: function (response) {
                                 Swal.fire('Berhasil!', 'Data berhasil dihapus',
