@@ -65,10 +65,10 @@
                                                     Tidak
                                                 </label>
                                             </div>
-                                            @error('punya_akun')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
                                         </div>
+                                        @error('punya_akun')
+                                            <div class="text-danger text-sm">{{ $message }}</div>
+                                            @enderror
 
                                         <div id="akun-container"></div>
                                     </div>
@@ -130,23 +130,23 @@
                                         <label>Nama Ibu</label>
                                         <div class="d-flex gap-5 align-items-center mb-2">
                                             <div class="form-check">
-                                                <input class="form-check-input @error('namaibu') is-invalid @enderror" type="radio" name="pilih_ibu"
+                                                <input class="form-check-input @error('pilih_ibu') is-invalid @enderror" type="radio" name="pilih_ibu"
                                                     id="terdaftar" value="terdaftar">
                                                 <label class="form-check-label" for="terdaftar">
                                                     Terdaftar
                                                 </label>
                                             </div>
                                             <div class="form-check ml-3">
-                                                <input class="form-check-input @error('namaibu') is-invalid @enderror" type="radio" name="pilih_ibu"
+                                                <input class="form-check-input @error('pilih_ibu') is-invalid @enderror" type="radio" name="pilih_ibu"
                                                     id="tidak-terdaftar" value="tidak_terdaftar">
                                                 <label class="form-check-label" for="tidak-terdaftar">
                                                     Tidak Terdaftar
                                                 </label>
                                             </div>
-                                            @error('namaibu')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
                                         </div>
+                                        @error('pilih_ibu')
+                                            <div class="text-danger text-sm">{{ $message }}</div>
+                                            @enderror
 
                                         <div id="ibu-container"></div>
                                        

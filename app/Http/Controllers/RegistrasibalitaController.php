@@ -56,11 +56,13 @@ class RegistrasibalitaController extends Controller
             'nokk'          => 'required|min:16',
             'nikbalita'     => 'required|min:16',
             'telp'          => 'required|max:13|min:10',
-            'namaibu'   => 'required',
+            'pilih_ibu'   => 'required',
             'punya_akun'    =>'required'
         
         ],
         [
+            'punya_akun.required'   => 'Bidang Harus diisi',
+            'pilih_ibu.required'   => 'Bidang Harus diisi',
             'namabalita.required'   => 'Nama Balita Harus diisi',
             'namabalita.required'   => 'Nama Balita Harus diisi',
             'tanggallahir.required' => 'Tanggal Lahir Harus diisi',
