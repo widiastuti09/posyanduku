@@ -127,7 +127,8 @@ class BumilrestiController extends Controller
     {
         $bumilresti = Bumilresti::findorfail($id);
         $bumilresti -> delete();
-        return back()->with('toast_success', 'Data berhasil dihapus!');
+        // return back()->with('toast_success', 'Data berhasil dihapus!');
+        return response()->json(['status'=>'Data Berhasil dihapus !']);
     }
     public function print()
     {

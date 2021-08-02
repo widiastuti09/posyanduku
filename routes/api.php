@@ -46,3 +46,5 @@ Route::get('jadwal-lansia', 'API\JadlanController@index');
 Route::post('/reset-password', 'API\AuthController@resetPassword');
 Route::post('/verification-code', 'API\AuthController@verificationCode');
 Route::post('/ganti-password', 'API\AuthController@gantiPassword');
+
+Route::put('/edit-profile/{id}', 'API\AuthController@updateUser');

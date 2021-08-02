@@ -75,7 +75,9 @@ class UserController extends Controller
 
         $petugas->delete();
 
-        return redirect()->route('pengguna.index');   
+        // return redirect()->route('pengguna.index'); 
+        return response()->json(['status'=>'Data Berhasil dihapus !']);
+  
     }
 
     public function tambahUmum(){
@@ -136,7 +138,9 @@ class UserController extends Controller
 
         $umum->delete();
 
-        return redirect()->route('pengguna.index');   
+        // return redirect()->route('pengguna.index');
+        return response()->json(['status'=>'Data Berhasil dihapus !']);
+   
     }
     
 }

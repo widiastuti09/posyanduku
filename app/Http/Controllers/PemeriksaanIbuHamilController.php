@@ -87,7 +87,9 @@ class PemeriksaanIbuHamilController extends Controller
         $pemeriksaan_ibu_hamil = PemeriksaanIbuHamil::findOrFail($id);
         $pemeriksaan_ibu_hamil->delete();
 
-        return redirect()->route('pemeriksaanibuhamil.index')->with('toast_success','Data Berhasil dihapus!');
+        // return redirect()->route('pemeriksaanibuhamil.index')->with('toast_success','Data Berhasil dihapus!');
+        return response()->json(['status'=>'Data Berhasil dihapus !']);
+
     }
     public function print()
     {

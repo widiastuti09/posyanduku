@@ -222,7 +222,9 @@ class PemeriksaanLansiaController extends Controller
     {
         $plansia = Pemeriksaanlansia::findOrFail($id);
         $plansia->delete();
-        return back()->with('toast_success', 'Data berhasil dihapus!');
+        // return back()->with('toast_success', 'Data berhasil dihapus!');
+        return response()->json(['status'=>'Data Berhasil dihapus !']);
+
     }
     public function print()
     {

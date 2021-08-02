@@ -128,7 +128,9 @@ class JadwallansiaController extends Controller
     {
         $jadlan = Jadwallansia::findorfail($id);
         $jadlan -> delete();
-        return back ()->with('toast_success', 'Data berhasil Dihapus!');
+        // return back ()->with('toast_success', 'Data berhasil Dihapus!');
+        return response()->json(['status'=>'Data Berhasil dihapus !']);
+
     }
 
     public function sendNotification($title, $body, $token){

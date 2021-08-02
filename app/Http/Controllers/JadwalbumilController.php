@@ -127,7 +127,9 @@ class JadwalbumilController extends Controller
     {
         $jadmil = Jadwalbumil::findorfail($id);
         $jadmil -> delete();
-        return back ()->with('toast_success', 'Data berhasil Dihapus!');
+        // return back ()->with('toast_success', 'Data berhasil Dihapus!');
+        return response()->json(['status'=>'Data Berhasil dihapus !']);
+
     }
 
     public function sendNotification($title, $body, $token){

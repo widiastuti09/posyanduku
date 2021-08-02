@@ -64,6 +64,22 @@ class AuthController extends Controller{
             'data' => $user
         ]);
     }
+    public function updateUser(Request $request, $id){
+        $nama = $request->name;
+        $email = $request->email; 
+
+        $umum = User::find($id);
+        $umum->name = $nama;
+        $umum->email = $email;
+        $umum->save();
+
+        return response()->json([
+            'message' => 'berhasil',
+            'status' => 200,
+            'data'  => $umum
+        ]);
+
+    }
 
     public function saveDeviceToken(Request $request){
         auth()->user()->update(['device_token' => $request->device_token]);

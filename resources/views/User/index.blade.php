@@ -50,6 +50,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <tbody>
                                     @foreach ($posyandu as $key => $petugas)
                                         <tr>
+                                        <input type="hidden" class="serdelete_val" value="{{$petugas->id}}">
+
                                             <td style="text-align : center">{{ $key + 1 }}</td>
                                             <td>
                                                 <strong>{{ $petugas->email }}</strong> <br>
@@ -73,7 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                             class="fas fa-info-circle"></i></a>
                                                     <a href="{{ route('pengguna.edit-petugas', $petugas->id) }}"
                                                         class="btn btn-warning"> <i class="fas fa-pen-alt"></i></a>
-                                                    <button type="submit" class="btn btn-danger"> <i
+                                                    <button type="button" class="btn btn-danger hapus"> <i
                                                             class="fas fa-trash-alt"></i></button>
                                                 </form>
     
@@ -106,6 +108,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <tbody>
                                     @foreach ($umum as $key => $masyarakat)
                                         <tr>
+                                            <input type="hidden" class="serdelete_val" value="{{$masyarakat->id}}">
+
                                             <td style="text-align : center">{{ $key + 1 }}</td>
                                             <td>
                                                 <strong>{{ $masyarakat->email }}</strong> <br>
@@ -126,7 +130,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                             class="fas fa-info-circle"></i></a>
                                                     <a href="{{ route('pengguna.edit-umum', $masyarakat->id) }}"
                                                         class="btn btn-warning"> <i class="fas fa-pen-alt"></i></a>
-                                                    <button type="submit" class="btn btn-danger"> <i
+                                                    <button type="button" class="btn btn-danger hapus"> <i
                                                             class="fas fa-trash-alt"></i></button>
                                                 </form>
                                             </td>
@@ -151,7 +155,69 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script>
             $(document).ready(function() {
                 $('#table-user-posyandu').DataTable({});
+                     $('#table-user-posyandu').on('click', '.hapus', function (e) {
+
+                var delete_id = $(this).closest("tr").find('.serdelete_val').val();
+                // alert(delete_id);
+
+                Swal.fire({
+                    title: 'Yakin Hapus Data ?',
+                    showCancelButton: true,
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        var data = {
+                            "_token": '{{ csrf_token() }}',
+                            "id": delete_id,
+                        };
+                        $.ajax({
+                            type: "DELETE",
+                            url: '/pengguna/hapus-petugas/' + delete_id,
+                            data: data,
+                            success: function (response) {
+                                Swal.fire('Berhasil!', 'Data berhasil dihapus',
+                                        'success')
+                                    .then(() => {
+                                        location.reload();
+                                    })
+                            }
+                        })
+                    }
+                })
+
+            });
                 $('#table-user-umum').DataTable({});
+                     $('#table-user-umum').on('click', '.hapus', function (e) {
+
+                var delete_id = $(this).closest("tr").find('.serdelete_val').val();
+                // alert(delete_id);
+
+                Swal.fire({
+                    title: 'Yakin Hapus Data ?',
+                    showCancelButton: true,
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        var data = {
+                            "_token": '{{ csrf_token() }}',
+                            "id": delete_id,
+                        };
+                        $.ajax({
+                            type: "DELETE",
+                            url: '/pengguna/hapus-umum/' + delete_id,
+                            data: data,
+                            success: function (response) {
+                                Swal.fire('Berhasil!', 'Data berhasil dihapus',
+                                        'success')
+                                    .then(() => {
+                                        location.reload();
+                                    })
+                            }
+                        })
+                    }
+                })
+
+            });
             });
         </script>
 </body>

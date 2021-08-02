@@ -144,6 +144,8 @@ class RegisterIbuHamilController extends Controller
     {
         $regmil = Ibuhamil::findorfail($id);
         $regmil->delete();
-        return back()->with('toast_success','Data Berhasil Dihapus');
+        // return back()->with('toast_success','Data Berhasil Dihapus');
+        return response()->json(['status'=>'Data Berhasil dihapus !']);
+
     }
 }

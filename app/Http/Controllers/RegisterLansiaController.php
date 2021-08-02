@@ -149,6 +149,8 @@ class RegisterLansiaController extends Controller
     {
         $lansias = Lansia::findorfail($id);
         $lansias->delete();
-        return back()->with('toast_success','Data Berhasil dihapus');
+        // return back()->with('toast_success','Data Berhasil dihapus');
+        return response()->json(['status'=>'Data Berhasil dihapus !']);
+
     }
 }

@@ -129,7 +129,9 @@ class JadwalbalitaController extends Controller
     {
         $jadbal = Jadwalbalita::findOrFail($id);
         $jadbal->delete();
-        return back()->with('toast_success', 'Data berhasil Dihapus!');  
+        // return back()->with('toast_success', 'Data berhasil Dihapus!');  
+        return response()->json(['status'=>'Data Berhasil dihapus !']);
+
     }
 
     public function sendNotification($title, $body, $token){

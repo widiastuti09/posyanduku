@@ -68,9 +68,11 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
     Route::get('/addregisteribuhamil', 'RegisterIbuHamilController@create')->name('addregisterhamil');
     Route::get('/detailibuhamil/{id}', 'RegisterIbuHamilController@show')->name('detailibuhamil');
     Route::post('/simpan-registeribuhamil', 'RegisterIbuHamilController@store')->name('simpan-registeribuhamil');
-    Route::get('/deleteregisteribuhamil/{id}', 'RegisterIbuHamilController@destroy')->name('deleteregisteribuhamil');
+    // Route::get('/deleteregisteribuhamil/{id}', 'RegisterIbuHamilController@destroy')->name('deleteregisteribuhamil');
     Route::post('/updateregisterbumil/{id}', 'RegisterIbuHamilController@update')->name('updateregisterbumil');
     Route::get('/editregisterbumil/{id}','RegisterIbuHamilController@edit')->name('editregisterbumil');
+    Route::delete('/deleteregisteribuhamil/{id}', 'RegisterIbuHamilController@destroy');
+
 
     
 
@@ -79,17 +81,20 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
     Route::get('/addregisterlansia','RegisterLansiaController@create')->name('addregisterlansia');
     Route::get('/detailregisterlansia/{id}', 'RegisterLansiaController@show')->name('detailregisterlansia');
     Route::post('/simpan-registerlansia', 'RegisterLansiaController@store')->name('simpan-lansia');
-    Route::get('/delete-registerlansia/{id}', 'RegisterLansiaController@destroy')->name('hapus-lansia');
+    // Route::get('/delete-registerlansia/{id}', 'RegisterLansiaController@destroy')->name('hapus-lansia');
     Route::post('/updateregisterlansia/{id}', 'RegisterLansiaController@update')->name('update-lansia');
     Route::get('/editregisterlansia/{id}', 'RegisterLansiaController@edit')->name('edit-lansia');
+    Route::delete('/delete-registerlansia/{id}', 'RegisterLansiaController@destroy');
+
 
     Route::get('/pemeriksaanlansia', 'PemeriksaanLansiaController@index')->name('pemeriksaanlansia');
     Route::get('/detailpemeriksaanlansia/{id}', 'PemeriksaanLansiaController@show')->name('detailpemeriksaanlansia');
     Route::get('/addpemeriksaanlansia', 'PemeriksaanLansiaController@create')->name('addpemeriksaanlansia');
     Route::post('/simpanpemeriksaanlansia', 'PemeriksaanLansiaController@store')->name('simpanpemeriksaanlansia');
-    Route::get('/deletepemeriksaanlansia/{id}', 'PemeriksaanLansiaController@destroy')->name('deletepemeriksaanlansia');
+    // Route::get('/deletepemeriksaanlansia/{id}', 'PemeriksaanLansiaController@destroy')->name('deletepemeriksaanlansia');
     Route::get('/editpemeriksaanlansia/{id}', 'PemeriksaanLansiaController@edit')->name('editpemeriksaanlansia');
     Route::post('/updatepemeriksaan/{id}', 'PemeriksaanLansiaController@update')->name('updatepemeriksaanlansia');
+    Route::delete('/deletepemeriksaanlansia/{id}', 'PemeriksaanLansiaController@destroy');
 
 
     //Jadwal balita
@@ -97,10 +102,12 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
     Route::get('/Jadwal-Balita', 'JadwalbalitaController@index')->name('jadwalpenimbangan');
     Route::get('/Add-Jadwal-Balita', 'JadwalbalitaController@create')->name('addjadwalpenimbangan');
     Route::post('/simpan-jadwal-balita','JadwalbalitaController@store')->name('simpanjadwalpenimbangan');
-    Route::get('/Hapis-jadwal-balita/{id}','JadwalbalitaController@destroy')->name('hapusjadwalpenimbangan');
+    // Route::get('/Hapus-jadwal-balita/{id}','JadwalbalitaController@destroy')->name('hapusjadwalpenimbangan');
     Route::get('/Detail-jadwal-balita/{id}','JadwalbalitaController@show')->name('detailjadwalpenimbangan');
     Route::get('Edit-jadwal-balita/{id}','JadwalbalitaController@edit')->name('editjadwalpenimbangan');
     Route::post('Update-jadwal-balita/{id}','JadwalbalitaController@update')->name('updatejadwalpenimbangan');
+    Route::delete('/Hapus-jadwal-balita/{id}','JadwalbalitaController@destroy');
+
 
     //Jadwal bumil
 
@@ -123,16 +130,17 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
     Route::get('/Detail-jadwal/{id}','JadwallansiaController@show')->name('detailjadwallansia');
     Route::get('Edit-jadwal/{id}','JadwallansiaController@edit')->name('editjadwallansia');
     Route::post('Update-jadwal/{id}','JadwallansiaController@update')->name('updatejadwallansia');
+    
 
     //resti
     Route::get('/Bumil-resti', 'BumilrestiController@index')->name('bumilresti');
     Route::get('/Add-Bumil-resti', 'BumilrestiController@create')->name('addbumilresti');
     Route::post('/Simpan-Bumil-resti', 'BumilrestiController@store')->name('simpanbumilresti');
-    Route::get('/Hapus-Bumil-resti/{id}', 'BumilrestiController@destroy')->name('hapusbumilresti');
+    // Route::get('/Hapus-Bumil-resti/{id}', 'BumilrestiController@destroy')->name('hapusbumilresti');
     Route::get('/Detail-Bumil-resti/{id}', 'BumilrestiController@show')->name('detailbumilresti');
     Route::get('/Edit-Bumil-resti/{id}','BumilrestiController@edit')->name('editbumilresti');
     Route::post('/Update-Bumil-resti/{id}', 'BumilrestiController@update')->name('updatebumilresti');
-  
+    Route::delete('/Hapus-Bumil-resti/{id}','BumilrestiController@destroy');
     
 });
 
@@ -246,7 +254,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('pemeriksaaan-ibu-hamil/store', 'PemeriksaanIbuHamilController@store')->name('pemeriksaanibuhamil.store');
     Route::get('pemeriksaaan-ibu-hamil/{id}/edit', 'PemeriksaanIbuHamilController@edit')->name('pemeriksaanibuhamil.edit');
     Route::put('pemeriksaaan-ibu-hamil/{id}', 'PemeriksaanIbuHamilController@update')->name('pemeriksaanibuhamil.update');
-    Route::get('pemeriksaaan-ibu-hamil/delete/{id}', 'PemeriksaanIbuHamilController@destroy')->name('pemeriksaanibuhamil.destroy');
+    // Route::get('pemeriksaaan-ibu-hamil/delete/{id}', 'PemeriksaanIbuHamilController@destroy')->name('pemeriksaanibuhamil.destroy');
+    Route::delete('pemeriksaaan-ibu-hamil/delete/{id}', 'PemeriksaanIbuHamilController@destroy');
+
 
       //pdf
       Route::get('/CetakBumil', 'PemeriksaanIbuHamilController@print')->name('cetakbumil');
@@ -269,28 +279,33 @@ Route::group(['middleware' => ['auth']], function () {
       Route::get('/Detail-jadwal-bumil/{id}','JadwalbumilController@show')->name('detailjadwalpemeriksaan');
       Route::post('/simpan-jadwal-bumil','JadwalbumilController@store')->name('simpanjadwalpemeriksaan');
       Route::get('Edit-jadwal-bumil/{id}','JadwalbumilController@edit')->name('editjadwalpemeriksaan');
-      Route::get('/Hapis-jadwal-bumil/{id}','JadwalbumilController@destroy')->name('hapusjadwalpemeriksaan');
+    //   Route::get('/Hapus-jadwal-bumil/{id}','JadwalbumilController@destroy')->name('hapusjadwalpemeriksaan');
       Route::post('Update-jadwal-bumil/{id}','JadwalbumilController@update')->name('updatejadwalpemeriksaan');
-  
+      Route::delete('/Hapus-jadwal-bumil/{id}','JadwalbumilController@destroy');
+
       
-           //Jadwal lansia 
+      //Jadwal lansia 
       
       Route::get('/Jadwal-Lansia', 'JadwallansiaController@index')->name('jadwallansia');
       Route::get('/Add-Jadwal-Lansia', 'JadwallansiaController@create')->name('addjadwallansia');
       Route::post('/simpan-jadwal','JadwallansiaController@store')->name('simpanjadwallansia');
-      Route::get('/Hapis-jadwal/{id}','JadwallansiaController@destroy')->name('hapusjadwallansia');
+    //   Route::get('/Hapus-jadwal/{id}','JadwallansiaController@destroy')->name('hapusjadwallansia');
       Route::get('/Detail-jadwal/{id}','JadwallansiaController@show')->name('detailjadwallansia');
       Route::get('Edit-jadwal/{id}','JadwallansiaController@edit')->name('editjadwallansia');
       Route::post('Update-jadwal/{id}','JadwallansiaController@update')->name('updatejadwallansia');
+      Route::delete('/Hapus-jadwal/{id}','JadwallansiaController@destroy');
+
 
       //resti
     Route::get('/Bumil-resti', 'BumilrestiController@index')->name('bumilresti');
     Route::get('/Add-Bumil-resti', 'BumilrestiController@create')->name('addbumilresti');
     Route::post('/Simpan-Bumil-resti', 'BumilrestiController@store')->name('simpanbumilresti');
-    Route::get('/Hapus-Bumil-resti/{id}', 'BumilrestiController@destroy')->name('hapusbumilresti');
+    // Route::get('/Hapus-Bumil-resti/{id}', 'BumilrestiController@destroy')->name('hapusbumilresti');
     Route::get('/Detail-Bumil-resti/{id}', 'BumilrestiController@show')->name('detailbumilresti');
     Route::get('/Edit-Bumil-resti/{id}','BumilrestiController@edit')->name('editbumilresti');
     Route::post('/Update-Bumil-resti/{id}', 'BumilrestiController@update')->name('updatebumilresti');
+    Route::delete('/Hapus-Bumil-resti/{id}','BumilrestiController@destroy');
+
 
     //pdf
 

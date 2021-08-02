@@ -13,6 +13,8 @@
 <script src="{{asset('Admin_LTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
 <!-- Select2 -->
 <script src="{{asset('Admin_LTE/plugins/select2/js/select2.full.min.js')}}"></script>
+<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+<script src="{{ $cdn ?? asset('vendor/sweetalert/sweetalert.all.js')  }}"></script>
 
 
 @yield('script')
