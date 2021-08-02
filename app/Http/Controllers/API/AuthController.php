@@ -68,10 +68,12 @@ class AuthController extends Controller{
         $nama = $request->name;
         $email = $request->email; 
 
-        $umum = User::find($id);
-        $umum->name = $nama;
-        $umum->email = $email;
-        $umum->save();
+        $umum = User::findOrFail($id);
+        $umum->update([
+            'name' => $nama,
+            'email' => $email,
+            'password' => $request->password ? bcrypt($request->password) : $umum->password
+        ]);
 
         return response()->json([
             'message' => 'berhasil',

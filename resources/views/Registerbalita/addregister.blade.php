@@ -52,19 +52,22 @@
                                         <label>Punya Akun</label>
                                         <div class="d-flex gap-5 align-items-center mb-2">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="punya_akun"
+                                                <input class="form-check-input  @error('punya_akun') is-invalid @enderror" type="radio" name="punya_akun"
                                                     id="terdaftar" value="punya">
                                                 <label class="form-check-label" for="terdaftar">
                                                     Ya
                                                 </label>
                                             </div>
                                             <div class="form-check ml-3">
-                                                <input class="form-check-input" type="radio" name="punya_akun"
+                                                <input class="form-check-input  @error('punya_akun') is-invalid @enderror" type="radio" name="punya_akun"
                                                     id="tidak-terdaftar" value="tidak_punya">
                                                 <label class="form-check-label" for="tidak-terdaftar">
                                                     Tidak
                                                 </label>
                                             </div>
+                                            @error('punya_akun')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
                                         <div id="akun-container"></div>
@@ -127,25 +130,26 @@
                                         <label>Nama Ibu</label>
                                         <div class="d-flex gap-5 align-items-center mb-2">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="pilih_ibu"
+                                                <input class="form-check-input @error('namaibu') is-invalid @enderror" type="radio" name="pilih_ibu"
                                                     id="terdaftar" value="terdaftar">
                                                 <label class="form-check-label" for="terdaftar">
                                                     Terdaftar
                                                 </label>
                                             </div>
                                             <div class="form-check ml-3">
-                                                <input class="form-check-input" type="radio" name="pilih_ibu"
+                                                <input class="form-check-input @error('namaibu') is-invalid @enderror" type="radio" name="pilih_ibu"
                                                     id="tidak-terdaftar" value="tidak_terdaftar">
                                                 <label class="form-check-label" for="tidak-terdaftar">
                                                     Tidak Terdaftar
                                                 </label>
                                             </div>
+                                            @error('namaibu')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
                                         <div id="ibu-container"></div>
-                                        @error('namaibu')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
+                                       
                                     </div>
                                     <div class="form-group">
                                         <label>RT</label>

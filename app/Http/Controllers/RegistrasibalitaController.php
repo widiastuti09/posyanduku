@@ -42,6 +42,7 @@ class RegistrasibalitaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+        
             'namabalita'    => 'required|string',
             'tempatlahir'   => 'required|',
             'tanggallahir'  => 'required',
@@ -54,7 +55,9 @@ class RegistrasibalitaController extends Controller
             'pblahir'       => 'required',
             'nokk'          => 'required|min:16',
             'nikbalita'     => 'required|min:16',
-            'telp'          => 'required|max:13|min:10'
+            'telp'          => 'required|max:13|min:10',
+            'namaibu'   => 'required',
+            'punya_akun'    =>'required'
         ],
         [
             'namabalita.required'   => 'Nama Balita Harus diisi',
