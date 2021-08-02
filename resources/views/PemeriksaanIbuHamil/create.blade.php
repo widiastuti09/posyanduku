@@ -66,7 +66,7 @@
 
                                     <div class="form-group">
                                         <label>Tinggi Badan</label>
-                                        <input type="text"
+                                        <input type="number"
                                             class="form-control @error('tinggibadan') is-invalid @enderror" autofocus
                                             id="tinggibadan" placeholder="Masukkan Tinggi Badan" name="tinggibadan"
                                             value="{{ old('tinggibadan') }}">

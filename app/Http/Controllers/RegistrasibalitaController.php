@@ -58,6 +58,7 @@ class RegistrasibalitaController extends Controller
             'telp'          => 'required|max:13|min:10',
             'namaibu'   => 'required',
             'punya_akun'    =>'required'
+        
         ],
         [
             'namabalita.required'   => 'Nama Balita Harus diisi',
