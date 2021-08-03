@@ -139,7 +139,7 @@
               <!-- /.col -->
               <div class="col-12 col-sm-6">
               <button type="submit" class="btn btn-success"><i class="fas fa-plus-square"> Simpan Data</i></button>
-               <a href="{{ route ('register')}}" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
+               <a href="{{ route ('registerhamil')}}" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
