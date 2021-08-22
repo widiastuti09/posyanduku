@@ -121,7 +121,7 @@
 
                                     <div class="form-group">
                                         <label>Berat Badan (Kg)</label>
-                                        <input type="text"
+                                        <input type="number"
                                             class="form-control @error('beratbadan') is-invalid @enderror" autofocus
                                             id="beratbadan" name="beratbadan" placeholder="Masukkan Berat Badan"
                                             value="{{ old('beratbadan') }}">
@@ -131,7 +131,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Hamil Ke (G)</label>
-                                        <input type="text" class="form-control @error('hamilke') is-invalid @enderror"
+                                        <input type="number" class="form-control @error('hamilke') is-invalid @enderror"
                                             autofocus id="hamilke" name="hamilke" placeholder="Masukkan Hamil Ke"
                                             value="{{ old('hamilke') }}">
                                         @error('hamilke')
@@ -149,7 +149,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label>Jumlah Keguguran (P)</label>
+                                        <label>Jumlah Keguguran (A)</label>
                                         <input type="number"
                                             class="form-control @error('keguguranke') is-invalid @enderror" autofocus
                                             id="keguguranke" name="keguguranke" placeholder="Masukkan Keguguran Ke"

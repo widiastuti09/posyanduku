@@ -51,20 +51,22 @@
                                         <div class="d-flex gap-5 align-items-center mb-2">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="punya_akun"
-                                                    id="terdaftar" value="punya">
+                                                    id="terdaftar" value="punya" @if(old('punya_akun') === 'punya') checked @endif>
                                                 <label class="form-check-label" for="terdaftar">
                                                     Ya
                                                 </label>
                                             </div>
                                             <div class="form-check ml-3">
                                                 <input class="form-check-input" type="radio" name="punya_akun"
-                                                    id="tidak-terdaftar" value="tidak_punya">
+                                                    id="tidak-terdaftar" value="tidak_punya" @if(old('punya_akun') === 'tidak_punya') checked @endif>
                                                 <label class="form-check-label" for="tidak-terdaftar">
                                                     Tidak
                                                 </label>
                                             </div>
                                         </div>
-
+                                        @error('punya_akun')
+                                            <div class="text-danger font-sm">{{ $message }}</div>
+                                        @enderror
                                         <div id="akun-container"></div>
                                     </div>
                                 </div>
@@ -73,9 +75,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Tanggal Register</label>
-                                        <input type="date" class="form-control @error('tglregister') is-invalid @enderror" autofocus id="tglregister"
-                                            name="tglregister" value="{{ old('tglregister') }}">
-                                        @error('tglregister')
+                                        <input type="date" class="form-control @error('tanggal_pendaftaran') is-invalid @enderror" autofocus id="tanggal_pendaftaran"
+                                            name="tanggal_pendaftaran" value="{{ old('tanggal_pendaftaran') }}">
+                                        @error('tanggal_pendaftaran')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -90,18 +92,19 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal Lahir </label>
-                                        <input type="date" class="form-control @error('tgllahir') is-invalid @enderror"
-                                            autofocus id="tglllahir" name="tgllahir" value="{{ old('tgllahir') }}">
-                                        @error('tgllahir')
+                                        <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror"
+                                            autofocus id="tanggal_lahir" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}"
+                                            onchange="return hitungUmur(value)" max="return Date.now()">
+                                        @error('tanggal_lahir')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Nama Suami</label>
-                                        <input type="text" class="form-control @error('namasuami') is-invalid @enderror"
-                                            autofocus id="namasuami" name="namasuami" placeholder="Masukkan Nama"
-                                            value="{{ old('namasuami') }}">
-                                        @error('namasuami')
+                                        <input type="text" class="form-control @error('nama_suami') is-invalid @enderror"
+                                            autofocus id="nama_suami" name="nama_suami" placeholder="Masukkan Nama"
+                                            value="{{ old('nama_suami') }}">
+                                        @error('nama_suami')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
 
@@ -110,7 +113,7 @@
                                         <label>Usia (Tahun)</label>
                                         <input type="number" class="form-control @error('usia') is-invalid @enderror"
                                             autofocus id="usia" name="usia" placeholder="Masukkan Usia"
-                                            value="{{ old('usia') }}">
+                                            value="{{ old('usia') }}"readonly>
                                         @error('usia')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -196,6 +199,60 @@
             </div>
         </section>
     </div>
+    <script>
+        var tanggalHariIni = new Date();
+        function formatTanggal(tanggal) {
+            let tanggalBaru = new Date(tanggal),
+                bulan = '' + (tanggalBaru.getMonth() + 1),
+                hari = '' + tanggalBaru.getDate(),
+                tahun = tanggalBaru.getFullYear();
+
+            if(bulan.length < 2){
+                bulan = '0' + bulan;
+            }
+
+            if(hari.length < 2){
+                hari = '0' + hari;
+            }
+
+            return [tahun, bulan, hari].join('-');
+
+        }
+
+        document.querySelector('#tanggal_lahir').setAttribute("max", formatTanggal(tanggalHariIni));
+        document.querySelector("#tanggal_pendaftaran").value = formatTanggal(tanggalHariIni);
+
+        const radioButton = document.querySelectorAll("input[name='punya_akun']");
+        let terpilih = '{!! old("punya_akun") !!}';
+
+        if(terpilih != ''){
+            if(terpilih == 'punya'){
+                document.querySelector('#akun-container').innerHTML = `
+                <select class="form-control select2"
+                  autofocus name="user_id" style="width: 100%;">
+                  <option value="">Pilih Akun</option>
+                  @forelse($users as $user)
+                    <option @if (old('user_id') == $user->id) selected @endif value="{!! $user->id !!}">{!! $user->name !!}</option>
+                  @empty
+                    <option disabled>Tidak ada data</option>
+                  @endforelse
+                </select>
+                `
+            }else{
+                document.querySelector('#akun-container').innerHTML = ``;
+            }
+        }
+
+        function hitungUmur(tanggal){
+            let tanggalLahir = new Date(tanggal);
+            let perbedaanBulan = Date.now() - tanggalLahir.getTime();
+            let umurKonversi = new Date(perbedaanBulan);
+            let tahun = umurKonversi.getUTCFullYear();
+            let umur = Math.abs(tahun - 1970);
+
+            document.querySelector('#usia').value = umur;
+        }
+    </script>
     @include('Template.script');
     <script>
       $(document).ready(function() {
@@ -217,7 +274,7 @@
               }else{
                 $('#akun-container').html(``)
               }
-          })
+          });
       })
   </script>
 

@@ -31,10 +31,6 @@ Route::get('/login', function () {
 });
 
 
-
-
-
-
 Route::post('/postlogin', 'LoginController@postlogin')->name('postlogin');
 Route::get('/logout', 'LoginController@logout')->name('logout');
 
