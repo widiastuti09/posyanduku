@@ -35,7 +35,7 @@ class PemeriksaanIbuHamilController extends Controller
         ];
 
         $messages = [
-            'required' => ':attribute tidak boleh kosong'
+            'required' => ':attribute harus diisi'
         ];
 
         $this->validate($request, $rules, $messages);

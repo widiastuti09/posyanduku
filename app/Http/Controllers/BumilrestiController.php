@@ -16,10 +16,7 @@ class BumilrestiController extends Controller
      */
     public function index()
     {
-
-        // $bumilresti = Bumilresti::orderBy('created_at', 'DESC')->get();
         $bumilresti = Bumilresti::with('ibuhamil')->get();
-        // dd($bumilresti); 
         return view ('BumilResti.bumilresti', compact('bumilresti'));
     }
 
@@ -34,30 +31,36 @@ class BumilrestiController extends Controller
         return view('BumilResti.addbumilresti', compact('ibuHamil'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $rules = [
-            'id_ibu'            => 'required',
-            'umur_hamil'        => 'required',
-            'gpa'               => 'required',
-            'asuransi'          => 'required',
-            'resiko_tinggi'     => 'required',
-            'hpl'               => 'required',
-            'wali_bumil'        => 'required',
+            'id_ibu' => 'required',
+            'umur_hamil' => 'required',
+            'hamil_ke' => 'required',
+            'persalinan_ke' => 'required',
+            'keguguran_ke' => 'required',
+            'asuransi' => 'required',
+            'resiko_tinggi' => 'required',
+            'hpl' => 'required',
+            'wali_bumil' => 'required|alpha_spaces',
         ];
+
         $messages = [
-            'required' => ':attribute tidak boleh kosong'
+            'required' => ':attribute harus diisi',
+            'alpha_spaces' => ':attribute hanya huruf dan spasi'
         ];
 
         $this->validate($request, $rules, $messages);
 
-        Bumilresti::create($request->all());
+        Bumilresti::create([
+            'umur_hamil' => $request ->umur_hamil,
+            'gpa' => $request -> hamil_ke.'/'.$request -> persalinan_ke.'/'.$request -> keguguran_ke,
+            'asuransi' => $request->asuransi,
+            'resiko_tinggi' => $request->resiko_tinggi,
+            'hpl' => $request->hpl,
+            'wali_bumil' => $request->wali_bumil,
+            'id_ibu' => $request->id_ibu
+        ]);
         return redirect()->route('bumilresti');
     }
 

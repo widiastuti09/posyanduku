@@ -66,7 +66,7 @@
 
                                     <div class="form-group">
                                         <label>Umur Hamil (MG)</label>
-                                        <input type="text"
+                                        <input type="number"
                                             class="form-control @error('umur_hamil') is-invalid @enderror" autofocus
                                             id="umur_hamil" placeholder="Masukkan Umur Kehamilan" name="umur_hamil"
                                             value="{{ old('umur_hamil') }}">
@@ -74,15 +74,42 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Hamil Ke (G)</label>
+                                            <input type="number"
+                                                class="form-control @error('hamil_ke') is-invalid @enderror" autofocus
+                                                id="hamil_ke" name="hamil_ke" placeholder="Hamil ke berapa"
+                                                value="{{ old('hamil_ke') }}">
+                                            @error('hamil_ke')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label>Persalinan Ke (P)</label>
+                                            <input type="number"
+                                                class="form-control @error('persalinan_ke') is-invalid @enderror" autofocus
+                                                id="persalinan_ke" name="persalinan_ke" placeholder="Persalinan ke berapa"
+                                                value="{{ old('persalinan_ke') }}">
+                                            @error('persalinan_ke')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label>Keguguran Ke (A)</label>
+                                            <input type="number"
+                                                class="form-control @error('keguguran_ke') is-invalid @enderror" autofocus
+                                                id="keguguran_ke" name="keguguran_ke" placeholder="Keguguran ke berapa"
+                                                value="{{ old('keguguran_ke') }}">
+                                            @error('keguguran_ke')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                    </div>
                                     <div class="form-group">
-                                        <label>G/P/A</label>
-                                        <input type="text"
-                                            class="form-control @error('gpa') is-invalid @enderror" autofocus
-                                            id="gpa" name="gpa" placeholder="G/P/A"
-                                            value="{{ old('gpa') }}">
-                                        @error('gpa')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Asuransi</label>                   
@@ -99,9 +126,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Resiko Tinggi</label>
-                                        <input type="text" class="form-control @error('resiko_tinggi') is-invalid @enderror"
-                                            autofocus id="resiko_tinggi" name="resiko_tinggi" placeholder="Masukkan Resiko"
-                                            value="{{ old('resiko_tinggi') }}">
+                                        <textarea name="resiko_tinggi" id="resiko_tinggi" cols="30" rows="10" class="form-control @error('resiko_tinggi') is-invalid @enderror" placeholder="Masukkan Resiko">{{ old('resiko_tinggi') }}</textarea>
+
                                         @error('resiko_tinggi')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror

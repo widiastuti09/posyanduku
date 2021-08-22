@@ -38,43 +38,41 @@ class RegisterIbuHamilController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nama'          => 'required|string',
-            'tgllahir'      => 'required',
-            'namasuami'     => 'required|string',
-            'goldarah'      => 'required',
-            'usia'          => 'required|max:2',
-            'rt'            => 'required|max:2',
-            'rw'            => 'required|max:2',
-            'telp'          => 'required|max:13',
-            'tglregister'   => 'required'
-        ],
-        [
-            'nama.required'         => 'Nama Harus di isi',
-            'tgllahir.required'     => 'Tanggal Lahir Harus di isi',
-            'namasuami.required'    => 'Nama Suami Harus di isi',
-            'namasuami.alpha'       => 'Nama Suami Harus di isi Karakter Huruf',
-            'goldarah.required'     => 'Golongan Darah Harus di isi',
-            'usia.required'         => 'Usia Harus di isi',
-            'usia.max'              => 'Usia Maksimal 2 Karakter',
-            'rt.required'           => 'RT Harus di isi',
-            'rt.max'                => ' RT Maksimal 2 Karakter',
-            'rw.required'           => 'RW Harus di isi',
-            'telp.required'         => 'Telp Harus di isi',
-            'tglregister.required'  => 'Tanggal Register Harus di isi' 
-        ]);
-        // dd($request->all());
+        $rules = [
+            'tanggal_pendaftaran' => 'required',
+            'nama' => 'required|alpha_spaces',
+            'tanggal_lahir' => 'required',
+            'nama_suami' => 'required|alpha_spaces',
+            'usia' => 'required|max:2',
+            'goldarah' => 'required',
+            'rt' => 'required|max:2',
+            'rw' => 'required|max:2',
+            'telp' => 'required|min:10|max:14',
+            'punya_akun' => 'required'
+        ];
+
+        $message = [
+            'punya_akun.required' => 'Pilih salah satu',
+            'required' => ':attribute harus diisi',
+            'max' => ':attribute maksimal :max karakter',
+            'min' => ':attribute min :min karakter',
+            'alpha_spaces' => ':attribute hanya huruf dan spasi'
+        ];
+
+
+        $this->validate($request, $rules, $message);
+
         Ibuhamil::create([
             'nama'          =>$request->nama, 
-            'tgllahir'      =>$request->tgllahir, 
-            'namasuami'     =>$request->namasuami, 
+            'tgllahir'      =>$request->tanggal_lahir, 
+            'namasuami'     =>$request->nama_suami, 
             'goldarah'      =>$request->goldarah, 
             'usia'          =>$request->usia,
-            'rt'            =>$request ->rt, 
-            'rw'            =>$request ->rw,
-            'telp'          =>$request ->telp, 
-            'tglregister'   =>$request ->tglregister,
-            'user_id'       =>$request ->punya ? $request -> user_id : null
+            'rt'            =>$request->rt, 
+            'rw'            =>$request->rw,
+            'telp'          =>$request->telp, 
+            'tglregister'   =>$request->tanggal_pendaftaran,
+            'user_id'       =>$request->punya_akun == 'punya' ? $request -> user_id : null
         ]);
 
         return redirect('registeribuhamil')->with('toast_success', 'Data Berhasil Disimpan');
