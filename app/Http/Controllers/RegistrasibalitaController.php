@@ -56,6 +56,7 @@ class RegistrasibalitaController extends Controller
             'nik_balita' => 'required|min:16',
             'telp' => 'required|max:13|min:10',
             'pilih_ibu' => 'required',
+            'namaibu' => $request->pilih_ibu === 'tidak_terdaftar' ? "required|alpha_spaces" : '',
             'punya_akun' =>'required'
         ];
 

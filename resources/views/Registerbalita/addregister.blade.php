@@ -155,6 +155,9 @@
                                                 @enderror
 
                                                 <div id="ibu-container"></div>
+                                                @error('namaibu')
+                                                <div class="text-danger text-sm">{{ $message }}</div>
+                                                @enderror
 
                                             </div>
                                             <div class="form-group">
