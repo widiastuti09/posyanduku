@@ -38,30 +38,25 @@ class RegisterLansiaController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        $request->validate([
+        
+        $rules = [
+            'punya_akun' => 'required',
+            'user_id' => $request->punya_akun === 'punya' ? "required" : '',
             'tanggal_register'  => 'required',
-            'nama'              => 'required|string',
+            'nama'              => 'required|alpha_spaces',
             'tanggal_lahir'     => 'required',
             'jenis_kelamin'     => 'required',
-            'rt'                => 'required|integer',
-            'rw'                => 'required|integer',
-            'alamat'            => 'required|string',
-        ],
-        [
-            'tanggal_register.required'          => 'Tanggal register harus di isi',
-            'nama.required'                      => 'Nama Harus Diisi',        
-            'tanggal_lahir.required'             => 'Tanggal lahir harus di isi',
-            'jenis_kelamin.required'             => 'Jenis Kelamin harus di isi',
-            'rt.required'                        => 'RT harus di isi',
-            'rt.integer'                          => 'RT harus di isi angka',
-            'rw.required'                        => 'RW harus di isi',
-            'rw,integer'                          => 'RW harus di isi angka',
-            'alamat.required'                    => 'Alamat harus di isi'
-    
-        
+            'rt'                => 'required',
+            'rw'                => 'required',
+            'alamat'            => 'required',
+        ];
 
-        ]);
+        $messages = [
+            'required' => ':attribute harus diisi',
+            'alpha_spaces' => ':attribute hanya huruf dan spasi'
+        ];
+
+        $this->validate($request, $rules, $messages);
        
 
         lansia::create([

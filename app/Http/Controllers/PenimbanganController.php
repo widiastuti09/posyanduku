@@ -17,9 +17,6 @@ class PenimbanganController extends Controller
     public function penimbangan()
     {
         $penimbangans = Penimbangan::with('registrasibalitas')->get();
-        // $penimbangans = Penimbangan::with('registrasibalitas')->paginate(5);
-        // dd($penimbangans);
-        // $penimbangans =  Penimbangan::paginate(5);
 
         return view('HalamanUser.penimbangan',compact('penimbangans'));
     }
@@ -43,7 +40,7 @@ class PenimbanganController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $rules = [
             'namabalita_id' => 'required',
             'tanggal'       => 'required',
             'jenis_imunisasi' => 'required',
@@ -51,8 +48,14 @@ class PenimbanganController extends Controller
             'imp'           => 'required',
             'kia'           => 'required',
             'vitamin'       => 'required'
-        ]);
-        // dd($request->all());
+        ];
+
+        $messages = [
+            'required' => ':attribute harus diisi'
+        ];
+
+        $this->validate($request, $rules, $messages);
+
         Penimbangan::create([
             
             'namabalita_id' => $request->namabalita_id,
