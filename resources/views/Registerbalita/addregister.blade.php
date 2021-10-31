@@ -278,7 +278,7 @@
                       autofocus name="user_id" style="width: 100%;">
                       <option value="">Pilih Akun</option>
                       @forelse($users as $user)
-                        <option @if (old('user_id') == $user->id) selected @endif value="{!! $user->i!!}">{!! $user->name !!}</option>
+                        <option @if (old('user_id') == $user->id) selected @endif value="{!! $user->id!!}">{!! $user->name !!}</option>
                       @empty
                         <option disabled>Tidak ada data</option>
                       @endforelse
@@ -345,12 +345,15 @@
 
             function parseRTRW(ibuHamil, id){
                 let inputRt = document.querySelector('#rt');
-                let inputRw = document.querySelector('#rw')
+                let inputRw = document.querySelector('#rw');
+                let inputTelp = document.querySelector("#telp");
                 let objectIbuHamil = ibuHamil.find((hamil) => {return hamil.id == id});
                 inputRt.value = objectIbuHamil.rt
                 inputRw.value = objectIbuHamil.rw
+                inputTelp.value = objectIbuHamil.telp
                 inputRt.readOnly = true
                 inputRw.readOnly = true
+                inputTelp.readOnly = true
             }
         </script>
         @include('Template.script')
