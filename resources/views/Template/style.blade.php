@@ -26,4 +26,12 @@
   <!-- PDF-->
   <link rel="stylesheet" href="{{asset('Admin_LTE/plugins/pdfmake/pdfmake.min.js')}}">
   <link rel="stylesheet" href="{{asset('Admin_LTE/plugins/pdfmake/vfs_fonts.js')}}">
+
+  <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+  </style>
 </head>

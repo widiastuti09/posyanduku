@@ -10,7 +10,7 @@ class UserController extends Controller
     public function index (){
         $posyandu = User::where('level','kader1')->orWhere('level','kader2')->get();
         $umum = User::where('level', 'umum')->get();
-        
+
         return view('User.index', compact('posyandu', 'umum'));
     }
 
@@ -49,7 +49,7 @@ class UserController extends Controller
 
     public function editPetugas ($id) {
         $petugas = User::findOrFail($id);
-        
+
         return view('User.petugas.edit', compact('petugas'));
     }
 
@@ -77,9 +77,9 @@ class UserController extends Controller
 
         $petugas->delete();
 
-        // return redirect()->route('pengguna.index'); 
+        // return redirect()->route('pengguna.index');
         return response()->json(['status'=>'Data Berhasil dihapus !']);
-  
+
     }
 
     public function tambahUmum(){
@@ -88,6 +88,7 @@ class UserController extends Controller
 
     public function storeUmum(Request $request){
         $rules = [
+            'nik' => 'required|unique:users',
             'name' => 'required|alpha_spaces',
             'email' => 'required|unique:users',
             'password' => 'required|min:8',
@@ -104,6 +105,7 @@ class UserController extends Controller
         $this->validate($request, $rules, $messages);
 
         User::create([
+            'nik' => $request->nik,
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
@@ -120,7 +122,7 @@ class UserController extends Controller
 
     public function editUmum($id) {
         $umum = User::findOrFail($id);
-        
+
         return view('User.umum.edit', compact('umum'));
     }
 
@@ -128,6 +130,7 @@ class UserController extends Controller
         $umum = User::findOrFail($id);
 
         $umum->update([
+            'nik' => $request->nik,
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password ? bcrypt($request->password) : $umum->password,
@@ -144,7 +147,7 @@ class UserController extends Controller
 
         // return redirect()->route('pengguna.index');
         return response()->json(['status'=>'Data Berhasil dihapus !']);
-   
+
     }
-    
+
 }

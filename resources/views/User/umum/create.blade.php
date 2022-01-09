@@ -44,6 +44,15 @@
                         <form action="{{ route('pengguna.store-umum') }}" method="post">
                             @csrf
                             <div class="form-group">
+                                <label for="name">NIK</label>
+                                <input type="number" class="form-control hide-arrow-number @error('nik') is-invalid @enderror" name="nik"
+                                    placeholder="Masukan NIK">
+                                @error('nik')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
                                 <label for="name">Nama</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                                     placeholder="Masukan nama lengkap">

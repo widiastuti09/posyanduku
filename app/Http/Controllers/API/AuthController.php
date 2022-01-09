@@ -18,7 +18,7 @@ class AuthController extends Controller{
 
     public function login(Request $request){
         $rules = [
-            'email' => 'required',
+            'nik' => 'required',
             'password' => 'required'
         ];
 
@@ -35,22 +35,34 @@ class AuthController extends Controller{
             ], 401);
         }
 
-        if(Auth::attempt(['email' => $request->email,'password' => $request->password])){
-            $user = User::findOrFail(Auth::user()->id);
-            $user->update(['api_token' => bcrypt($request->email)]);
+        $findByNik = User::where('nik',$request->nik)->first();
 
-            return response()->json([
-                'message' => 'Login berhasil',
-                'status' => 200,
-                'data' => $user
-            ]);
+        if($findByNik){
+            if(Auth::attempt(['nik' => $request->nik,'password' => $request->password])){
+                $user = User::findOrFail(Auth::user()->id);
+                $user->update(['api_token' => bcrypt($request->nik)]);
+
+                return response()->json([
+                    'message' => 'Login berhasil',
+                    'status' => 200,
+                    'data' => $user
+                ]);
+            }else{
+                return response()->json([
+                    'message'=>'Login gagal',
+                    'status' => 401,
+                    'error' => 'NIK atau password salah'
+                ], 401);
+            }
         }else{
             return response()->json([
                 'message'=>'Login gagal',
-                'status' => 401,
-                'error' => 'Username or Password is salah'
-            ], 401); 
+                'status' => 403,
+                'error' => 'NIK tidak ditemukan. Mohon hubungi admin untuk konfirmasi'
+            ], 403);
         }
+
+
 
 
     }
@@ -66,7 +78,7 @@ class AuthController extends Controller{
     }
     public function updateUser(Request $request, $id){
         $nama = $request->name;
-        $email = $request->email; 
+        $email = $request->email;
 
         $umum = User::findOrFail($id);
         $umum->update([
@@ -102,7 +114,7 @@ class AuthController extends Controller{
             ]);
             $sendMail = Mail::to($user->email)
             ->send(new SendCodeVerification($random, $user->name));
-            
+
             return response()->json([
                 'message' => 'Berhasil kirim code',
                 'status' => 200
@@ -111,7 +123,7 @@ class AuthController extends Controller{
             return response()->json([
                 'message' => 'Gagal kirim code',
                 'status' => 403
-            ], 403);   
+            ], 403);
         }
     }
 
@@ -128,7 +140,7 @@ class AuthController extends Controller{
             return response()->json([
                 'message' => 'Gagal verifikasi code',
                 'status' => 403
-            ], 403);   
+            ], 403);
         }
     }
 
@@ -154,22 +166,22 @@ class AuthController extends Controller{
         }
 
         $user = User::where('code_digit', $request->code_digit)->first();
-        
+
         if($user){
             $user->update([
                 'password' => bcrypt($request->password),
                 'code_digit' => null
             ]);
-    
+
             return response()->json([
                 'message' => 'Ubah password berhasil',
                 'status' => 200
-            ], 200);  
+            ], 200);
         }else{
             return response()->json([
                 'message' => 'Gagal password berhasil',
                 'status' => 403
-            ], 403);  
+            ], 403);
         }
     }
 
