@@ -57,24 +57,31 @@
                                 <tr>
                                     <th class="font-weight-bold">Tanggal Register</th>
                                     <td scope="row" class="font-weight-normal">
-                                        {{date('d F Y', strtotime($regmil->tglregister))}}</td>
+                                        {{date('d F Y', strtotime($regmil->tglregister))}}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th class="font-weight-bold">Nama Ibu Hamil</th>
                                     <td scope="row" class="font-weight-normal">{{ $regmil->nama}}</td>
                                 </tr>
                                 <tr>
+                                    <th class="font-weight-bold">NIK/Nama Akun</th>
+                                    <td scope="row" class="font-weight-normal">{{$regmil->user->nik}} - {{$regmil->user->name}}</td>
+
+                                </tr>
+                                <tr>
                                     <th class="font-weight-bold">KK</th>
                                     <td scope="row" class="font-weight-normal">{{ $regmil->user->kk}}</td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <th class="font-weight-bold">NIK</th>
                                     <td scope="row" class="font-weight-normal">{{ $regmil->user->nik}}</td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <th class="font-weight-bold">Tanggal Lahir</th>
                                     <td scope="row" class="font-weight-normal">
-                                        {{date('d F Y', strtotime( $regmil->tgllahir))}}</td>
+                                        {{date('d F Y', strtotime( $regmil->tgllahir))}}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th class="font-weight-bold">Nama Suami</th>
@@ -110,10 +117,8 @@
 
                             <!-- /.col -->
                             <div class="col-12 col-sm-6 mb-3 ml-2">
-                                <a href="{{route('editregisterbumil', $regmil->id)}}" class="btn btn-warning"><i
-                                        class="fas fa-pen-alt"> Edit Data</i></a>
-                                <a href="{{route('registerhamil')}}" class="btn btn-info"><i
-                                        class="fas fa-arrow-circle-left"> Kembali</i></a>
+                                <a href="{{route('editregisterbumil', $regmil->id)}}" class="btn btn-warning"><i class="fas fa-pen-alt"> Edit Data</i></a>
+                                <a href="{{route('registerhamil')}}" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
                                 <!-- /.form-group -->
                             </div>
                             <!-- /.col -->
