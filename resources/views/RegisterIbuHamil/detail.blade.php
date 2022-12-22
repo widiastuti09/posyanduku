@@ -64,6 +64,14 @@
                                     <td scope="row" class="font-weight-normal">{{ $regmil->nama}}</td>
                                 </tr>
                                 <tr>
+                                    <th class="font-weight-bold">KK</th>
+                                    <td scope="row" class="font-weight-normal">{{ $regmil->user->kk}}</td>
+                                </tr>
+                                <tr>
+                                    <th class="font-weight-bold">NIK</th>
+                                    <td scope="row" class="font-weight-normal">{{ $regmil->user->nik}}</td>
+                                </tr>
+                                <tr>
                                     <th class="font-weight-bold">Tanggal Lahir</th>
                                     <td scope="row" class="font-weight-normal">
                                         {{date('d F Y', strtotime( $regmil->tgllahir))}}</td>
