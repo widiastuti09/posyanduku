@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Ibuhamil::class);
     }
+
+    public function lansia()
+    {
+        return $this->hasOne(Lansia::class);
+    }
 }

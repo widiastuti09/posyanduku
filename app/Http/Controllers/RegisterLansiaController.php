@@ -16,7 +16,7 @@ class RegisterLansiaController extends Controller
     public function registerlansia()
     {
         $lansias = Lansia::all();
-        return view('HalamanAdmin.registerlansia',compact('lansias'));
+        return view('HalamanAdmin.registerlansia', compact('lansias'));
     }
 
     /**
@@ -26,7 +26,7 @@ class RegisterLansiaController extends Controller
      */
     public function create()
     {
-        $users = User::where('level', 'umum')->get();
+        $users = User::doesntHave('lansia')->doesntHave('ibuhamil')->where('level', 'umum')->get();
         return view('Lansia.addregisterlansia', compact('users'));
     }
 
@@ -38,10 +38,9 @@ class RegisterLansiaController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $rules = [
-            'punya_akun' => 'required',
-            'user_id' => $request->punya_akun === 'punya' ? "required" : '',
+            'user_id' => 'required',
             'tanggal_register'  => 'required',
             'nama'              => 'required|alpha_spaces',
             'tanggal_lahir'     => 'required',
@@ -57,22 +56,21 @@ class RegisterLansiaController extends Controller
         ];
 
         $this->validate($request, $rules, $messages);
-       
+
 
         lansia::create([
-        'tanggal_register' => $request -> tanggal_register,
-        'nama'             => $request -> nama,
-        'tanggal_lahir'    => $request -> tanggal_lahir,
-        'jenis_kelamin'    => $request -> jenis_kelamin,
-        'rt'               => $request -> rt,
-        'rw'               => $request -> rw,
-        'alamat'           => $request -> alamat,
-        'user_id'       =>$request ->punya ? $request -> user_id : null
+            'tanggal_register' => $request->tanggal_register,
+            'nama'             => $request->nama,
+            'tanggal_lahir'    => $request->tanggal_lahir,
+            'jenis_kelamin'    => $request->jenis_kelamin,
+            'rt'               => $request->rt,
+            'rw'               => $request->rw,
+            'alamat'           => $request->alamat,
+            'user_id'       => $request->user_id
         ]);
 
-     
+
         return redirect('registerlansia')->with('toast_success', 'Data berhasil Disimpan!');
-        
     }
 
     /**
@@ -84,7 +82,7 @@ class RegisterLansiaController extends Controller
     public function show($id)
     {
         $lansias = Lansia::findorfail($id);
-        return view ('Lansia.detailLansia',Compact('lansias'));
+        return view('Lansia.detailLansia', Compact('lansias'));
     }
 
     /**
@@ -120,7 +118,7 @@ class RegisterLansiaController extends Controller
         ];
         $messages = [
             'tanggal_register.required'          => 'Tanggal register harus di isi',
-            'nama.required'                      => 'Nama Harus Diisi',        
+            'nama.required'                      => 'Nama Harus Diisi',
             'tanggal_lahir.required'             => 'Tanggal lahir harus di isi',
             'jenis_kelamin.required'             => 'Jenis Kelamin harus di isi',
             'rt.required'                        => 'RT harus di isi',
@@ -130,7 +128,7 @@ class RegisterLansiaController extends Controller
             'alamat.required'                    => 'Alamat harus di isi'
         ];
         $this->validate($request, $rules, $messages);
-        $lansias -> update($request->all());
+        $lansias->update($request->all());
         return redirect('registerlansia')->with('toast_success', 'Data Berhasil Diedit');
     }
 
@@ -145,7 +143,6 @@ class RegisterLansiaController extends Controller
         $lansias = Lansia::findorfail($id);
         $lansias->delete();
         // return back()->with('toast_success','Data Berhasil dihapus');
-        return response()->json(['status'=>'Data Berhasil dihapus !']);
-
+        return response()->json(['status' => 'Data Berhasil dihapus !']);
     }
 }
