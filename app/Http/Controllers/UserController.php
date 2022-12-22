@@ -88,6 +88,7 @@ class UserController extends Controller
 
     public function storeUmum(Request $request){
         $rules = [
+            'kk' => 'required|unique:users',
             'nik' => 'required|unique:users',
             'name' => 'required|alpha_spaces',
             'email' => 'required|unique:users',
@@ -105,6 +106,7 @@ class UserController extends Controller
         $this->validate($request, $rules, $messages);
 
         User::create([
+            'kk' => $request->kk,
             'nik' => $request->nik,
             'name' => $request->name,
             'email' => $request->email,
@@ -130,6 +132,7 @@ class UserController extends Controller
         $umum = User::findOrFail($id);
 
         $umum->update([
+            'kk' => $request->kk,
             'nik' => $request->nik,
             'name' => $request->name,
             'email' => $request->email,
