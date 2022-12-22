@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
