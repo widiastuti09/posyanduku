@@ -45,7 +45,19 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Punya Akun</label>
+                                        <label for="">Cari NIK/Nama Ibu</label>
+                                        <select class="form-control select2" name="id_ibu" required>
+                                            <option value="">Cari NIK/Nama Ibu</option>
+                                            @forelse($ibuHamil as $ibu)
+                                            <option @if (old('id_ibu')==$ibu->id) selected @endif value="{!! $ibu->id !!}">{!! $ibu->user->nik !!} - {!! $ibu->nama !!}</option>
+                                            @empty
+                                            <option disabled>Tidak ada data</option>
+                                            @endforelse
+                                        </select>
+                                        @error('id_ibu')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                        <!-- <label>Punya Akun</label>
                                         <div class="d-flex gap-5 align-items-center mb-2">
                                             <div class="form-check">
                                                 <input
@@ -70,26 +82,20 @@
                                         <div class="text-danger text-sm">{{ $message }}</div>
                                         @enderror
 
-                                        <div id="akun-container"></div>
+                                        <div id="akun-container"></div> -->
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Nama Balita</label>
-                                                <input type="text"
-                                                    class="form-control @error('nama_balita') is-invalid @enderror"
-                                                    autofocus id="nama_balita" name="nama_balita"
-                                                    placeholder="Masukkan Nama" value="{{ old('nama_balita') }}">
+                                                <input type="text" class="form-control @error('nama_balita') is-invalid @enderror" autofocus id="nama_balita" name="nama_balita" placeholder="Masukkan Nama" value="{{ old('nama_balita') }}">
                                                 @error('nama_balita')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="form-group">
                                                 <label>Tempat Lahir</label>
-                                                <input type="text"
-                                                    class="form-control @error('tempat_lahir') is-invalid @enderror"
-                                                    autofocus id="tempat_lahir" name="tempat_lahir"
-                                                    placeholder="Masukkan Nama" value="{{ old('tempat_lahir') }}">
+                                                <input type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" autofocus id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan Nama" value="{{ old('tempat_lahir') }}">
                                                 @error('tempat_lahir')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
@@ -97,17 +103,14 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Tanggal Lahir</label>
-                                                <input type="date"
-                                                    class="form-control @error('tanggal_lahir') is-invalid @enderror" autofocus id="tanggal_lahir" name="tanggal_lahir" placeholder="Masukkan Nama" value="{{ old('tanggal_lahir') }}" onchange="return hitungUmur(value)" >
+                                                <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" autofocus id="tanggal_lahir" name="tanggal_lahir" placeholder="Masukkan Nama" value="{{ old('tanggal_lahir') }}" onchange="return hitungUmur(value)">
                                                 @error('tanggal_lahir')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="form-group">
                                                 <label>Jenis Kelamin</label>
-                                                <select
-                                                    class="form-control select2 @error('jenis_kelamin') is-invalid @enderror"
-                                                    autofocus name="jenis_kelamin" style="width: 100%;">
+                                                <select class="form-control select2 @error('jenis_kelamin') is-invalid @enderror" autofocus name="jenis_kelamin" style="width: 100%;">
                                                     <option value="">Pilih Jenis Kelamin</option>
                                                     <option @if (old('jenis_kelamin')==='Laki-laki' ) selected @endif>
                                                         Laki-laki</option>
@@ -120,15 +123,12 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Nama Ayah</label>
-                                                <input type="text"
-                                                    class="form-control @error('nama_ayah') is-invalid @enderror"
-                                                    autofocus id="nama_ayah" name="nama_ayah"
-                                                    placeholder="Masukkan Nama ayah" value="{{ old('nama_ayah') }}">
+                                                <input type="text" class="form-control @error('nama_ayah') is-invalid @enderror" autofocus id="nama_ayah" name="nama_ayah" placeholder="Masukkan Nama ayah" value="{{ old('nama_ayah') }}">
                                                 @error('nama_ayah')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label>Nama Ibu</label>
                                                 <div class="d-flex gap-5 align-items-center mb-2">
                                                     <div class="">
@@ -159,89 +159,65 @@
                                                 <div class="text-danger text-sm">{{ $message }}</div>
                                                 @enderror
 
-                                            </div>
-                                            <div class="form-group">
+                                            </div> -->
+                                            <!-- <div class="form-group">
                                                 <label>RT</label>
-                                                <input type="number"
-                                                    class="form-control @error('rt') is-invalid @enderror" autofocus
-                                                    id="rt" name="rt" placeholder="Masukkan RT" value="{{ old('rt') }}">
+                                                <input type="number" class="form-control @error('rt') is-invalid @enderror" autofocus id="rt" name="rt" placeholder="Masukkan RT" value="{{ old('rt') }}">
                                                 @error('rt')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="col-md-6 ">
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label>RW</label>
-                                                <input type="number"
-                                                    class="form-control @error('rw') is-invalid @enderror" autofocus
-                                                    id="rw" name="rw" placeholder="Masukkan RW" value="{{ old('rw') }}">
+                                                <input type="number" class="form-control @error('rw') is-invalid @enderror" autofocus id="rw" name="rw" placeholder="Masukkan RW" value="{{ old('rw') }}">
                                                 @error('rw')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
-                                            </div>
+                                            </div> -->
                                             <div class="form-group">
                                                 <label>Usia (Tahun)</label>
-                                                <input type="number"
-                                                    class="form-control @error('usia') is-invalid @enderror" autofocus
-                                                    id="usia" name="usia" placeholder="Masukkan Usia Anak"
-                                                    value="{{ old('usia') }}">
+                                                <input type="number" class="form-control @error('usia') is-invalid @enderror" autofocus id="usia" name="usia" placeholder="Masukkan Usia Anak" value="{{ old('usia') }}">
                                                 @error('usia')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="form-group">
                                                 <label>Berat Badan Lahir (Kg)</label>
-                                                <input type="number"
-                                                    class="form-control @error('berat_badan_lahir') is-invalid @enderror"
-                                                    autofocus id="berat_badan_lahir" name="berat_badan_lahir"
-                                                    placeholder="Masukkan Berat Badan Anak"
-                                                    value="{{ old('berat_badan_lahir') }}">
+                                                <input type="number" class="form-control @error('berat_badan_lahir') is-invalid @enderror" autofocus id="berat_badan_lahir" name="berat_badan_lahir" placeholder="Masukkan Berat Badan Anak" value="{{ old('berat_badan_lahir') }}">
                                                 @error('berat_badan_lahir')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="form-group">
                                                 <label>Panjang Badan Lahir (Cm)</label>
-                                                <input type="number"
-                                                    class="form-control @error('panjang_panjang_lahir') is-invalid @enderror"
-                                                    autofocus id="panjang_panjang_lahir" name="panjang_panjang_lahir"
-                                                    placeholder="Masukkan Panjamg Badan Anak"
-                                                    value="{{ old('panjang_panjang_lahir') }}">
+                                                <input type="number" class="form-control @error('panjang_panjang_lahir') is-invalid @enderror" autofocus id="panjang_panjang_lahir" name="panjang_panjang_lahir" placeholder="Masukkan Panjamg Badan Anak" value="{{ old('panjang_panjang_lahir') }}">
                                                 @error('panjang_panjang_lahir')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label>No KK Balita</label>
-                                                <input type="number"
-                                                    class="form-control @error('no_kk') is-invalid @enderror" autofocus
-                                                    id="no_kk" name="no_kk" placeholder="Masukkan Nomor KK"
-                                                    value="{{ old('no_kk') }}">
+                                                <input type="number" class="form-control @error('no_kk') is-invalid @enderror" autofocus id="no_kk" name="no_kk" placeholder="Masukkan Nomor KK" value="{{ old('no_kk') }}">
                                                 @error('no_kk')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
-                                            </div>
+                                            </div> -->
                                             <div class="form-group">
                                                 <label>No NIK Balita</label>
-                                                <input type="number"
-                                                    class="form-control @error('nik_balita') is-invalid @enderror"
-                                                    autofocus id="nik_balita" name="nik_balita"
-                                                    placeholder="Masukkan Nomor NIK" value="{{ old('nik_balita') }}">
+                                                <input type="number" class="form-control @error('nik_balita') is-invalid @enderror" autofocus id="nik_balita" name="nik_balita" placeholder="Masukkan Nomor NIK" value="{{ old('nik_balita') }}">
                                                 @error('nik_balita')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label>No Telp</label>
-                                                <input type="number"
-                                                    class="form-control @error('telp') is-invalid @enderror" autofocus
-                                                    id="telp" name="telp" placeholder="Masukkan Nomor Telp"
-                                                    value="{{ old('telp') }}">
+                                                <input type="number" class="form-control @error('telp') is-invalid @enderror" autofocus id="telp" name="telp" placeholder="Masukkan Nomor Telp" value="{{ old('telp') }}">
                                                 @error('telp')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     <div class="row">
@@ -249,8 +225,7 @@
                                             <button type="submit" class="btn btn-success">
                                                 <i class="fas fa-plus-square">TambahData</i>
                                             </button>
-                                            <a href="{{ route('register') }}" class="btn btn-info"><i
-                                                    class="fas fa-arrow-circle-left"> Kembali</i></a>
+                                            <a href="{{ route('register') }}" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -333,7 +308,7 @@
 
             document.querySelector('#tanggal_lahir').setAttribute("max", formatTanggal(tanggalHariIni));
 
-            function hitungUmur(tanggal){
+            function hitungUmur(tanggal) {
                 let tanggalLahir = new Date(tanggal);
                 let perbedaanBulan = Date.now() - tanggalLahir.getTime();
                 let umurKonversi = new Date(perbedaanBulan);
@@ -343,11 +318,13 @@
                 document.querySelector('#usia').value = parseInt(umur);
             }
 
-            function parseRTRW(ibuHamil, id){
+            function parseRTRW(ibuHamil, id) {
                 let inputRt = document.querySelector('#rt');
                 let inputRw = document.querySelector('#rw');
                 let inputTelp = document.querySelector("#telp");
-                let objectIbuHamil = ibuHamil.find((hamil) => {return hamil.id == id});
+                let objectIbuHamil = ibuHamil.find((hamil) => {
+                    return hamil.id == id
+                });
                 inputRt.value = objectIbuHamil.rt
                 inputRw.value = objectIbuHamil.rw
                 inputTelp.value = objectIbuHamil.telp
@@ -358,8 +335,11 @@
         </script>
         @include('Template.script')
         <script>
-            $(document).ready(function () {
-                $("input[name*='pilih_ibu']").click(function () {
+            $(document).ready(function() {
+                $('.select2').select2({
+                    theme: 'bootstrap4'
+                });
+                $("input[name*='pilih_ibu']").click(function() {
                     let html = ''
                     if ($(this).val() === 'terdaftar') {
                         $('#ibu-container').html(`
@@ -383,7 +363,7 @@
                     }
                 })
 
-                $("input[name*='punya_akun']").click(function () {
+                $("input[name*='punya_akun']").click(function() {
                     let html = ''
                     if ($(this).val() === 'punya') {
                         $('#akun-container').html(`
@@ -403,7 +383,6 @@
                     }
                 })
             })
-
         </script>
 </body>
 
