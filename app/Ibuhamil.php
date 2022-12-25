@@ -18,4 +18,9 @@ class Ibuhamil extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function balita()
+    {
+        return $this->hasMany(Registrasibalita::class, 'id_ibu');
+    }
 }
