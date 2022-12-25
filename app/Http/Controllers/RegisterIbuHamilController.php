@@ -26,7 +26,7 @@ class RegisterIbuHamilController extends Controller
      */
     public function create()
     {
-        $users = User::where('level', 'umum')->get();
+        $users = User::doesntHave('ibuhamil')->where('level','umum')->get();
         return view('RegisterIbuHamil.addregister', compact('users'));
     }
 
@@ -48,11 +48,11 @@ class RegisterIbuHamilController extends Controller
             'rt' => 'required|max:2',
             'rw' => 'required|max:2',
             'telp' => 'required|min:10|max:14',
-            'punya_akun' => 'required'
+            'user_id' => 'required'
         ];
 
         $message = [
-            'punya_akun.required' => 'Pilih salah satu',
+            'user_id.required' => 'Pilih salah satu',
             'required' => ':attribute harus diisi',
             'max' => ':attribute maksimal :max karakter',
             'min' => ':attribute min :min karakter',
@@ -72,7 +72,7 @@ class RegisterIbuHamilController extends Controller
             'rw'            =>$request->rw,
             'telp'          =>$request->telp, 
             'tglregister'   =>$request->tanggal_pendaftaran,
-            'user_id'       =>$request->punya_akun == 'punya' ? $request -> user_id : null
+            'user_id'       =>$request->user_id
         ]);
 
         return redirect('registeribuhamil')->with('toast_success', 'Data Berhasil Disimpan');

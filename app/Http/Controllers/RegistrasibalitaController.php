@@ -17,8 +17,7 @@ class RegistrasibalitaController extends Controller
     public function register()
     {
         $registrasibalitas = Registrasibalita::all();
-        return view('HalamanAdmin.registerbalita',compact('registrasibalitas'));
-
+        return view('HalamanAdmin.registerbalita', compact('registrasibalitas'));
     }
 
     /**
@@ -30,7 +29,7 @@ class RegistrasibalitaController extends Controller
     {
         $ibuHamil = Ibuhamil::all();
         $users = User::where('level', 'umum')->get();
-        return view('Registerbalita.addregister', compact('ibuHamil','users'));
+        return view('Registerbalita.addregister', compact('ibuHamil', 'users'));
     }
 
     /**
@@ -47,17 +46,15 @@ class RegistrasibalitaController extends Controller
             'tanggal_lahir' => 'required',
             'jenis_kelamin' => 'required',
             'nama_ayah' => 'required|alpha_spaces',
-            'rt' => 'required|max:2',
-            'rw' => 'required|max:2',
+            // 'rt' => 'required|max:2',
+            // 'rw' => 'required|max:2',
             'usia' => 'required|max:1',
             'berat_badan_lahir' => 'required',
             'panjang_panjang_lahir' => 'required',
-            'no_kk' => 'required|min:16',
+            // 'no_kk' => 'required|min:16',
             'nik_balita' => 'required|min:16',
-            'telp' => 'required|max:13|min:10',
-            'pilih_ibu' => 'required',
-            'namaibu' => $request->pilih_ibu === 'tidak_terdaftar' ? "required|alpha_spaces" : '',
-            'punya_akun' =>'required'
+            // 'telp' => 'required|max:13|min:10',
+            'id_ibu' => 'required',
         ];
 
         $messages = [
@@ -65,33 +62,33 @@ class RegistrasibalitaController extends Controller
             'max' => ':attribute maksimal :max karakter',
             'min' => ':attribute minimal :min karakter',
             'alpha_spaces' => ':attribute hanya huruf dan spasi'
-            
+
         ];
 
 
         $this->validate($request, $rules, $messages);
 
-        if($request->terdaftar){
-            $ibuHamil = Ibuhamil::findOrFail($request->id_ibu);
-        }
+        // if($request->terdaftar){
+        //     $ibuHamil = Ibuhamil::findOrFail($request->id_ibu);
+        // }
 
         Registrasibalita::create([
-            'namabalita'    => $request -> nama_balita,
-            'tempatlahir'   => $request -> tempat_lahir,
-            'tanggallahir'  => $request -> tanggal_lahir,
-            'jeniskelamin'  => $request -> jenis_kelamin,
-            'namaayah'      => $request -> nama_ayah,
-            'namaibu'       => $request->terdaftar ? $ibuHamil->nama : $request -> namaibu,
-            'id_ibu'        => $request->terdaftar ? $request -> id_ibu : null,
-            'rt'            => $request -> rt,
-            'rw'            => $request -> rw,
-            'usia'          => $request -> usia,
-            'bblahir'       => $request -> berat_badan_lahir,
-            'pblahir'       => $request -> panjang_panjang_lahir,
-            'nokk'          => $request -> no_kk,
-            'nikbalita'     => $request -> nik_balita,
-            'telp'          => $request -> telp,
-            'user_id'       => $request -> punya_akun ? $request-> user_id : null
+            'namabalita'    => $request->nama_balita,
+            'tempatlahir'   => $request->tempat_lahir,
+            'tanggallahir'  => $request->tanggal_lahir,
+            'jeniskelamin'  => $request->jenis_kelamin,
+            'namaayah'      => $request->nama_ayah,
+            // 'namaibu'       => $request->terdaftar ? $ibuHamil->nama : $request->namaibu,
+            'id_ibu'        => $request->id_ibu,
+            // 'rt'            => $request->rt,
+            // 'rw'            => $request->rw,
+            'usia'          => $request->usia,
+            'bblahir'       => $request->berat_badan_lahir,
+            'pblahir'       => $request->panjang_panjang_lahir,
+            // 'nokk'          => $request->no_kk,
+            'nikbalita'     => $request->nik_balita,
+            // 'telp'          => $request->telp,
+            // 'user_id'       => null
         ]);
 
         return redirect('register')->with('toast_success', 'Data berhasil Disimpan!');
@@ -106,7 +103,7 @@ class RegistrasibalitaController extends Controller
     public function show($id)
     {
         $regbal = Registrasibalita::findorfail($id);
-        return view('Registerbalita.detail',Compact('regbal'));
+        return view('Registerbalita.detail', Compact('regbal'));
     }
 
     /**
@@ -137,16 +134,16 @@ class RegistrasibalitaController extends Controller
             'tanggallahir'  => 'required',
             'jeniskelamin'  => 'required',
             'namaayah'      => 'required|string',
-            'rt'            => 'required|max:2',
-            'rw'            => 'required|max:2',
+            // 'rt'            => 'required|max:2',
+            // 'rw'            => 'required|max:2',
             'usia'          => 'required|max:1',
             'bblahir'       => 'required',
             'pblahir'       => 'required',
-            'nokk'          => 'required|min:16',
+            // 'nokk'          => 'required|min:16',
             'nikbalita'     => 'required|min:16',
-            'telp'          => 'required|max:13|min:10'
+            // 'telp'          => 'required|max:13|min:10'
         ];
-        $messages= [
+        $messages = [
             'namabalita.required'   => 'Nama Balita Harus diisi',
             'namabalita.required'   => 'Nama Balita Harus diisi',
             'tanggallahir.required' => 'Tanggal Lahir Harus diisi',
@@ -155,23 +152,23 @@ class RegistrasibalitaController extends Controller
             'jeniskelamin.required' => 'Jenis Kelamin Harus diisi',
             'namaayah.required'     => 'Nama Ayah Harus diisi',
             'namaayah.alpha'   => 'Nama Ayah Harus Diisi Dengan Huruf',
-            'namaibu.required'      => 'Nama Ibu Harus diisi',
-            'namaibu.alpha'   => 'Nama Ibu Harus Diisi Dengan Huruf',
-            'rt.required'           => 'RT Harus diisi',
-            'rt.max'                => 'RT Maksimal 2 Karakter',
-            'rw.required'           => 'RW Harus diisi',
-            'rw.max'                => 'RW Maksimal 2 Karakter',
+            // 'namaibu.required'      => 'Nama Ibu Harus diisi',
+            // 'namaibu.alpha'   => 'Nama Ibu Harus Diisi Dengan Huruf',
+            // 'rt.required'           => 'RT Harus diisi',
+            // 'rt.max'                => 'RT Maksimal 2 Karakter',
+            // 'rw.required'           => 'RW Harus diisi',
+            // 'rw.max'                => 'RW Maksimal 2 Karakter',
             'usia.required'         => 'Usia Harus diisi',
             'usia.max'              => 'Usia Maksimal 1 Karakter',
             'bblahir.required'      => 'Berat Badan Lahir Harus diisi',
             'pblahir.required'      => 'Panjang Badan Lahir Harus diisi',
-            'nokk.required'         => 'No KK Harus diisi',
-            'nokk.min'              => 'No KK Kurang dari 16 Karakter',
+            // 'nokk.required'         => 'No KK Harus diisi',
+            // 'nokk.min'              => 'No KK Kurang dari 16 Karakter',
             'nikbalita.required'    => 'NIK Balita Harus diisi',
             'nikbalita.min'         => 'NIK Balita Kurang dari 16 Karakter',
-            'telp.required'         => 'No Telp Harus Di isi',
-            'telp.max'              => 'No Telp Maksimal 13 Karakter',
-            'telp.min'              => 'No Telp Minimal 10 Karakter'
+            // 'telp.required'         => 'No Telp Harus Di isi',
+            // 'telp.max'              => 'No Telp Maksimal 13 Karakter',
+            // 'telp.min'              => 'No Telp Minimal 10 Karakter'
         ];
         $this->validate($request, $rules, $messages);
         $regbal->update($request->all());
@@ -189,9 +186,6 @@ class RegistrasibalitaController extends Controller
         $regbal = Registrasibalita::findorfail($id);
         $regbal->delete();
         // return back()->with('toast_success', 'Data berhasil dihapus');
-        return response()->json(['status'=>'Data Berhasil dihapus !']);
-
+        return response()->json(['status' => 'Data Berhasil dihapus !']);
     }
-
-    
 }

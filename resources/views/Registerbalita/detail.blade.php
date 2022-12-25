@@ -83,19 +83,19 @@
     </tr>
     <tr>
     <th class="font-weight-bold">Nama Ibu</th>
-      <td scope="row" class="font-weight-normal">{{$regbal->namaibu}}</td>
+      <td scope="row" class="font-weight-normal">{{$regbal->ibu->nama}}</td>
      
    
     </tr>
     <tr>
     <th class="font-weight-bold">RT</th>
-      <td scope="row" class="font-weight-normal">{{$regbal->rt}}</td>
+      <td scope="row" class="font-weight-normal">{{$regbal->ibu->rt}}</td>
      
    
     </tr>
     <tr>
     <th class="font-weight-bold">RW</th>
-      <td scope="row" class="font-weight-normal">{{$regbal->rw}}</td>
+      <td scope="row" class="font-weight-normal">{{$regbal->ibu->rw}}</td>
       
 
     </tr>
@@ -118,8 +118,8 @@
      
     </tr>
     <tr>
-    <th class="font-weight-bold">No KK Balita</th>
-      <td scope="row" class="font-weight-normal">{{$regbal->nokk}}</td>
+    <th class="font-weight-bold">No KK</th>
+      <td scope="row" class="font-weight-normal">{{$regbal->ibu->user->kk}}</td>
       
     
     </tr>
@@ -131,7 +131,7 @@
     </tr>
     <tr>
     <th class="font-weight-bold">No Telp</th>
-      <td  class="font-weight-normal">{{$regbal->telp}}</td>
+      <td  class="font-weight-normal">{{$regbal->ibu->telp}}</td>
       
     
     </tr>

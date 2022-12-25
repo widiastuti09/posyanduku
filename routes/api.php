@@ -34,13 +34,13 @@ Route::get('/lansia/{id}', 'API\LansiaController@detailLansia');
 
 Route::get('/pemeriksaan-bumil/{id}', 'API\IbuHamilController@periksabumil');
 
-Route::get('/Bumilresti/{id}','API\IbuHamilController@Bumilresti');
+Route::get('/Bumilresti/{id}', 'API\IbuHamilController@Bumilresti');
 
 Route::get('/penimbangan-balita/{id}', 'API\BalitaController@penimbanganBalita');
 Route::get('/pemeriksaan-lansia/{id}', 'API\LansiaController@periksaLansia');
 
 Route::get('/jadwal-balita', 'API\JadbalController@index');
-Route::get('/jadwal-bumil','API\JadmilController@index');
+Route::get('/jadwal-bumil', 'API\JadmilController@index');
 Route::get('jadwal-lansia', 'API\JadlanController@index');
 
 Route::post('/reset-password', 'API\AuthController@resetPassword');
@@ -48,3 +48,5 @@ Route::post('/verification-code', 'API\AuthController@verificationCode');
 Route::post('/ganti-password', 'API\AuthController@gantiPassword');
 
 Route::put('/edit-profile/{id}', 'API\AuthController@updateUser');
+
+Route::get('/status-imunisasi/{id}', 'API\BalitaController@statusImunisasi');
