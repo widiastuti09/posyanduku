@@ -46,7 +46,19 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Punya Akun</label>
+                                        <label for="">Masukkan NIK Akun</label>
+                                        <select class="form-control select2-akun" name="user_id" required>
+                                            <option value="">-- Cari NIK --</option>
+                                            @forelse($users as $user)
+                                            <option @if (old('user_id')==$user->id) selected @endif value="{!! $user->id !!}">{!! $user->nik !!} - {!! $user->name !!}</option>
+                                            @empty
+                                            <option disabled>Tidak ada data</option>
+                                            @endforelse
+                                        </select>
+                                        @error('user_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                        <!-- <label>Punya Akun</label>
                                         <div class="d-flex gap-5 align-items-center mb-2">
                                             <div class="form-check">
                                                 <input
@@ -74,7 +86,7 @@
                                         <div id="akun-container"></div>
                                         @error('user_id')
                                         <div class="text-danger text-sm">{{$message}}</div>
-                                        @enderror
+                                        @enderror -->
                                     </div>
                                 </div>
                             </div>
@@ -82,36 +94,28 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Tanggal Registrasi</label>
-                                        <input type="date"
-                                            class="form-control select2 @error('tanggal_register') is-invalid @enderror"
-                                            name="tanggal_register" id="tanggal_register">
+                                        <input type="date" class="form-control select2 @error('tanggal_register') is-invalid @enderror" name="tanggal_register" id="tanggal_register">
                                         @error('tanggal_register')
                                         <div class="invalid-feedback">{{$message}}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="">Nama Lansia</label>
-                                        <input type="text"
-                                            class="form-control select2 @error('nama') is-invalid @enderror"
-                                            placeholder="Masukkan Nama" name="nama" id="nama">
+                                        <input type="text" class="form-control select2 @error('nama') is-invalid @enderror" placeholder="Masukkan Nama" name="nama" id="nama">
                                         @error('nama')
                                         <div class="invalid-feedback">{{$message}}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="">Tanggal Lahir</label>
-                                        <input type="date"
-                                            class="form-control select2 @error('tanggal_lahir') is-invalid @enderror"
-                                            name="tanggal_lahir" id="tanggal_lahir">
+                                        <input type="date" class="form-control select2 @error('tanggal_lahir') is-invalid @enderror" name="tanggal_lahir" id="tanggal_lahir">
                                         @error('tanggal_lahir')
                                         <div class="invalid-feedback">{{$message}}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="">Jenis Kelamin</label>
-                                        <select
-                                            class="form-control select2 @error('jenis_kelamin') is-invalid @enderror"
-                                            name="jenis_kelamin" id="jenis_kelamin">
+                                        <select class="form-control select2 @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin" id="jenis_kelamin">
                                             <option value="">Pilih Jenis Kelamin</option>
                                             <option>Laki-laki</option>
                                             <option>Perempuan</option>
@@ -128,27 +132,21 @@
 
                                     <div class="form-group">
                                         <label for="">RT</label>
-                                        <input type="number"
-                                            class="form-control select2 @error('rt') is-invalid @enderror"
-                                            placeholder="Masukkan RT" name="rt" id="rt">
+                                        <input type="number" class="form-control select2 @error('rt') is-invalid @enderror" placeholder="Masukkan RT" name="rt" id="rt">
                                         @error('rt')
                                         <div class="invalid-feedback">{{$message}}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="">RW</label>
-                                        <input type="number"
-                                            class="form-control select2 @error('rw') is-invalid @enderror"
-                                            placeholder="Masukkan RW" name="rw" id="rw">
+                                        <input type="number" class="form-control select2 @error('rw') is-invalid @enderror" placeholder="Masukkan RW" name="rw" id="rw">
                                         @error('rw')
                                         <div class="invalid-feedback">{{$message}}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="">Alamat</label>
-                                        <input type="text"
-                                            class="form-control select2 @error('alamat') is-invalid @enderror"
-                                            placeholder="Masukkan Nama Jalan" name="alamat" id="alamat">
+                                        <input type="text" class="form-control select2 @error('alamat') is-invalid @enderror" placeholder="Masukkan Nama Jalan" name="alamat" id="alamat">
                                         @error('alamat')
                                         <div class="invalid-feedback">{{$message}}</div>
                                         @enderror
@@ -166,8 +164,7 @@
                                 <div class="col-12 col-sm-6">
                                     <button type="submit" class="btn btn-success"><i class="fas fa-plus-square"> Tambah
                                             Data</i></button>
-                                    <a href="{{ route ('registerlansia')}}" class="btn btn-info"><i
-                                            class="fas fa-arrow-circle-left"> Kembali</i></a>
+                                    <a href="{{ route ('registerlansia')}}" class="btn btn-info"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
                                     <!-- /.form-group -->
                                 </div>
                                 <!-- /.col -->
@@ -225,8 +222,11 @@
                     }
 
                     document.querySelector('#tanggal_lahir').setAttribute("max", formatTanggal(tanggalHariIni));
-                    $(document).ready(function () {
-                        $("input[name*='punya_akun']").click(function () {
+                    $(document).ready(function() {
+                        $('.select2-akun').select2({
+                            theme: 'bootstrap4'
+                        })
+                        $("input[name*='punya_akun']").click(function() {
                             let html = ''
                             if ($(this).val() === 'punya') {
                                 $('#akun-container').html(`
@@ -246,7 +246,6 @@
                             }
                         })
                     })
-
                 </script>
 
 

@@ -18,7 +18,7 @@ class PenimbanganController extends Controller
     {
         $penimbangans = Penimbangan::with('registrasibalitas')->get();
 
-        return view('HalamanUser.penimbangan',compact('penimbangans'));
+        return view('HalamanUser.penimbangan', compact('penimbangans'));
     }
 
     /**
@@ -29,7 +29,7 @@ class PenimbanganController extends Controller
     public function addpenimbangan()
     {
         $regbal = Registrasibalita::all();
-        return view('Penimbangan.addpenimbangan',compact('regbal'));
+        return view('Penimbangan.addpenimbangan', compact('regbal'));
     }
 
     /**
@@ -43,12 +43,20 @@ class PenimbanganController extends Controller
         $rules = [
             'namabalita_id' => 'required',
             'tanggal'       => 'required',
-            'jenis_imunisasi' => 'required',
+            // 'jenis_imunisasi' => 'required',
             'beratbadan'    => 'required',
             'imp'           => 'required',
             'kia'           => 'required',
-            'vitamin'       => 'required'
+            'vitamin'       => 'required',
+            'diimunisasi' => 'required'
         ];
+
+        if ($request->diimunisasi == "1") {
+            $rules['jenis_imunisasi'] = 'required';
+            $jenis_imunisasi = $request->jenis_imunisasi;
+        } else {
+            $jenis_imunisasi = "Tidak Imunisasi";
+        }
 
         $messages = [
             'required' => ':attribute harus diisi'
@@ -57,10 +65,9 @@ class PenimbanganController extends Controller
         $this->validate($request, $rules, $messages);
 
         Penimbangan::create([
-            
             'namabalita_id' => $request->namabalita_id,
             'tanggal' => $request->tanggal,
-            'jenis_imunisasi' => $request->jenis_imunisasi,
+            'jenis_imunisasi' => $jenis_imunisasi,
             'beratbadan' => $request->beratbadan,
             'imp' => $request->imp,
             'kia' => $request->kia,
@@ -68,10 +75,9 @@ class PenimbanganController extends Controller
             'penyakit' => $request->penyakit
         ]);
 
-        return redirect('penimbangan')->with('toast_success', 'Data berhasil disimpan!');
-        ;
+        return redirect('penimbangan')->with('toast_success', 'Data berhasil disimpan!');;
     }
-   
+
 
 
 
@@ -84,7 +90,7 @@ class PenimbanganController extends Controller
     public function show($id)
     {
         $pen = Penimbangan::findorfail($id);
-        return view ('Penimbangan.detailpenimbangan', compact('pen'));
+        return view('Penimbangan.detailpenimbangan', compact('pen'));
     }
 
     /**
@@ -97,8 +103,8 @@ class PenimbanganController extends Controller
     {
         $regbal = Registrasibalita::all();
         $pen = Penimbangan::with('registrasibalitas')->findOrFail($id);
-        
-        return view('Penimbangan.editpenimbangan', compact('pen','regbal'));
+
+        return view('Penimbangan.editpenimbangan', compact('pen', 'regbal'));
     }
 
     /**
@@ -111,7 +117,7 @@ class PenimbanganController extends Controller
     public function update(Request $request, $id)
     {
         $pen = Penimbangan::findOrFail($id);
-        $rules=[
+        $rules = [
             'namabalita_id' => 'required',
             'tanggal'       => 'required',
             'jenis_imunisasi' => 'required',
@@ -127,7 +133,6 @@ class PenimbanganController extends Controller
         $this->validate($request, $rules, $messages);
         $pen->update($request->all());
         return redirect('penimbangan')->with('toast_success', 'Data berhasil diedit!');
-
     }
 
     /**
@@ -141,15 +146,13 @@ class PenimbanganController extends Controller
         $pen = Penimbangan::findOrFail($id);
         $pen->delete();
         // return back()->with('toast_success', 'Data berhasil dihapus!');
-        return response()->json(['status'=>'Data Berhasil dihapus !']);
-
-
+        return response()->json(['status' => 'Data Berhasil dihapus !']);
     }
 
     public function print()
     {
         $penimbangan = Penimbangan::with('registrasibalitas')->get();
-        $pdf = PDF::loadview('Laporan.CetakBalita', compact('penimbangan'))->setPaper('A4','landscape');
+        $pdf = PDF::loadview('Laporan.CetakBalita', compact('penimbangan'))->setPaper('A4', 'landscape');
         return $pdf->stream();
     }
 }

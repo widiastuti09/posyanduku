@@ -46,13 +46,13 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Nama Ibu</label>
+                                        <label>NIK/Nama Ibu</label>
                                         <select
                                             class="form-control select-ibu-hamil @error('id_ibu') is-invalid @enderror"
                                             name="id_ibu" style="width: 100%;">
-                                            <option value="">Pilih nama</option>
+                                            <option value="">Cari NIK/Nama Ibu</option>
                                             @foreach ($ibuHamil as $hamil)
-                                                <option  @if(old('id_ibu') == $hamil->id) selected @endif value="{{ $hamil->id }}">{{ $hamil->nama }}</option>
+                                                <option  @if(old('id_ibu') == $hamil->id) selected @endif value="{{ $hamil->id }}">{{ $hamil->user->nik }} - {{ $hamil->nama }}</option>
                                             @endforeach
                                         </select>
                                             @error('id_ibu')

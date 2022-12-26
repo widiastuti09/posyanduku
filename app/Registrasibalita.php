@@ -18,4 +18,9 @@ class Registrasibalita extends Model
     {
         return $this->hasMany(Penimbangan::class);
     }
-} 
+
+    public function ibu()
+    {
+        return $this->belongsTo(Ibuhamil::class, 'id_ibu');
+    }
+}

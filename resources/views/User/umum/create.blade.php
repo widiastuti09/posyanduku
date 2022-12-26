@@ -44,40 +44,42 @@
                         <form action="{{ route('pengguna.store-umum') }}" method="post">
                             @csrf
                             <div class="form-group">
+                                <label for="name">KK</label>
+                                <input type="number" class="form-control hide-arrow-number @error('kk') is-invalid @enderror" name="kk" placeholder="Masukan KK">
+                                @error('kk')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="name">NIK</label>
-                                <input type="number" class="form-control hide-arrow-number @error('nik') is-invalid @enderror" name="nik"
-                                    placeholder="Masukan NIK">
+                                <input type="number" class="form-control hide-arrow-number @error('nik') is-invalid @enderror" name="nik" placeholder="Masukan NIK">
                                 @error('nik')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="name">Nama</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                                    placeholder="Masukan nama lengkap">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Masukan nama lengkap">
                                 @error('name')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" placeholder="Masukan email">
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Masukan email">
                                 @error('email')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="password">Password</label>
-                                        <div class="input-group mb-3" >
-                                            <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                                name="password" placeholder="Masukan password" id="password">
-                                                <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" type="button"
-                                                    id="button-show-password">
+                                        <div class="input-group mb-3">
+                                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Masukan password" id="password">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" type="button" id="button-show-password">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
                                             </div>
@@ -90,20 +92,17 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="password">Konfirmasi Password</label>
-                                        <div class="input-group mb-3" >
-                                            <input type="password" class="form-control @error('confirm_password') is-invalid @enderror"
-                                                name="confirm_password" placeholder="Masukan password"
-                                                id="confirm-password">
-                                                <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" type="button"
-                                                    id="button-show-confirm-password">
+                                        <div class="input-group mb-3">
+                                            <input type="password" class="form-control @error('confirm_password') is-invalid @enderror" name="confirm_password" placeholder="Masukan password" id="confirm-password">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" type="button" id="button-show-confirm-password">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                     @error('confirm_password')
-                                        <div class="text-danger" style="font-size : 12px">{{ $message }}</div>
+                                    <div class="text-danger" style="font-size : 12px">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
@@ -128,36 +127,36 @@
 
 </body>
 <script>
-        $(document).ready(function() {
-            var showPassword = true;
-            var showConfirmPassword = true;
-            $('#button-show-password').on('click', function() {
-                if (showPassword) {
-                    $('#password').prop('type', 'text');
-                    $(this).children().removeClass('fa-eye');
-                    $(this).children().addClass('fa-eye-slash');
-                } else {
-                    $('#password').prop('type', 'password');
-                    $(this).children().removeClass('fa-eye-slash');
-                    $(this).children().addClass('fa-eye');
-                }
-                showPassword = !showPassword
-            });
+    $(document).ready(function() {
+        var showPassword = true;
+        var showConfirmPassword = true;
+        $('#button-show-password').on('click', function() {
+            if (showPassword) {
+                $('#password').prop('type', 'text');
+                $(this).children().removeClass('fa-eye');
+                $(this).children().addClass('fa-eye-slash');
+            } else {
+                $('#password').prop('type', 'password');
+                $(this).children().removeClass('fa-eye-slash');
+                $(this).children().addClass('fa-eye');
+            }
+            showPassword = !showPassword
+        });
 
-            $('#button-show-confirm-password').on('click', function() {
-                if (showConfirmPassword) {
-                    $('#confirm-password').prop('type', 'text');
-                    $(this).children().removeClass('fa-eye');
-                    $(this).children().addClass('fa-eye-slash');
-                } else {
-                    $('#confirm-password').prop('type', 'password');
-                    $(this).children().removeClass('fa-eye-slash');
-                    $(this).children().addClass('fa-eye');
-                }
-                showConfirmPassword = !showConfirmPassword
-            });
-        })
-    </script>
+        $('#button-show-confirm-password').on('click', function() {
+            if (showConfirmPassword) {
+                $('#confirm-password').prop('type', 'text');
+                $(this).children().removeClass('fa-eye');
+                $(this).children().addClass('fa-eye-slash');
+            } else {
+                $('#confirm-password').prop('type', 'password');
+                $(this).children().removeClass('fa-eye-slash');
+                $(this).children().addClass('fa-eye');
+            }
+            showConfirmPassword = !showConfirmPassword
+        });
+    })
+</script>
 
 
 </html>

@@ -13,4 +13,14 @@ class Ibuhamil extends Model
     // ];
 
     protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function balita()
+    {
+        return $this->hasMany(Registrasibalita::class, 'id_ibu');
+    }
 }

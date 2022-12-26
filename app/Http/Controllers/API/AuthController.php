@@ -10,13 +10,16 @@ use Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendCodeVerification;
 
-class AuthController extends Controller{
+class AuthController extends Controller
+{
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth_mobile')->except(['login']);
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $rules = [
             'nik' => 'required',
             'password' => 'required'
@@ -25,9 +28,9 @@ class AuthController extends Controller{
         $messages = [
             'required' => ':attribute tidak boleh kosong'
         ];
-        $validation = Validator::make($request->all(),$rules, $messages);
+        $validation = Validator::make($request->all(), $rules, $messages);
 
-        if($validation->fails()) {
+        if ($validation->fails()) {
             return response()->json([
                 'message' => 'Terjadi kesalahan',
                 'status' => 401,
@@ -35,10 +38,10 @@ class AuthController extends Controller{
             ], 401);
         }
 
-        $findByNik = User::where('nik',$request->nik)->first();
+        $findByEmail = User::where('email', $request->nik)->first();
 
-        if($findByNik){
-            if(Auth::attempt(['nik' => $request->nik,'password' => $request->password])){
+        if ($findByEmail) {
+            if (Auth::attempt(['email' => $request->nik, 'password' => $request->password])) {
                 $user = User::findOrFail(Auth::user()->id);
                 $user->update(['api_token' => bcrypt($request->nik)]);
 
@@ -47,36 +50,34 @@ class AuthController extends Controller{
                     'status' => 200,
                     'data' => $user
                 ]);
-            }else{
+            } else {
                 return response()->json([
-                    'message'=>'Login gagal',
+                    'message' => 'Login gagal',
                     'status' => 401,
-                    'error' => 'NIK atau password salah'
+                    'error' => 'Email atau password salah'
                 ], 401);
             }
-        }else{
+        } else {
             return response()->json([
-                'message'=>'Login gagal',
+                'message' => 'Login gagal',
                 'status' => 403,
-                'error' => 'NIK tidak ditemukan. Mohon hubungi admin untuk konfirmasi'
+                'error' => 'Email tidak ditemukan. Mohon hubungi admin untuk konfirmasi'
             ], 403);
         }
-
-
-
-
     }
 
-    public function user(){
+    public function user()
+    {
         $user = Auth::user();
 
         return response()->json([
-            'message'=>'Berhasil',
+            'message' => 'Berhasil',
             'status' => 200,
             'data' => $user
         ]);
     }
-    public function updateUser(Request $request, $id){
+    public function updateUser(Request $request, $id)
+    {
         $nama = $request->name;
         $email = $request->email;
 
@@ -92,34 +93,35 @@ class AuthController extends Controller{
             'status' => 200,
             'data'  => $umum
         ]);
-
     }
 
-    public function saveDeviceToken(Request $request){
+    public function saveDeviceToken(Request $request)
+    {
         auth()->user()->update(['device_token' => $request->device_token]);
         return response()->json([
-            'message'=>'Berhasil menyimpan token',
+            'message' => 'Berhasil menyimpan token',
             'status' => 200,
         ], 200);
     }
 
-    public function resetPassword(Request $request){
+    public function resetPassword(Request $request)
+    {
         $user = User::where('email', $request->email)->first();
         // dd($user);
 
-        if($user){
-            $random = rand(100000,999999);
+        if ($user) {
+            $random = rand(100000, 999999);
             $user->update([
                 'code_digit' => $random
             ]);
             $sendMail = Mail::to($user->email)
-            ->send(new SendCodeVerification($random, $user->name));
+                ->send(new SendCodeVerification($random, $user->name));
 
             return response()->json([
                 'message' => 'Berhasil kirim code',
                 'status' => 200
             ], 200);
-        }else{
+        } else {
             return response()->json([
                 'message' => 'Gagal kirim code',
                 'status' => 403
@@ -127,16 +129,17 @@ class AuthController extends Controller{
         }
     }
 
-    public function verificationCode(Request $request){
+    public function verificationCode(Request $request)
+    {
         $user = User::where('code_digit', $request->code_digit)->first();
         // dd($user);
 
-        if($user){
+        if ($user) {
             return response()->json([
                 'message' => 'Berhasil verification code',
                 'status' => 200
             ], 200);
-        }else{
+        } else {
             return response()->json([
                 'message' => 'Gagal verifikasi code',
                 'status' => 403
@@ -144,7 +147,8 @@ class AuthController extends Controller{
         }
     }
 
-    public function gantiPassword(Request $request){
+    public function gantiPassword(Request $request)
+    {
         $rules = [
             'password' => 'required',
             'konfirmasi_password' => 'required',
@@ -157,7 +161,7 @@ class AuthController extends Controller{
 
         $validation = Validator::make($request->all(), $rules, $messages);
 
-        if($validation->fails()){
+        if ($validation->fails()) {
             return response()->json([
                 'message' => 'Terjadi kesalahan',
                 'status' => 409,
@@ -167,7 +171,7 @@ class AuthController extends Controller{
 
         $user = User::where('code_digit', $request->code_digit)->first();
 
-        if($user){
+        if ($user) {
             $user->update([
                 'password' => bcrypt($request->password),
                 'code_digit' => null
@@ -177,12 +181,11 @@ class AuthController extends Controller{
                 'message' => 'Ubah password berhasil',
                 'status' => 200
             ], 200);
-        }else{
+        } else {
             return response()->json([
                 'message' => 'Gagal password berhasil',
                 'status' => 403
             ], 403);
         }
     }
-
 }
