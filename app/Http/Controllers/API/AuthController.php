@@ -44,7 +44,7 @@ class AuthController extends Controller
             if (Auth::attempt(['email' => $request->nik, 'password' => $request->password])) {
                 $user = User::findOrFail(Auth::user()->id);
                 $user->update(['api_token' => bcrypt($request->nik)]);
-                $user->role = ($user->Ibuhamil) ? 'ibuhamil' : 'lansia';
+                $user->role = ($user->ibuhamil == null) ? 'lansia' : 'ibuhamil';
 
                 return response()->json([
                     'message' => 'Login berhasil',
