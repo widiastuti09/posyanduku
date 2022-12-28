@@ -45,14 +45,14 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name">KK</label>
-                                <input type="number" class="form-control hide-arrow-number @error('kk') is-invalid @enderror" name="kk" placeholder="Masukan KK">
+                                <input value="{{old('kk')}}" type="number" class="form-control hide-arrow-number @error('kk') is-invalid @enderror" name="kk" placeholder="Masukan KK">
                                 @error('kk')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="name">NIK</label>
-                                <input type="number" class="form-control hide-arrow-number @error('nik') is-invalid @enderror" name="nik" placeholder="Masukan NIK">
+                                <input value="{{old('nik')}}" type="number" class="form-control hide-arrow-number @error('nik') is-invalid @enderror" name="nik" placeholder="Masukan NIK">
                                 @error('nik')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -60,14 +60,14 @@
 
                             <div class="form-group">
                                 <label for="name">Nama</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Masukan nama lengkap">
+                                <input type="text" value="{{old('nama')}}" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Masukan nama lengkap">
                                 @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Masukan email">
+                                <input type="email" value="{{old('email')}}" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Masukan email">
                                 @error('email')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

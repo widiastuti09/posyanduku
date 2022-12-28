@@ -48,7 +48,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Masukkan NIK Akun</label>
-                                        <select class="form-control select2" name="user_id" required>
+                                        <select class="form-control select2" name="user_id" required id="user_id">
                                             <option value="">-- Cari NIK --</option>
                                             @forelse($users as $user)
                                             <option @if (old('user_id')==$user->id) selected @endif value="{!! $user->id !!}">{!! $user->nik !!} - {!! $user->name !!}</option>
@@ -94,7 +94,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Nama Ibu Hamil</label>
-                                        <input type="text" class="form-control @error('nama') is-invalid @enderror" autofocus id="nama" name="nama" placeholder="Masukkan Nama" value="{{ old('nama') }}">
+                                        <input readonly type="text" class="form-control @error('nama') is-invalid @enderror" autofocus id="nama" name="nama" placeholder="Masukkan Nama" value="{{ old('nama') }}">
                                         @error('nama')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -255,6 +255,16 @@
             $('.select2').select2({
                 theme: 'bootstrap4'
             });
+
+            $('#user_id').change(function(e) {
+                let text = $(this).find("option:selected").text()
+                let name = text.split('-')[1];
+                if (name == undefined || name == "") {
+                    name = "Null"
+                }
+                $('#nama').val(name.trim())
+            })
+
             // $("input[name*='punya_akun']").click(function() {
             //     let html = ''
             //     if ($(this).val() === 'punya') {

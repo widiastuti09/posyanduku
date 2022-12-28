@@ -88,8 +88,8 @@ class UserController extends Controller
 
     public function storeUmum(Request $request){
         $rules = [
-            'kk' => 'required|unique:users',
-            'nik' => 'required|unique:users',
+            'kk' => 'required|unique:users|digits:16',
+            'nik' => 'required|unique:users|digits:16',
             'name' => 'required|alpha_spaces',
             'email' => 'required|unique:users',
             'password' => 'required|min:8',
@@ -100,7 +100,8 @@ class UserController extends Controller
             'required' => 'Bidang :attribute harus diisi',
             'same' => 'Password dan konfirmasi password tidak sama',
             'unique' => ":attribute sudah terpakai",
-            'alpha_spaces' => ':attribute hanya huruf dan spasi'
+            'alpha_spaces' => ':attribute hanya huruf dan spasi',
+            'digits' => ':attribute harus 16 digit'
         ];
 
         $this->validate($request, $rules, $messages);
