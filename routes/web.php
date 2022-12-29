@@ -308,6 +308,9 @@ Route::group(['middleware' => ['auth']], function () {
   //pdf
 
   Route::get('/cetak-bumil-resti', 'BumilrestiController@print')->name('cetakbumilresti');
+
+  // get user
+  Route::get('/user-detail/{id}', 'UserController@get_user_detail')->name("get-user-detail");
 });
 
 
