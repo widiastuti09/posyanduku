@@ -1,56 +1,71 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<style>
-*{
-    font-size: 15px
-}
-@page{
-    size : Letter landscape
-}
-#cetak {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+  <style>
+    * {
+      font-size: 15px
+    }
 
-#cetak td, #cetak th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
+    @page {
+      size: Letter landscape
+    }
 
-#cetak tr:nth-child(even){background-color: #f2f2f2;}
+    #cetak {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
 
-#cetak tr:hover {background-color: #ddd;}
+    #cetak td,
+    #cetak th {
+      border: 1px solid black;
+      padding: 8px;
+    }
 
-#cetak th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #303030;
-  color: white;
-}
-</style>
+    /* #cetak tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    #cetak tr:hover {
+      background-color: #ddd;
+    } */
+
+    #cetak th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      /* background-color: #303030; */
+      /* color: white; */
+    }
+  </style>
 </head>
+
 <body>
-<h1 align="center">Data Laporan Lansia</h1>
-<table id="cetak">
+<h1 style="font-size: 20;" align="center"> DATA LAPORAN LANSIA</h1>
+  <h1 style="font-size: 16;" align="center">POSYANDU TEMBOK KIDUL</h1>
+  <div align="center">Alamat: Desa Tembok Kidul, Kecamatan Adiwerna Kab. Tegal Jawa Tengah</div>
+  <br>
+  <hr>
+  <br>
+  <br>
+  <table id="cetak">
     <thead>
       <tr>
-            <th>No</th>
-            <th>Nama Lansia</th>
-            <th>Tanggal Periksa</th>
-            <th>BB</th>
-            <th>TB</th>
-            <th>Tekanan Darah</th>
-            <th>Lingkar Pinggang</th>
-            <th>Glukosa Darah</th>
-            <th>Lemak Tubuh</th>
-            <th>Lemak Perut</th>
-            <th>IMT</th>
-            <th>Kolestrol</th>
-            <th>Asam Urat</th>
-            
+        <th>No</th>
+        <th>Nama Lansia</th>
+        <th>Tanggal Periksa</th>
+        <th>BB</th>
+        <th>TB</th>
+        <th>Tekanan Darah</th>
+        <th>Lingkar Pinggang</th>
+        <th>Glukosa Darah</th>
+        <th>Lemak Tubuh</th>
+        <th>Lemak Perut</th>
+        <th>IMT</th>
+        <th>Kolestrol</th>
+        <th>Asam Urat</th>
+
       </tr>
     </thead>
     @php
@@ -58,27 +73,28 @@
     @endphp
 
     @foreach ($pemeriksaanlansias as $lansia)
-      <tr>
-        <td scope="row">{{ $nomor++ }}</td>
-        <td>{{$lansia->lansias['nama']}}</td>
-        <td>{{date('d F Y', strtotime($lansia->tanggal_periksa))}}</td>
-        <td>{{$lansia->berat_badan}} Kg</td>
-        <td>{{$lansia->tinggi_badan}} Cm</td>
-        <td>{{$lansia->tekanan_darah}}</td>
-        <td>{{$lansia->lingkar_pinggang}}</td>
-        <td>{{$lansia->glukosa_darah}}</td>
-        <td>{{$lansia->lemak_tubuh}}</td>
-        <td>{{$lansia->lemak_perut}}</td>
-        <td>{{$lansia->imt}}</td>
-        <td>{{$lansia->kolestrol}}</td>
-        <td>{{$lansia->asam_urat}}</td>
-        
-      </tr>
-    
+    <tr>
+      <td scope="row">{{ $nomor++ }}</td>
+      <td>{{$lansia->lansias['nama']}}</td>
+      <td>{{date('d F Y', strtotime($lansia->tanggal_periksa))}}</td>
+      <td>{{$lansia->berat_badan}} Kg</td>
+      <td>{{$lansia->tinggi_badan}} Cm</td>
+      <td>{{$lansia->tekanan_darah}}</td>
+      <td>{{$lansia->lingkar_pinggang}}</td>
+      <td>{{$lansia->glukosa_darah}}</td>
+      <td>{{$lansia->lemak_tubuh}}</td>
+      <td>{{$lansia->lemak_perut}}</td>
+      <td>{{$lansia->imt}}</td>
+      <td>{{$lansia->kolestrol}}</td>
+      <td>{{$lansia->asam_urat}}</td>
 
-      
+    </tr>
+
+
+
     @endforeach
-</table>
+  </table>
 
 </body>
+
 </html>

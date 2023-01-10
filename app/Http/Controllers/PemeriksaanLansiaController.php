@@ -226,9 +226,12 @@ class PemeriksaanLansiaController extends Controller
         return response()->json(['status'=>'Data Berhasil dihapus !']);
 
     }
-    public function print()
+    public function print(Request $request)
     {
-        $pemeriksaanlansias = Pemeriksaanlansia::with('lansias')->get();
+        if($request->bulan == null){
+            return redirect('pemeriksaanlansia');
+        }
+        $pemeriksaanlansias = Pemeriksaanlansia::whereMonth('tanggal_periksa','=',$request->bulan)->with('lansias')->get();
         $pdf = PDF::loadview('Laporan.CetakLansia', compact('pemeriksaanlansias'))->setPaper('A4','lanscape');
         return $pdf->stream();
 

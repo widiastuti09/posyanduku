@@ -47,10 +47,10 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="">Masukkan NIK Akun</label>
-                                        <select class="form-control select2-akun" name="user_id" required>
+                                        <select class="form-control select2-akun" name="user_id" required id="user_id">
                                             <option value="">-- Cari NIK --</option>
                                             @forelse($users as $user)
-                                            <option @if (old('user_id')==$user->id) selected @endif value="{!! $user->id !!}">{!! $user->nik !!} - {!! $user->name !!}</option>
+                                            <option @if (old('user_id')==$user->id) selected @endif value="{!! $user->id !!}">{!! $user->nik !!}</option>
                                             @empty
                                             <option disabled>Tidak ada data</option>
                                             @endforelse
@@ -101,7 +101,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="">Nama Lansia</label>
-                                        <input type="text" class="form-control select2 @error('nama') is-invalid @enderror" placeholder="Masukkan Nama" name="nama" id="nama">
+                                        <input readonly type="text" class="form-control select2 @error('nama') is-invalid @enderror" placeholder="Masukkan Nama" name="nama" id="nama">
                                         @error('nama')
                                         <div class="invalid-feedback">{{$message}}</div>
                                         @enderror
@@ -226,6 +226,32 @@
                         $('.select2-akun').select2({
                             theme: 'bootstrap4'
                         })
+                        $("#user_id").change(function(e) {
+                            let user_id = $(this).val()
+                            $.ajax({
+                                url: "{{url('/user-detail/')}}/" + user_id,
+                                success: function(data) {
+                                    $('#nama').val(data.nama)
+                                },
+                                error: function(err) {
+                                    Swal.close()
+                                },
+                                beforeSend: function(bf) {
+                                    Swal.showLoading()
+                                },
+                                complete: function() {
+                                    Swal.close()
+                                },
+                            })
+                        })
+                        // $('#user_id').change(function(e) {
+                        //     let text = $(this).find("option:selected").text()
+                        //     let name = text.split('-')[1];
+                        //     if (name == undefined || name == "") {
+                        //         name = "Null"
+                        //     }
+                        //     $('#nama').val(name.trim())
+                        // })
                         $("input[name*='punya_akun']").click(function() {
                             let html = ''
                             if ($(this).val() === 'punya') {

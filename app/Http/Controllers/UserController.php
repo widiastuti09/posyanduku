@@ -7,18 +7,21 @@ use App\User;
 
 class UserController extends Controller
 {
-    public function index (){
-        $posyandu = User::where('level','kader1')->orWhere('level','kader2')->get();
+    public function index()
+    {
+        $posyandu = User::where('level', 'kader1')->orWhere('level', 'kader2')->get();
         $umum = User::where('level', 'umum')->get();
 
         return view('User.index', compact('posyandu', 'umum'));
     }
 
-    public function tambahPetugas(){
+    public function tambahPetugas()
+    {
         return view("User.petugas.create");
     }
 
-    public function storePetugas(Request $request){
+    public function storePetugas(Request $request)
+    {
         $rules = [
             'name' => 'required|alpha_spaces',
             'email' => 'required|unique:users',
@@ -47,13 +50,15 @@ class UserController extends Controller
         return redirect()->route('pengguna.index');
     }
 
-    public function editPetugas ($id) {
+    public function editPetugas($id)
+    {
         $petugas = User::findOrFail($id);
 
         return view('User.petugas.edit', compact('petugas'));
     }
 
-    public function updatePetugas (Request $request, $id){
+    public function updatePetugas(Request $request, $id)
+    {
         $petugas = User::findOrFail($id);
 
         $petugas->update([
@@ -64,32 +69,34 @@ class UserController extends Controller
         ]);
 
         return redirect()->route('pengguna.index');
-
     }
 
-    public function detailPetugas($id){
+    public function detailPetugas($id)
+    {
         $petugas = User::findorfail($id);
         return view('User.petugas.detail', Compact('petugas'));
     }
 
-    public function hapusPetugas($id){
+    public function hapusPetugas($id)
+    {
         $petugas = User::findOrFail($id);
 
         $petugas->delete();
 
         // return redirect()->route('pengguna.index');
-        return response()->json(['status'=>'Data Berhasil dihapus !']);
-
+        return response()->json(['status' => 'Data Berhasil dihapus !']);
     }
 
-    public function tambahUmum(){
+    public function tambahUmum()
+    {
         return view("User.umum.create");
     }
 
-    public function storeUmum(Request $request){
+    public function storeUmum(Request $request)
+    {
         $rules = [
-            'kk' => 'required|unique:users',
-            'nik' => 'required|unique:users',
+            'kk' => 'required|unique:users|digits:16',
+            'nik' => 'required|unique:users|digits:16',
             'name' => 'required|alpha_spaces',
             'email' => 'required|unique:users',
             'password' => 'required|min:8',
@@ -100,7 +107,8 @@ class UserController extends Controller
             'required' => 'Bidang :attribute harus diisi',
             'same' => 'Password dan konfirmasi password tidak sama',
             'unique' => ":attribute sudah terpakai",
-            'alpha_spaces' => ':attribute hanya huruf dan spasi'
+            'alpha_spaces' => ':attribute hanya huruf dan spasi',
+            'digits' => ':attribute harus 16 digit'
         ];
 
         $this->validate($request, $rules, $messages);
@@ -117,18 +125,21 @@ class UserController extends Controller
 
         return redirect()->route('pengguna.index');
     }
-    public function detailUmum($id){
+    public function detailUmum($id)
+    {
         $umum = User::findorfail($id);
         return view('User.umum.detail', Compact('umum'));
     }
 
-    public function editUmum($id) {
+    public function editUmum($id)
+    {
         $umum = User::findOrFail($id);
 
         return view('User.umum.edit', compact('umum'));
     }
 
-    public function updateUmum (Request $request, $id){
+    public function updateUmum(Request $request, $id)
+    {
         $umum = User::findOrFail($id);
 
         $umum->update([
@@ -140,17 +151,22 @@ class UserController extends Controller
         ]);
 
         return redirect()->route('pengguna.index');
-
     }
 
-    public function hapusUmum($id){
+    public function hapusUmum($id)
+    {
         $umum = User::findOrFail($id);
 
         $umum->delete();
 
         // return redirect()->route('pengguna.index');
-        return response()->json(['status'=>'Data Berhasil dihapus !']);
-
+        return response()->json(['status' => 'Data Berhasil dihapus !']);
     }
 
+    public function get_user_detail($id)
+    {
+        $user = User::findOrFail($id);
+
+        return response()->json(['nama' => $user->name]);
+    }
 }
