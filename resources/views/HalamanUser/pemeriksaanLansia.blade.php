@@ -31,8 +31,11 @@
                             class="fas fa-plus-square"></i></a>
 
                 @endif
-                <a href="{{route('cetaklansia')}}"class="btn btn-secondary"> Cetak Data <i
-                            class="fas fa-print"></i></a>
+                <!-- <a href="{{route('cetaklansia')}}"class="btn btn-secondary"> Cetak Data <i
+                            class="fas fa-print"></i></a> -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#print">
+                    Cetak Data <i class="fas fa-print"></i>
+                </button>
                 </div>
                 <table id="table-pemeriksaan" class="table table-bordered table-striped">
                     <thead class="bg-dark">
@@ -86,6 +89,43 @@
             </div>
 
 
+        </div>
+    </div>
+
+    <div class="modal fade" id="print" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cetak</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('cetaklansia')}}" method="get" target="__blank">
+                    <div class="form-group">
+                        <label for="">Bulan</label>
+                        <select name="bulan" id="bulan" class="form-control">
+                            <option value="1">Januari</option>
+                            <option value="2">Februari</option>
+                            <option value="3">Maret</option>
+                            <option value="4">April</option>
+                            <option value="5">Mei</option>
+                            <option value="6">Juni</option>
+                            <option value="7">Juli</option>
+                            <option value="8">Agustus</option>
+                            <option value="9">September</option>
+                            <option value="10">Oktober</option>
+                            <option value="11">November</option>
+                            <option value="12">Desember</option>
+                        </select>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Cetak</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
         </div>
     </div>
 
