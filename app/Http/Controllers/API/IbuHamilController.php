@@ -11,11 +11,13 @@ use Auth;
 
 class IbuHamilController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth_mobile');
     }
 
-    public function ibuHamil() {
+    public function ibuHamil()
+    {
         $ibuhamil = Ibuhamil::where('user_id', Auth::user()->id)->get();
 
         return response()->json([
@@ -25,7 +27,8 @@ class IbuHamilController extends Controller
         ]);
     }
 
-    public function detailIbuHamil($id){
+    public function detailIbuHamil($id)
+    {
         $ibuhamil = Ibuhamil::findOrFail($id);
 
         return response()->json([
@@ -35,7 +38,8 @@ class IbuHamilController extends Controller
         ]);
     }
 
-    public function periksabumil($id){
+    public function periksabumil($id)
+    {
         $pemeriksaanibuhamil = PemeriksaanIbuHamil::where('id_ibu', $id)->get();
 
         return response()->json([
@@ -45,7 +49,8 @@ class IbuHamilController extends Controller
         ]);
     }
 
-    public function Bumilresti($id){
+    public function Bumilresti($id)
+    {
         $bumilresti = Bumilresti::where('id_ibu', $id)->get();
 
         return response()->json([
@@ -54,7 +59,4 @@ class IbuHamilController extends Controller
             'data' => $bumilresti
         ]);
     }
-    
-
-
 }

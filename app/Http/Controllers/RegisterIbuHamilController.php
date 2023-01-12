@@ -26,7 +26,7 @@ class RegisterIbuHamilController extends Controller
      */
     public function create()
     {
-        $users = User::doesntHave('ibuhamil')->where('level','umum')->get();
+        $users = User::doesntHave('ibuhamil')->doesntHave('lansia')->where('level','umum')->get();
         return view('RegisterIbuHamil.addregister', compact('users'));
     }
 

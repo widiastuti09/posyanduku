@@ -26,7 +26,7 @@
                 <!-- SELECT2 EXAMPLE -->
                 <div class="card card-default">
                     <div class="card-header bg-primary ">
-                        <div class="card-title text-center">Form Detail Data Petugas</div>
+                        <div class="card-title text-center">Form Detail Data User</div>
 
                         <div class="card-tools">
 
@@ -48,7 +48,7 @@
 
                             <tbody>
                                 <tr>
-                                    <th class="font-weight-bold">Nama Petugas</th>
+                                    <th class="font-weight-bold">Nama User</th>
                                     <td scope="row" class="font-weight-normal">{{ $umum->name}}</td>
                                 </tr>
                                 <tr>

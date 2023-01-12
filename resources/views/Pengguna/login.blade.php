@@ -15,14 +15,27 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('Admin_LTE/dist/css/adminlte.min.css')}}">
 </head>
+<style>
+    body{
+        background: url('https://res.cloudinary.com/desug/image/upload/v1625670738/Posyandu/3_sslteo.jpg'), rgba(66,66, 66, .6); background-size: cover; background-blend-mode: multiply
+    }
+   
+</style>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Pos</b>yandu</a>
+    <a href="../../index2.html">
+        <!--<b>Pos</b>yandu-->
+        </a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
+        <div class="login-logo">
+    <a href="">
+        <b>Pos</b>yandu
+        </a>
+  </div>
       <p class="login-box-msg">Sign in to start your session</p>
 
       <form action="{{route('postlogin')}}" method="post">

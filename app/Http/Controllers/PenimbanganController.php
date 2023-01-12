@@ -149,9 +149,13 @@ class PenimbanganController extends Controller
         return response()->json(['status' => 'Data Berhasil dihapus !']);
     }
 
-    public function print()
+    public function print(Request $request)
     {
-        $penimbangan = Penimbangan::with('registrasibalitas')->get();
+        if($request->bulan == null){
+            return redirect('penimbangan');
+        }
+
+        $penimbangan = Penimbangan::whereMonth('tanggal','=',$request->bulan)->with('registrasibalitas')->get();
         $pdf = PDF::loadview('Laporan.CetakBalita', compact('penimbangan'))->setPaper('A4', 'landscape');
         return $pdf->stream();
     }
