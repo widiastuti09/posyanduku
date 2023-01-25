@@ -42,12 +42,12 @@ class BumilrestiController extends Controller
             'asuransi' => 'required',
             'resiko_tinggi' => 'required',
             'hpl' => 'required',
-            'wali_bumil' => 'required|alpha_spaces',
+            'wali_bumil' => 'required|regex:/^[\pL\s\-]+$/u',
         ];
 
         $messages = [
             'required' => ':attribute harus diisi',
-            'alpha_spaces' => ':attribute hanya huruf dan spasi'
+            'regex' => ':attribute hanya huruf dan spasi'
         ];
 
         $this->validate($request, $rules, $messages);
@@ -109,10 +109,11 @@ class BumilrestiController extends Controller
             'asuransi'          => 'required',
             'resiko_tinggi'     => 'required',
             'hpl'               => 'required',
-            'wali_bumil'        => 'required',
+            'wali_bumil'        => 'required|regex:/^[\pL\s\-]+$/u',
         ];
         $messages = [
-            'required' => ':attribute tidak boleh kosong'
+            'required' => ':attribute tidak boleh kosong',
+            'regex' => ':attribute hanya huruf dan spasi'
         ];
 
         $this->validate($request, $rules, $messages);

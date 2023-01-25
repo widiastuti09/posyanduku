@@ -61,14 +61,14 @@
 
                             <div class="form-group">
                                 <label for="name">Nama</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Masukan nama lengkap" value="{{ $umum->name }}">
+                                <input required type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Masukan nama lengkap" value="{{ $umum->name }}">
                                 @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Masukan email" value="{{ $umum->email }}">
+                                <input required type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Masukan email" value="{{ $umum->email }}">
                                 @error('email')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

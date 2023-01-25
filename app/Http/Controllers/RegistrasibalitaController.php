@@ -52,7 +52,7 @@ class RegistrasibalitaController extends Controller
             'berat_badan_lahir' => 'required',
             'panjang_panjang_lahir' => 'required',
             // 'no_kk' => 'required|min:16',
-            'nik_balita' => 'required|min:16',
+            'nikbalita' => 'required|min:16|unique:registrasibalitas',
             // 'telp' => 'required|max:13|min:10',
             'id_ibu' => 'required',
         ];
@@ -61,10 +61,9 @@ class RegistrasibalitaController extends Controller
             'required' => ':attribute harus diisi',
             'max' => ':attribute maksimal :max karakter',
             'min' => ':attribute minimal :min karakter',
-            'alpha_spaces' => ':attribute hanya huruf dan spasi'
-
+            'alpha_spaces' => ':attribute hanya huruf dan spasi',
+            'unique' => ':attribute sudah dipakai',
         ];
-
 
         $this->validate($request, $rules, $messages);
 
@@ -86,7 +85,7 @@ class RegistrasibalitaController extends Controller
             'bblahir'       => $request->berat_badan_lahir,
             'pblahir'       => $request->panjang_panjang_lahir,
             // 'nokk'          => $request->no_kk,
-            'nikbalita'     => $request->nik_balita,
+            'nikbalita'     => $request->nikbalita,
             // 'telp'          => $request->telp,
             // 'user_id'       => null
         ]);
@@ -129,18 +128,17 @@ class RegistrasibalitaController extends Controller
     {
         $regbal = Registrasibalita::findorfail($id);
         $rules = [
-            'namabalita'    => 'required|string',
-            'tempatlahir'   => 'required|',
+            'namabalita'    => 'required|alpha_spaces',
+            'tempatlahir'   => 'required|alpha_spaces',
             'tanggallahir'  => 'required',
             'jeniskelamin'  => 'required',
-            'namaayah'      => 'required|string',
+            'namaayah'      => 'required|alpha_spaces',
             // 'rt'            => 'required|max:2',
             // 'rw'            => 'required|max:2',
             'usia'          => 'required|max:1',
             'bblahir'       => 'required',
             'pblahir'       => 'required',
             // 'nokk'          => 'required|min:16',
-            'nikbalita'     => 'required|min:16',
             // 'telp'          => 'required|max:13|min:10'
         ];
         $messages = [
@@ -166,10 +164,19 @@ class RegistrasibalitaController extends Controller
             // 'nokk.min'              => 'No KK Kurang dari 16 Karakter',
             'nikbalita.required'    => 'NIK Balita Harus diisi',
             'nikbalita.min'         => 'NIK Balita Kurang dari 16 Karakter',
+            'alpha_spaces' => ':attribute hanya huruf dan spasi'    ,
             // 'telp.required'         => 'No Telp Harus Di isi',
             // 'telp.max'              => 'No Telp Maksimal 13 Karakter',
-            // 'telp.min'              => 'No Telp Minimal 10 Karakter'
+            // 'telp.min'              => 'No Telp Minimal 10 Karakter',
+            'unique' => ':attribute sudah dipakai'
         ];
+        
+        if($regbal->nikbalita == $request->nikbalita){
+            $rules['nikbalita'] = 'required|max:16';
+        }else{
+            $rules['nikbalita'] = 'required|max:16|unique:registrasibalitas';
+        }
+        // dd($rules);
         $this->validate($request, $rules, $messages);
         $regbal->update($request->all());
         return redirect('register')->with('toast_success', 'Data berhasil Diedit');

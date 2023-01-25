@@ -43,6 +43,15 @@
             </div>
           </div>
           <!-- /.card-header -->
+          @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
           <form action="{{route ('updateregister', $regbal->id)}}" method="post">
             {{ csrf_field() }}
             <div class="card-body">
@@ -96,15 +105,15 @@
                 </div> -->
                   <div class="form-group">
                     <label>Usia (Tahun)</label>
-                    <input type="text" class="form-control" id="usia" name="usia" value="{{$regbal->usia}}" placeholder="Masukkan Usia Anak">
+                    <input type="number" class="form-control" id="usia" name="usia" value="{{$regbal->usia}}" placeholder="Masukkan Usia Anak">
                   </div>
                   <div class="form-group">
                     <label>Berat Badan Lahir (Kg)</label>
-                    <input type="text" class="form-control" id="bblahir" name="bblahir" value="{{$regbal->bblahir}}" placeholder="Masukkan Berat Badan Anak">
+                    <input type="number" class="form-control" id="bblahir" name="bblahir" value="{{$regbal->bblahir}}" placeholder="Masukkan Berat Badan Anak">
                   </div>
                   <div class="form-group">
                     <label>Panjang Badan Lahir (Cm)</label>
-                    <input type="text" class="form-control" id="pblahir" name="pblahir" value="{{$regbal->pblahir}}" placeholder="Masukkan Panjamg Badan Anak">
+                    <input type="number" class="form-control" id="pblahir" name="pblahir" value="{{$regbal->pblahir}}" placeholder="Masukkan Panjamg Badan Anak">
                   </div>
                   <!-- <div class="form-group">
                     <label>No KK Balita</label>
@@ -112,7 +121,10 @@
                 </div> -->
                   <div class="form-group">
                     <label>No NIK Balita</label>
-                    <input type="number" class="form-control" id="nikbalita" name="nikbalita" value="{{$regbal->nikbalita}}" placeholder="Masukkan Nomor NIK">
+                    <input type="number" minlength="16" maxlength="16" class="form-control @error('nikbalita') is-invalid @enderror" id="nikbalita" name="nikbalita" value="{{$regbal->nikbalita}}" placeholder="Masukkan Nomor NIK">
+                    @error('nikbalita')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                   </div>
                   <!-- <div class="form-group">
                     <label>No Telp</label>

@@ -90,7 +90,7 @@
                   </div>
                   <div class="form-group">
                     <label>Berat Badan</label>
-                    <input type="text" class="form-control @error('beratbadan') is-invalid @enderror" id="beratbadan" name="beratbadan" placeholder="Masukkan BB (Kg)" value="{{ old ('beratbadan')}}">
+                    <input type="number" class="form-control @error('beratbadan') is-invalid @enderror" id="beratbadan" name="beratbadan" placeholder="Masukkan BB (Kg)" value="{{ old ('beratbadan')}}">
                     @error('beratbadan')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror

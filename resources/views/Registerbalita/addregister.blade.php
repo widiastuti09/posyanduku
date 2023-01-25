@@ -206,8 +206,8 @@
                                             </div> -->
                                             <div class="form-group">
                                                 <label>No NIK Balita</label>
-                                                <input type="number" class="form-control @error('nik_balita') is-invalid @enderror" autofocus id="nik_balita" name="nik_balita" placeholder="Masukkan Nomor NIK" value="{{ old('nik_balita') }}">
-                                                @error('nik_balita')
+                                                <input type="number" class="form-control @error('nikbalita') is-invalid @enderror" autofocus id="nikbalita" name="nikbalita" placeholder="Masukkan Nomor NIK" value="{{ old('nikbalita') }}">
+                                                @error('nikbalita')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>

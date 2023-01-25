@@ -82,14 +82,14 @@
                   </div>
                   <div class="form-group">
                     <label for="">Berat Badan</label>
-                    <input type="text" class="form-control select2 @error('berat_badan') is-invalid @enderror" placeholder="Masukkan Berat Badan" name="berat_badan" id="berat_badan" value="{{$plansia->berat_badan}}">
+                    <input type="number" class="form-control select2 @error('berat_badan') is-invalid @enderror" placeholder="Masukkan Berat Badan" name="berat_badan" id="berat_badan" value="{{$plansia->berat_badan}}">
                     @error('berat_badan')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                   </div>
                   <div class="form-group">
                     <label for="">Tinggi Badan</label>
-                    <input type="text" class="form-control select2 @error('tinggi_badan') is-invalid @enderror" placeholder="Masukkan Tinggi Badan" name="tinggi_badan" id="tinggi_badan" value="{{$plansia->tinggi_badan}}">
+                    <input type="number" class="form-control select2 @error('tinggi_badan') is-invalid @enderror" placeholder="Masukkan Tinggi Badan" name="tinggi_badan" id="tinggi_badan" value="{{$plansia->tinggi_badan}}">
                     @error('tinggi_badan')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
@@ -97,42 +97,42 @@
 
                   <div class="form-group">
                     <label for="">Lingkar Pinggang (Cm)</label>
-                    <input type="text" class="form-control select2 @error('lingkar_pinggang') is-invalid @enderror" placeholder="Masukkan Ukuran Lingkar Pinggang" name="lingkar_pinggang" id="lingkar_pinggang" value="{{$plansia->lingkar_pinggang}}">
+                    <input type="number" class="form-control select2 @error('lingkar_pinggang') is-invalid @enderror" placeholder="Masukkan Ukuran Lingkar Pinggang" name="lingkar_pinggang" id="lingkar_pinggang" value="{{$plansia->lingkar_pinggang}}">
                     @error('lingkar_pinggang')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                   </div>
                   <div class="form-group">
                     <label for="">Tekanan Darah</label>
-                    <input type="text" class="form-control select2 @error('tekanan_darah') is-invalid @enderror" placeholder="Masukkan Tekanan Darah" name="tekanan_darah" id="tekanan_darah" value="{{$plansia->tekanan_darah}}">
+                    <input type="number" class="form-control select2 @error('tekanan_darah') is-invalid @enderror" placeholder="Masukkan Tekanan Darah" name="tekanan_darah" id="tekanan_darah" value="{{$plansia->tekanan_darah}}">
                     @error('tekanan_darah')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                   </div>
                   <div class="form-group">
                     <label for="">Glukosa Darah</label>
-                    <input type="text" class="form-control select2 @error('glukosa_darah') is-invalid @enderror" placeholder="Masukkan Glukosa Darah" name="glukosa_darah" id="glukosa_darah" value="{{$plansia->glukosa_darah}}">
+                    <input type="number" class="form-control select2 @error('glukosa_darah') is-invalid @enderror" placeholder="Masukkan Glukosa Darah" name="glukosa_darah" id="glukosa_darah" value="{{$plansia->glukosa_darah}}">
                     @error('glukosa_darah')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                   </div>
                   <div class="form-group">
                     <label for="">Lemak Tubuh</label>
-                    <input type="text" class="form-control select2 @error('lemak_tubuh') is-invalid @enderror" placeholder="Masukkan Lemak Darah" name="lemak_tubuh" id="lemak_tubuh" value="{{$plansia->lemak_tubuh}}">
+                    <input type="number" class="form-control select2 @error('lemak_tubuh') is-invalid @enderror" placeholder="Masukkan Lemak Darah" name="lemak_tubuh" id="lemak_tubuh" value="{{$plansia->lemak_tubuh}}">
                     @error('lemak_tubuh')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                   </div>
                   <div class="form-group">
                     <label for="">IMT</label>
-                    <input type="text" class="form-control select2 @error('imt') is-invalid @enderror" placeholder="Masukkan Indeks Massa Tubuh" name="imt" id="imt" value="{{$plansia->imt}}">
+                    <input type="number" class="form-control select2 @error('imt') is-invalid @enderror" placeholder="Masukkan Indeks Massa Tubuh" name="imt" id="imt" value="{{$plansia->imt}}">
                     @error('imt')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                   </div>
                   <div class="form-group">
                     <label for="">Lemak Perut</label>
-                    <input type="text" class="form-control select2 @error('lemak_perut') is-invalid @enderror" placeholder="Masukkan Lemak Perut" name="lemak_perut" id="lemak_perut" value="{{$plansia->lemak_perut}}">
+                    <input type="number" class="form-control select2 @error('lemak_perut') is-invalid @enderror" placeholder="Masukkan Lemak Perut" name="lemak_perut" id="lemak_perut" value="{{$plansia->lemak_perut}}">
                     @error('lemak_perut')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
@@ -146,21 +146,21 @@
 
                   <div class="form-group">
                     <label for="">Kolestrol</label>
-                    <input type="text" class="form-control select2 @error('kolestrol') is-invalid @enderror" placeholder="Masukkan Kolestrol" name="kolestrol" id="kolestrol" value="{{$plansia->kolestrol}}">
+                    <input type="number" class="form-control select2 @error('kolestrol') is-invalid @enderror" placeholder="Masukkan Kolestrol" name="kolestrol" id="kolestrol" value="{{$plansia->kolestrol}}">
                     @error('kolestrol')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                   </div>
                   <div class="form-group">
                     <label for="">Asam Urat</label>
-                    <input type="text" class="form-control select2 @error('asam_urat') is-invalid @enderror" placeholder="Masukkan Tekanan Darah" name="asam_urat" id="asam_urat" value="{{$plansia->asam_urat}}">
+                    <input type="number" class="form-control select2 @error('asam_urat') is-invalid @enderror" placeholder="Masukkan Tekanan Darah" name="asam_urat" id="asam_urat" value="{{$plansia->asam_urat}}">
                     @error('asam_urat')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                   </div>
                   <div class="form-group">
                     <label for="">Makan Berlemak</label>
-                    <input type="text" class="form-control select2 @error('makan_berlemak') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="makan_berlemak" id="makan_berlemak" value="{{$plansia->makan_berlemak}}">
+                    <input type="number" class="form-control select2 @error('makan_berlemak') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="makan_berlemak" id="makan_berlemak" value="{{$plansia->makan_berlemak}}">
                     @error('makan_berlemak')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
@@ -168,7 +168,7 @@
 
                   <div class="form-group">
                     <label for="">Makan Manis</label>
-                    <input type="text" class="form-control select2 @error('makan_manis') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="makan_manis" id="makan_manis" value="{{$plansia->makan_manis}}">
+                    <input type="number" class="form-control select2 @error('makan_manis') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="makan_manis" id="makan_manis" value="{{$plansia->makan_manis}}">
                     @error('makan_manis')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
@@ -176,7 +176,7 @@
 
                   <div class="form-group">
                     <label for="">Makan/Minum Zat Adiktif</label>
-                    <input type="text" class="form-control select2 @error('zat_adiktif') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="zat_adiktif" id="zat_adiktif" value="{{$plansia->zat_adiktif}}">
+                    <input type="number" class="form-control select2 @error('zat_adiktif') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="zat_adiktif" id="zat_adiktif" value="{{$plansia->zat_adiktif}}">
                     @error('zat_adiktif')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
@@ -184,7 +184,7 @@
 
                   <div class="form-group">
                     <label for="">Penggunaan Jelantah</label>
-                    <input type="text" class="form-control select2 @error('jelantah') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="jelantah" id="jelantah" value="{{$plansia->jelantah}}">
+                    <input type="number" class="form-control select2 @error('jelantah') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="jelantah" id="jelantah" value="{{$plansia->jelantah}}">
                     @error('jelantah')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
@@ -205,7 +205,7 @@
 
                   <div class="form-group">
                     <label for="">Olahraga</label>
-                    <input type="text" class="form-control select2 @error('olahraga') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="olahraga" id="olahraga" value="{{$plansia->olahraga}}">
+                    <input type="number" class="form-control select2 @error('olahraga') is-invalid @enderror" placeholder="Dalam 1 Minggu" name="olahraga" id="olahraga" value="{{$plansia->olahraga}}">
                     @error('olahraga')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror

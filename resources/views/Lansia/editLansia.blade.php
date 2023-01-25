@@ -90,14 +90,14 @@
 
                   <div class="form-group">
                     <label for="">RT</label>
-                    <input type="text" class="form-control select2 @error('rt') is-invalid @enderror" placeholder="Masukkan RT" name="rt" id="rt" value="{{$lansias->rt}}">
+                    <input type="number" class="form-control select2 @error('rt') is-invalid @enderror" placeholder="Masukkan RT" name="rt" id="rt" value="{{$lansias->rt}}">
                     @error('rt')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                   </div>
                   <div class="form-group">
                     <label for="">RW</label>
-                    <input type="text" class="form-control select2 @error('rw') is-invalid @enderror" placeholder="Masukkan RW" name="rw" id="rw" value="{{$lansias->rw}}">
+                    <input type="number" class="form-control select2 @error('rw') is-invalid @enderror" placeholder="Masukkan RW" name="rw" id="rw" value="{{$lansias->rw}}">
                     @error('rw')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror

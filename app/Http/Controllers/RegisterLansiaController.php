@@ -47,7 +47,7 @@ class RegisterLansiaController extends Controller
             'jenis_kelamin'     => 'required',
             'rt'                => 'required',
             'rw'                => 'required',
-            'alamat'            => 'required',
+            'alamat'            => 'required|alpha_spaces',
         ];
 
         $messages = [
@@ -109,12 +109,12 @@ class RegisterLansiaController extends Controller
         $lansias = Lansia::findorfail($id);
         $rules = [
             'tanggal_register'  => 'required',
-            'nama'              => 'required|string',
+            'nama'              => 'required|alpha_spaces',
             'tanggal_lahir'     => 'required',
             'jenis_kelamin'     => 'required',
             'rt'                => 'required|integer',
             'rw'                => 'required|integer',
-            'alamat'            => 'required|string',
+            'alamat'            => 'required|alpha_spaces',
         ];
         $messages = [
             'tanggal_register.required'          => 'Tanggal register harus di isi',
@@ -125,7 +125,8 @@ class RegisterLansiaController extends Controller
             'rt.integer'                          => 'RT harus di isi angka',
             'rw.required'                        => 'RW harus di isi',
             'rw,integer'                          => 'RW harus di isi angka',
-            'alamat.required'                    => 'Alamat harus di isi'
+            'alamat.required'                    => 'Alamat harus di isi',
+            'alpha_spaces' => ':attribute harus huruf'
         ];
         $this->validate($request, $rules, $messages);
         $lansias->update($request->all());

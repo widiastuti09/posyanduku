@@ -47,7 +47,7 @@ class RegisterIbuHamilController extends Controller
             'goldarah' => 'required',
             'rt' => 'required|max:2',
             'rw' => 'required|max:2',
-            'telp' => 'required|min:10|max:14',
+            'telp' => 'required|min:10|max:14|unique:ibuhamils',
             'user_id' => 'required'
         ];
 
@@ -56,7 +56,8 @@ class RegisterIbuHamilController extends Controller
             'required' => ':attribute harus diisi',
             'max' => ':attribute maksimal :max karakter',
             'min' => ':attribute min :min karakter',
-            'alpha_spaces' => ':attribute hanya huruf dan spasi'
+            'alpha_spaces' => ':attribute hanya huruf dan spasi',
+            'unique' => ':attribute sudah dipakai'
         ];
 
 
@@ -113,19 +114,26 @@ class RegisterIbuHamilController extends Controller
     {
         $regmil = Ibuhamil::findorfail($id);
         $rules= [
-            'nama'          => 'required|string',
+            'nama'          => 'required|regex:/^[\pL\s\-]+$/u',
             'tgllahir'      => 'required',
-            'namasuami'     => 'required|string',
+            'namasuami'     => 'required|regex:/^[\pL\s\-]+$/u',
             'goldarah'      => 'required',
             'usia'          => 'required|max:2',
             'rt'            => 'required|max:2',
             'rw'            => 'required|max:2',
-            'telp'          => 'required|max:13',
             'tglregister'   => 'required' 
         ];
 
+        if($regmil->telp == $request->telp){
+            $rules['telp'] = 'required|max:13';
+        }else{
+            $rules['telp'] = 'required|max:13|unique:ibuhamils';
+        }
+
         $messages= [
-            'required' => ':attribute tidak boleh kosong'
+            'required' => ':attribute tidak boleh kosong',
+            'regex' => ":attribute harus berupa huruf",
+            'unique' => ':attribute sudah dipakai'
         ];
         $this->validate($request, $rules, $messages);
         $regmil->update($request->all());
